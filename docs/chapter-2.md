@@ -280,6 +280,9 @@ Las Historias de Usuario (HU) han sido priorizadas utilizando la escala MoSCoW, 
 
 ### 2.3. Planificación de sprints (Sprint Planning)
 
+A continuación, se presenta la planificación de los 5 Sprints, estructurada para cubrir de manera incremental las fases de un Pentesting profesional (Reconocimiento, Escaneo, Enumeración, Explotación, Post-Explotación e Informe Final). Cada Sprint define sus Objetivos, las Actividades Técnicas a realizar, las Historias de Usuario (HU) que se comprometen a completar y los Entregables clave.
+
+
 <table>
     <thead>
         <tr>
@@ -393,4 +396,311 @@ Las Historias de Usuario (HU) han sido priorizadas utilizando la escala MoSCoW, 
 
 ### 2.4. Definición de Done (DoD)
 
+
+A continuación, se define la Definición de 'Done' (DoD) para cada Historia de Usuario, estableciendo los criterios de calidad y verificación que deben cumplirse para que un hallazgo de seguridad sea considerado terminado. Este proceso asegura que cada resultado esté respaldado por evidencia clara, sea reproducible y contenga un análisis de impacto válido para su posterior remediación.
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Historia de Usuario (HU)</th>
+            <th>Criterios de "Done" (DoD)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>HU01</td>
+            <td>Escaneo de puertos y servicios públicos.</td>
+            <td>
+                <ul>
+                    <li>Evidencia: Captura de pantalla del reporte de <code>Nmap</code> o <code>Masscan</code> con puertos y versiones.</li>
+                    <li>Reproducibilidad: El comando de escaneo exacto utilizado está registrado.</li>
+                    <li>Documentación: Se documentan todos los puertos abiertos y se establece la superficie de ataque.</li>
+                    <li>Impacto: Se determina la reducción o expansión de la superficie de ataque inicial.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>HU02</td>
+            <td>Prueba de SQL Injection en el registro (<code>/sign-up</code>).</td>
+            <td>
+                <ul>
+                    <li>Evidencia: Captura de pantalla de la solicitud/respuesta de Burp Suite que muestre la <em>payload</em> inyectada.</li>
+                    <li>Reproducibilidad: La <em>payload</em> de inyección (<code>' OR 1=1 --</code>) y el campo exacto están registrados.</li>
+                    <li>Documentación: Se registra si la prueba resultó en error seguro o en error de base de datos.</li>
+                    <li>Impacto: Crítico si es vulnerable (acceso a DB).</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>HU03</td>
+            <td>Identificación de fallos de Broken Access Control.</td>
+            <td>
+                <ul>
+                    <li>Evidencia: Captura de pantalla de la solicitud/respuesta que muestre la modificación del parámetro (ej. <code>id=102</code>) y el código de respuesta (idealmente 403).</li>
+                    <li>Reproducibilidad: El parámetro modificado y el token de sesión están documentados.</li>
+                    <li>Documentación: El fallo se clasifica como Horizontal o Vertical.</li>
+                    <li>Impacto: Alto a Crítico (fuga de datos o acceso administrativo).</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>HU04</td>
+            <td>Escaneo con herramientas automatizadas.</td>
+            <td>
+                <ul>
+                    <li>Evidencia: Reporte exportado de la herramienta (ej. Nessus) con hallazgos de criticidad Alta/Crítica.</li>
+                    <li>Reproducibilidad: La configuración del escaneo está guardada.</li>
+                    <li>Documentación: Solo los hallazgos validados manualmente (NO falsos positivos) se transfieren a la matriz final.</li>
+                    <li>Impacto: Los hallazgos se priorizan según su puntuación CVSS.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>HU05</td>
+            <td>Prueba de Tasa de Ataque (<em>Rate Limit</em>).</td>
+            <td>
+                <ul>
+                    <li>Evidencia: Captura de la respuesta del servidor (ej. código 429) o la aparición de un <em>captcha</em> después del límite de intentos.</li>
+                    <li>Reproducibilidad: El script o configuración de Burp Intruder utilizado está guardado.</li>
+                    <li>Documentación: Se registra si el sistema implementó bloqueo temporal o falló.</li>
+                    <li>Impacto: Alto (permite fuerza bruta de credenciales) si el límite falla.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>HU06</td>
+            <td>Vulnerabilidad a Cross-Site Scripting (XSS).</td>
+            <td>
+                <ul>
+                    <li>Evidencia: Captura de pantalla que muestre la <em>payload</em> no ejecutada, sino renderizada como texto plano (si es seguro).</li>
+                    <li>Reproducibilidad: La <em>payload</em> XSS (ej. <code>&lt;script&gt;alert(1)&lt;/script&gt;</code>) y el campo de entrada están registrados.</li>
+                    <li>Documentación: Se clasifica el tipo de XSS (Almacenado, Reflejado o DOM).</li>
+                    <li>Impacto: Alto/Crítico si se ejecuta código arbitrario.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>HU07</td>
+            <td>Documentar el acceso a información sensible (Post-Explotación).</td>
+            <td>
+                <ul>
+                    <li>Evidencia: Captura de pantalla verificable del archivo crítico (ej. <code>config.php</code>) que contiene credenciales de bases de datos.</li>
+                    <li>Reproducibilidad: La ruta exacta del archivo y el método de acceso están registrados.</li>
+                    <li>Documentación: Se registra la sensibilidad de la información expuesta.</li>
+                    <li>Impacto: Crítico (compromiso total de sistemas internos).</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>HU08</td>
+            <td>Redactar el informe técnico, ejecutivo y plan de remediación.</td>
+            <td>
+                <ul>
+                    <li>Evidencia: Archivo PDF final del Informe de Pentesting, completo y finalizado.</li>
+                    <li>Reproducibilidad: El informe incluye todos los PoC validados y las referencias a las evidencias de cada HU.</li>
+                    <li>Documentación: El informe cumple con la estructura profesional (NIST/PTES) y las recomendaciones son específicas.</li>
+                    <li>Impacto: Documento final que consolida y mide el riesgo total.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>HU09</td>
+            <td>Evaluar la lógica de negocio.</td>
+            <td>
+                <ul>
+                    <li>Evidencia: Captura de pantalla de la solicitud modificada (ej. <code>price=-100</code>) y la respuesta del servidor (rechazo de lógica).</li>
+                    <li>Reproducibilidad: Se registra el parámetro exacto manipulado y el valor no permitido.</li>
+                    <li>Documentación: Se verifica que el <em>backend</em> realiza validaciones de negocio.</li>
+                    <li>Impacto: Alto (pérdida financiera o corrupción de datos) si la manipulación es exitosa.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>HU10</td>
+            <td>Examinar encabezados y <em>cookies</em> HTTP.</td>
+            <td>
+                <ul>
+                    <li>Evidencia: Captura de pantalla de Burp Suite que muestre la presencia de encabezados de seguridad críticos (ej. <code>HSTS</code>, <code>X-Frame-Options</code>).</li>
+                    <li>Reproducibilidad: La solicitud HTTP utilizada está registrada.</li>
+                    <li>Documentación: Se lista si los encabezados críticos están presentes y configurados correctamente.</li>
+                    <li>Impacto: Medio (riesgo de <em>clickjacking</em> o degradación de seguridad) si faltan.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>HU11</td>
+            <td>Abuso de la funcionalidad "Olvidé mi Contraseña".</td>
+            <td>
+                <ul>
+                    <li>Evidencia: Captura de pantalla que demuestre el bloqueo de la cuenta o la aparición de un <em>captcha</em> después del límite de intentos.</li>
+                    <li>Reproducibilidad: La secuencia de prueba de fuerza bruta del código de restablecimiento está documentada.</li>
+                    <li>Documentación: Se registra el número de intentos antes de que se active la defensa.</li>
+                    <li>Impacto: Alto (permite toma de cuenta si el código es débil o no hay límite).</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>HU12</td>
+            <td>Revisar el manejo de archivos subidos.</td>
+            <td>
+                <ul>
+                    <li>Evidencia: Captura de pantalla que muestre la respuesta de rechazo del servidor al intentar subir un archivo de tipo no permitido (ej. <code>shell.php</code>).</li>
+                    <li>Reproducibilidad: El nombre de archivo y el <em>MIME type</em> de prueba están registrados.</li>
+                    <li>Documentación: Se verifica la validación por lista blanca de tipos MIME.</li>
+                    <li>Impacto: Crítico (RCE - Ejecución Remota de Código) si la subida es exitosa.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>HU13</td>
+            <td>Vulnerabilidad a Server-Side Template Injection (SSTI).</td>
+            <td>
+                <ul>
+                    <li>Evidencia: Captura de pantalla que muestre la <em>payload</em> inyectada (ej. <code>${{7*7}}</code>) y el resultado.</li>
+                    <li>Reproducibilidad: La <em>payload</em> de prueba y el campo inyectado están registrados.</li>
+                    <li>Documentación: Se identifica el motor de plantillas sospechoso.</li>
+                    <li>Impacto: Crítico (RCE) si el servidor ejecuta la <em>payload</em> correctamente.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>HU14</td>
+            <td>Analizar la estructura de los tokens de sesión (JWT).</td>
+            <td>
+                <ul>
+                    <li>Evidencia: Captura de pantalla de la herramienta de decodificación JWT que muestre el contenido del <em>Payload</em> decodificado.</li>
+                    <li>Reproducibilidad: El token capturado está registrado.</li>
+                    <li>Documentación: Se verifica que el <em>Payload</em> no contenga datos sensibles y que el campo <code>exp</code> esté presente.</li>
+                    <li>Impacto: Alto (suplantación de identidad) si el token es débil o contiene datos sensibles.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>HU15</td>
+            <td>Evaluar si los logs registran eventos de seguridad.</td>
+            <td>
+                <ul>
+                    <li>Evidencia: Captura de pantalla de la consola o archivo de logs que muestre la entrada detallada del intento de ataque (SQLi o similar), incluyendo IP y hora.</li>
+                    <li>Reproducibilidad: Se documenta el evento de seguridad generado por el consultor.</li>
+                    <li>Documentación: Se registra qué sistema (WAF, App, OS) capturó la anomalía.</li>
+                    <li>Impacto: Alto (incapacidad para detectar, auditar o responder a incidentes) si los logs son deficientes.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>HU16</td>
+            <td>Interceptar y manipular las llamadas a la API REST (IDOR).</td>
+            <td>
+                <ul>
+                    <li>Evidencia: Captura de la solicitud/respuesta de Burp Suite que muestre la modificación del ID de recurso y la respuesta 403 o 401.</li>
+                    <li>Reproducibilidad: La URL exacta del <em>endpoint</em> API y el ID de recurso modificado están registrados.</li>
+                    <li>Documentación: Se verifica que la validación del token de sesión se extienda a la propiedad del recurso.</li>
+                    <li>Impacto: Crítico (fuga de datos masiva o manipulación de datos de terceros) si la prueba es exitosa.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>HU17</td>
+            <td>Identificar páginas de Error y <em>Stack Traces</em> expuestas.</td>
+            <td>
+                <ul>
+                    <li>Evidencia: Captura de pantalla que muestre el error provocado (ej. HTTP 500) y que la página de error es genérica, sin mostrar información del servidor.</li>
+                    <li>Reproducibilidad: Se registra el método exacto para provocar el error.</li>
+                    <li>Documentación: Se verifica que la respuesta del servidor no filtre información interna.</li>
+                    <li>Impacto: Medio (fuga de información del <em>stack</em> tecnológico del servidor).</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>HU18</td>
+            <td>Probar si se puede realizar una desconexión (<em>Logout</em>) CSRF.</td>
+            <td>
+                <ul>
+                    <li>Evidencia: Captura de pantalla que demuestre que la sesión de la víctima NO fue terminada, o que la solicitud de <em>logout</em> requiere un CSRF token.</li>
+                    <li>Reproducibilidad: Se documenta la forma en que se intentó forzar el <em>logout</em>.</li>
+                    <li>Documentación: Se verifica la presencia del token CSRF en acciones críticas de gestión de sesión.</li>
+                    <li>Impacto: Bajo (DoS a un usuario) si la prueba es exitosa.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>HU19</td>
+            <td>Validar que todas las comunicaciones se realicen únicamente a través de canales cifrados.</td>
+            <td>
+                <ul>
+                    <li>Evidencia: Captura de la respuesta HTTP que muestre el código de redirección 301 o 302 al acceder por <code>http://</code>.</li>
+                    <li>Reproducibilidad: El comando de <code>curl</code> o el intento de acceso HTTP están registrados.</li>
+                    <li>Documentación: Se verifica que toda la comunicación obligue a usar HTTPS.</li>
+                    <li>Impacto: Alto (riesgo de <em>sniffing</em>) si la comunicación HTTP simple no es redirigida o bloqueada.</li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 ### 2.5. Herramientas
+
+La ejecución exitosa de los Sprints de Pentesting requiere el uso de herramientas específicas que se alinean con las fases de la metodología. A continuación, se enumeran las herramientas obligatorias y las recomendadas, explicando su contribución a las fases del proyecto.
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Herramienta</th>
+            <th>Tipo</th>
+            <th>Fases de Contribución</th>
+            <th>Explicación de la Contribución</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Kali Linux</strong> </td>
+            <td>Sistema Operativo / Plataforma</td>
+            <td>S1 a S5 (Todo el Proyecto)</td>
+            <td>Es la <strong>plataforma base</strong> que integra todas las utilidades. Proporciona el entorno preconfigurado para ejecutar las pruebas, desde el escaneo hasta la post-explotación.</td>
+        </tr>
+        <tr>
+            <td><strong>Nmap</strong></td>
+            <td>Escáner de Red</td>
+            <td>S1: Reconocimiento &amp; Escaneo</td>
+            <td>Fundamental para el <strong>mapeo de la infraestructura</strong>. Identifica hosts activos, escanea puertos abiertos, detecta versiones de servicios y sistemas operativos (HU01).</td>
+        </tr>
+        <tr>
+            <td><strong>Wireshark</strong></td>
+            <td>Analizador de Protocolos</td>
+            <td>S1: Reconocimiento &amp; Escaneo</td>
+            <td>Permite la <strong>captura y análisis del tráfico de red</strong> en tiempo real. Es crucial para identificar información sensible o debilidades en los protocolos de comunicación.</td>
+        </tr>
+        <tr>
+            <td><strong>Burp Suite</strong></td>
+            <td>Proxy Web Interceptor</td>
+            <td>S2: Enumeración &amp; S3: Explotación</td>
+            <td>Esencial para la <strong>intercepción y modificación de solicitudes HTTP/S</strong>. Se usa para la prueba manual de vulnerabilidades en aplicaciones web, como Inyecciones, XSS, y Broken Access Control (HU02, HU03).</td>
+        </tr>
+        <tr>
+            <td><strong>Metasploit</strong></td>
+            <td>Framework de Explotación</td>
+            <td>S3: Explotación &amp; S4: Post-Explotación</td>
+            <td>Proporciona una amplia base de datos de <strong>exploits y payloads</strong> para obtener <strong>acceso inicial</strong> al sistema y realizar tareas de post-explotación, como el *dumping* de credenciales.</td>
+        </tr>
+        <tr>
+            <td><strong>sqlmap</strong></td>
+            <td>Inyección SQL Automatizada</td>
+            <td>S3: Explotación</td>
+            <td>Herramienta especializada para la <strong>detección y explotación automatizada de fallas de inyección SQL</strong> (HU02), permitiendo la enumeración de bases de datos y la extracción de datos sensibles.</td>
+        </tr>
+        <tr>
+            <td><strong>Nessus / OpenVAS</strong> (Recomendadas)</td>
+            <td>Escáner de Vulnerabilidades</td>
+            <td>S2: Enumeración &amp; Vulnerabilidades</td>
+            <td>Ejecutan <strong>escaneos automatizados y profundos</strong> (HU04). Identifican software obsoleto, configuraciones erróneas y mapean vulnerabilidades conocidas con su respectivo puntaje CVSS.</td>
+        </tr>
+        <tr>
+            <td><strong>MobSF (Mobile Security Framework)</strong> (Recomendada)</td>
+            <td>Análisis de Aplicaciones Móviles</td>
+            <td>S3: Explotación &amp; S4: Post-Explotación</td>
+            <td>Recomendado para escenarios móviles, facilita el <strong>análisis estático y dinámico de aplicaciones</strong> (APKs/ZIPs), evaluando el manejo de tokens, APIs y el almacenamiento de datos sensibles.</td>
+        </tr>
+    </tbody>
+</table>
