@@ -78,6 +78,8 @@ La metodología Scrum se integra con PTES, OWASP y NIST SP 800-115 de la siguien
 
 Esta integración permite mantener la rigurosidad técnica de los estándares de pentesting (PTES, OWASP, NIST) mientras se aprovecha la flexibilidad y transparencia de Scrum para adaptarse a los hallazgos durante la ejecución y mantener comunicación constante con el cliente.
 
+---
+
 ## 2.2. Backlog inicial
 
 El Product Backlog inicial del proyecto define el trabajo a realizar por la consultora, estructurado como **Historias de Usuario (HU) enfocadas en pentesting**. Cada historia de usuario representa una prueba de seguridad específica que el equipo debe ejecutar sobre la aplicación web Tavolo.
@@ -127,6 +129,7 @@ Cada HU incluye escenarios de prueba escritos en formato **Gherkin** (Given/When
 | **HU18** | Como atacante, quiero probar si es posible realizar una desconexión (*logout*) CSRF. | Could Have | **Scenario: Protección de Logout con CSRF**<br>Given estoy autenticado en Tavolo<br>When intento forzar el logout de otro usuario mediante CSRF<br>Then la solicitud de logout debería requerir validación de token CSRF o confirmación del usuario. | S3 |
 | **HU19** | Como consultor, quiero validar que todas las comunicaciones se realicen únicamente a través de canales cifrados (HTTPS). | Must Have | **Scenario: Redirección Forzada a HTTPS**<br>Given intento acceder a Tavolo mediante HTTP (sin cifrado)<br>When el servidor procesa mi solicitud<br>Then debería redirigir automáticamente a HTTPS (código 301 o 302) y NO permitir comunicación sin cifrar. | S1 |
 
+---
 
 ## 2.3. Planificación de sprints (Sprint Planning)
 
@@ -196,6 +199,7 @@ Ejecutar reconocimiento pasivo y activo sobre la infraestructura de Tavolo en Az
 - [ ] Aprobación del Scrum Master
 - [ ] Commit en repositorio GitHub con tag `sprint-1-done`
 
+---
 
 ### Sprint 2: Enumeración Profunda & Análisis de Vulnerabilidades (Semanas 3-4)
 
@@ -263,6 +267,7 @@ Realizar enumeración en profundidad de todos los servicios identificados en Spr
 - [ ] Peer review completado
 - [ ] Commit en repositorio GitHub con tag `sprint-2-done`
 
+---
 
 ### Sprint 3: Explotación Controlada (Semanas 5-7)
 
@@ -343,6 +348,7 @@ Ejecutar explotación controlada y ética de las vulnerabilidades identificadas 
 - [ ] Cliente notificado de vulnerabilidades críticas (< 24h)
 - [ ] Commit en repositorio GitHub con tag `sprint-3-done`
 
+---
 
 ### Sprint 4: Post-Explotación & Análisis de Impacto (Semanas 8-9)
 
@@ -409,6 +415,7 @@ Evaluar el alcance completo y el impacto real de las vulnerabilidades explotadas
 - [ ] Análisis de detección completado con recomendaciones
 - [ ] Commit en repositorio GitHub con tag `sprint-4-done`
 
+---
 
 ### Sprint 5: Documentación & Informe Final (Semanas 10-11)
 
@@ -528,18 +535,18 @@ Sesión interna del equipo para documentar:
     - Ajustes en la metodología Scrum aplicada a pentesting
 
 **Entregables del Sprint:**
-- Informe Técnico Final completo (PDF, 30-60 páginas)
-- Informe Ejecutivo (PDF, 2-4 páginas)
-- Plan de Remediación Priorizado (Excel/CSV)
-- Presentación para cliente (PowerPoint/PDF)
-- Video de demostración de hallazgos (MP4, 15-20 min)
-- Repositorio GitHub completo con:
+- ✅ Informe Técnico Final completo (PDF, 30-60 páginas)
+- ✅ Informe Ejecutivo (PDF, 2-4 páginas)
+- ✅ Plan de Remediación Priorizado (Excel/CSV)
+- ✅ Presentación para cliente (PowerPoint/PDF)
+- ✅ Video de demostración de hallazgos (MP4, 15-20 min)
+- ✅ Repositorio GitHub completo con:
     - Todo el código de scripts y PoCs
     - Evidencias organizadas por sprint
     - README profesional con instrucciones
     - Licencia open-source (MIT o similar)
-- Documento de retrospectiva del proyecto
-- Acta de cierre firmada por el cliente
+- ✅ Documento de retrospectiva del proyecto
+- ✅ Acta de cierre firmada por el cliente
 
 **Definition of Done (DoD):**
 - [ ] Informe técnico completo con TODOS los hallazgos documentados
@@ -553,6 +560,7 @@ Sesión interna del equipo para documentar:
 - [ ] Todos los archivos entregables subidos a Canvas con hash SHA256
 - [ ] Proyecto cerrado en GitHub con release tag `v1.0-final`
 
+---
 
 ## 2.4. Definición de Done (DoD)
 
@@ -568,25 +576,25 @@ La Definición de Done establece los criterios que deben cumplirse para consider
 
 Una Historia de Usuario (HU) se considera **DONE** cuando cumple **TODOS** los siguientes criterios:
 
-**1. Prueba Ejecutada Completamente:**
+✅ **1. Prueba Ejecutada Completamente:**
 - La prueba de pentesting planificada en la HU ha sido ejecutada según los criterios de aceptación Gherkin (Given/When/Then)
 - Se han probado todas las variantes y casos límite relevantes
 - Se documentó el resultado (vulnerable / no vulnerable / parcialmente vulnerable)
 
-**2. Evidencia Clara (pantallazos, reportes):**
+✅ **2. Evidencia Clara (pantallazos, reportes):**
 - Screenshots de alta calidad con timestamps visibles
 - Captura de pantallas completas (no recortes) mostrando URL, hora del sistema
 - Logs de comandos ejecutados con outputs completos
 - Archivos de salida de herramientas (XML de Nmap, HTML de Nikto, JSON de Burp)
 - Videos de explotaciones complejas (opcional pero recomendado para críticas)
 
-**3. Reproducibilidad:**
+✅ **3. Reproducibilidad:**
 - Existe un documento paso a paso que permite reproducir exactamente la prueba
 - Todos los payloads, URLs, parámetros están documentados
 - Precondiciones claramente especificadas (ej. "requiere usuario autenticado")
 - Cualquier miembro del equipo puede replicar el hallazgo siguiendo la documentación
 
-**4. Documentación de Proof of Concept (PoC):**
+✅ **4. Documentación de Proof of Concept (PoC):**
 - Si se explotó una vulnerabilidad, existe un PoC funcional y documentado
 - El PoC incluye:
     - Descripción del escenario de ataque
@@ -595,7 +603,7 @@ Una Historia de Usuario (HU) se considera **DONE** cuando cumple **TODOS** los s
     - Output esperado y output obtenido
 - Scripts almacenados en repositorio GitHub con comentarios
 
-**5. Análisis de Impacto:**
+✅ **5. Análisis de Impacto:**
 - **Severidad técnica:** Calculada usando CVSS v3.1 con vector de ataque completo
 - **Impacto al negocio:** Documentado en términos de:
     - **Confidencialidad:** ¿Qué datos se exponen? ¿Cuántos registros?
@@ -605,13 +613,13 @@ Una Historia de Usuario (HU) se considera **DONE** cuando cumple **TODOS** los s
     - **Impacto reputacional:** ¿Afectaría la confianza de los usuarios?
     - **Impacto legal:** ¿Incumple GDPR, LOPD u otras regulaciones?
 
-**6. Peer Review Completado:**
+✅ **6. Peer Review Completado:**
 - Otro miembro del equipo ha revisado la evidencia técnica
 - Se validó que la vulnerabilidad es real (no un falso positivo)
 - Se confirmó la exactitud del puntaje CVSS asignado
 - Se revisó la claridad de la documentación
 
-**7. Documentación Actualizada:**
+✅ **7. Documentación Actualizada:**
 - El hallazgo está documentado en el reporte técnico del repositorio GitHub
 - Se actualizó la matriz de vulnerabilidades con la nueva entrada
 - Se actualizó el tablero Kanban (Jira/Trello) marcando la HU como "Done"
@@ -620,67 +628,68 @@ Una Historia de Usuario (HU) se considera **DONE** cuando cumple **TODOS** los s
 **Ejemplo de criterio cumplido:**
 ```
 HU02: Pruebas de SQL Injection en /sign-up
-Ejecutada: Se probó inyección SQL en todos los campos del formulario
-Evidencia: Screenshot mostrando payload y error de base de datos MySQL
-Reproducible: Documento con URL, payload exacto, y pasos de reproducción
-PoC: Script Python automatizado de inyección almacenado en /exploits/sql_injection_signup.py
-Impacto: CVSS 9.1 (Critical) - Acceso completo a base de datos con 10,000 usuarios
-Peer Review: Validado por Pentester de APIs el 15/03/2025
-Documentado: Agregado a informe técnico sección 3.2.1 y commit abc123f
+✅ Ejecutada: Se probó inyección SQL en todos los campos del formulario
+✅ Evidencia: Screenshot mostrando payload y error de base de datos MySQL
+✅ Reproducible: Documento con URL, payload exacto, y pasos de reproducción
+✅ PoC: Script Python automatizado de inyección almacenado en /exploits/sql_injection_signup.py
+✅ Impacto: CVSS 9.1 (Critical) - Acceso completo a base de datos con 10,000 usuarios
+✅ Peer Review: Validado por Pentester de APIs el 15/03/2025
+✅ Documentado: Agregado a informe técnico sección 3.2.1 y commit abc123f
 ```
 
 ### 2.4.2. Definition of Done - Nivel Sprint
 
 Un Sprint se considera **DONE** cuando cumple TODOS los siguientes criterios:
 
-- **Todas las HU Asignadas Completadas:** Cada Historia de Usuario del Sprint cumple con el DoD de User Story.
+- ✅ **Todas las HU Asignadas Completadas:** Cada Historia de Usuario del Sprint cumple con el DoD de User Story.
 
-- **Sprint Review Realizada:** Se ha presentado el trabajo al Product Owner (y opcionalmente al cliente) en una sesión de demostración.
+- ✅ **Sprint Review Realizada:** Se ha presentado el trabajo al Product Owner (y opcionalmente al cliente) en una sesión de demostración.
 
-- **Retrospectiva Documentada:** El equipo ha realizado la retrospectiva y documentado:
+- ✅ **Retrospectiva Documentada:** El equipo ha realizado la retrospectiva y documentado:
     - ¿Qué salió bien?
     - ¿Qué salió mal?
     - ¿Qué acciones de mejora implementaremos?
 
-- **Reporte de Sprint Generado:** Se ha creado un documento Markdown con:
+- ✅ **Reporte de Sprint Generado:** Se ha creado un documento Markdown con:
     - Objetivos del sprint
     - HU completadas
     - Hallazgos principales
     - Métricas (horas invertidas, vulnerabilidades encontradas)
 
-- **Notificación al Cliente:** Si se encontraron vulnerabilidades críticas, el cliente fue notificado dentro de las 24 horas.
+- ✅ **Notificación al Cliente:** Si se encontraron vulnerabilidades críticas, el cliente fue notificado dentro de las 24 horas.
 
-- **Commit en GitHub:** Todo el trabajo está en el repositorio con commit convencional y tag de sprint (ej. `sprint-1-done`).
+- ✅ **Commit en GitHub:** Todo el trabajo está en el repositorio con commit convencional y tag de sprint (ej. `sprint-1-done`).
 
 ### 2.4.3. Definition of Done - Nivel Proyecto (TP1/TF1)
 
 El proyecto completo se considera **DONE** cuando cumple TODOS los siguientes criterios:
 
-- **Todos los Sprints Completados:** Los 5 sprints cumplen con sus respectivos DoD.
+- ✅ **Todos los Sprints Completados:** Los 5 sprints cumplen con sus respectivos DoD.
 
-- **Informe Técnico Final Completo:** Documento profesional con:
+- ✅ **Informe Técnico Final Completo:** Documento profesional con:
     - Resumen ejecutivo
     - Metodología
     - Hallazgos detallados (con evidencias)
     - Recomendaciones de remediación priorizadas
     - Apéndices (comandos, configuraciones)
 
-- **Informe Ejecutivo para Dirección:** Documento de alto nivel (2-3 páginas) para CEO/CTO de Tavolo.
+- ✅ **Informe Ejecutivo para Dirección:** Documento de alto nivel (2-3 páginas) para CEO/CTO de Tavolo.
 
-- **Video de Presentación:** Grabación profesional (15-20 min) demostrando hallazgos clave.
+- ✅ **Video de Presentación:** Grabación profesional (15-20 min) demostrando hallazgos clave.
 
-- **Repositorio GitHub Completo:** Incluye:
+- ✅ **Repositorio GitHub Completo:** Incluye:
     - Código de todos los scripts
     - Evidencias organizadas por sprint
     - README profesional con instrucciones
     - Licencia (MIT o similar)
 
-- **Cierre Formal con Cliente:** Tavolo ha recibido, revisado y aprobado formalmente el proyecto.
+- ✅ **Cierre Formal con Cliente:** Tavolo ha recibido, revisado y aprobado formalmente el proyecto.
 
-- **Archivos Entregables Subidos:** Todos los PDFs, videos y archivos requeridos están en Canvas con hash SHA256 verificado.
+- ✅ **Archivos Entregables Subidos:** Todos los PDFs, videos y archivos requeridos están en Canvas con hash SHA256 verificado.
 
-- **Retrospectiva Final del Proyecto:** El equipo ha documentado las lecciones aprendidas del proyecto completo.
+- ✅ **Retrospectiva Final del Proyecto:** El equipo ha documentado las lecciones aprendidas del proyecto completo.
 
+---
 
 ## 2.5. Herramientas
 

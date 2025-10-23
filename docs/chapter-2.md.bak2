@@ -78,6 +78,8 @@ La metodología Scrum se integra con PTES, OWASP y NIST SP 800-115 de la siguien
 
 Esta integración permite mantener la rigurosidad técnica de los estándares de pentesting (PTES, OWASP, NIST) mientras se aprovecha la flexibilidad y transparencia de Scrum para adaptarse a los hallazgos durante la ejecución y mantener comunicación constante con el cliente.
 
+---
+
 ## 2.2. Backlog inicial
 
 El Product Backlog inicial del proyecto define el trabajo a realizar por la consultora, estructurado como **Historias de Usuario (HU) enfocadas en pentesting**. Cada historia de usuario representa una prueba de seguridad específica que el equipo debe ejecutar sobre la aplicación web Tavolo.
@@ -127,6 +129,7 @@ Cada HU incluye escenarios de prueba escritos en formato **Gherkin** (Given/When
 | **HU18** | Como atacante, quiero probar si es posible realizar una desconexión (*logout*) CSRF. | Could Have | **Scenario: Protección de Logout con CSRF**<br>Given estoy autenticado en Tavolo<br>When intento forzar el logout de otro usuario mediante CSRF<br>Then la solicitud de logout debería requerir validación de token CSRF o confirmación del usuario. | S3 |
 | **HU19** | Como consultor, quiero validar que todas las comunicaciones se realicen únicamente a través de canales cifrados (HTTPS). | Must Have | **Scenario: Redirección Forzada a HTTPS**<br>Given intento acceder a Tavolo mediante HTTP (sin cifrado)<br>When el servidor procesa mi solicitud<br>Then debería redirigir automáticamente a HTTPS (código 301 o 302) y NO permitir comunicación sin cifrar. | S1 |
 
+---
 
 ## 2.3. Planificación de sprints (Sprint Planning)
 
@@ -196,6 +199,7 @@ Ejecutar reconocimiento pasivo y activo sobre la infraestructura de Tavolo en Az
 - [ ] Aprobación del Scrum Master
 - [ ] Commit en repositorio GitHub con tag `sprint-1-done`
 
+---
 
 ### Sprint 2: Enumeración Profunda & Análisis de Vulnerabilidades (Semanas 3-4)
 
@@ -263,6 +267,7 @@ Realizar enumeración en profundidad de todos los servicios identificados en Spr
 - [ ] Peer review completado
 - [ ] Commit en repositorio GitHub con tag `sprint-2-done`
 
+---
 
 ### Sprint 3: Explotación Controlada (Semanas 5-7)
 
@@ -343,6 +348,7 @@ Ejecutar explotación controlada y ética de las vulnerabilidades identificadas 
 - [ ] Cliente notificado de vulnerabilidades críticas (< 24h)
 - [ ] Commit en repositorio GitHub con tag `sprint-3-done`
 
+---
 
 ### Sprint 4: Post-Explotación & Análisis de Impacto (Semanas 8-9)
 
@@ -409,6 +415,7 @@ Evaluar el alcance completo y el impacto real de las vulnerabilidades explotadas
 - [ ] Análisis de detección completado con recomendaciones
 - [ ] Commit en repositorio GitHub con tag `sprint-4-done`
 
+---
 
 ### Sprint 5: Documentación & Informe Final (Semanas 10-11)
 
@@ -553,6 +560,7 @@ Sesión interna del equipo para documentar:
 - [ ] Todos los archivos entregables subidos a Canvas con hash SHA256
 - [ ] Proyecto cerrado en GitHub con release tag `v1.0-final`
 
+---
 
 ## 2.4. Definición de Done (DoD)
 
@@ -681,6 +689,7 @@ El proyecto completo se considera **DONE** cuando cumple TODOS los siguientes cr
 
 - **Retrospectiva Final del Proyecto:** El equipo ha documentado las lecciones aprendidas del proyecto completo.
 
+---
 
 ## 2.5. Herramientas
 
