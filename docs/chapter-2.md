@@ -280,6 +280,117 @@ Las Historias de Usuario (HU) han sido priorizadas utilizando la escala MoSCoW, 
 
 ### 2.3. Planificación de sprints (Sprint Planning)
 
+<table>
+    <thead>
+        <tr>
+            <th>Sprint</th>
+            <th>Objetivo del Sprint</th>
+            <th>Actividades Técnicas</th>
+            <th>Historias de Usuario (HU) Cubiertas</th>
+            <th>Entregables (Artefactos)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>S1: Reconocimiento &amp; Escaneo</strong></td>
+            <td>Mapear la superficie de ataque del objetivo, obteniendo información pasiva y activa de su infraestructura externa.</td>
+            <td>
+                <ul>
+                    <li>Instalación y Configuración del entorno de laboratorio (Kali Linux).</li>
+                    <li>Reconocimiento Pasivo (Google Hacking, Whois) para obtener dominios, IPs y contactos.</li>
+                    <li>Escaneo de Puertos y Servicios (TCP/UDP) usando <code>Nmap</code> y <code>Masscan</code> para identificar puertos abiertos y versiones.</li>
+                    <li>Validación de la configuración HTTPS y la directiva HSTS.</li>
+                </ul>
+            </td>
+            <td>HU01, HU02, HU19</td>
+            <td>
+                <ul>
+                    <li>Documento de Recolección de Información Pasiva (incluye IPs, dominios, contactos).</li>
+                    <li>Reporte de Escaneo Activo (Listado de puertos abiertos y versiones de servicio con <code>Nmap</code>).</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>S2: Enumeración &amp; Vulnerabilidades</strong></td>
+            <td>Profundizar en la información de los servicios activos e identificar vulnerabilidades conocidas, configuraciones erróneas y defensas débiles.</td>
+            <td>
+                <ul>
+                    <li>Enumeración de Servicios específicos (DNS, SMB, SNMP) para obtener información detallada de la red.</li>
+                    <li>Análisis Automatizado de Vulnerabilidades (Nessus, Burp) para descubrir vulnerabilidades conocidas (CVE, CVSS).</li>
+                    <li>Análisis de Tokens de Sesión (JWT) y encabezados HTTP.</li>
+                    <li>Pruebas de Configuración de Errores para evitar la exposición de <em>stack traces</em>.</li>
+                </ul>
+            </td>
+            <td>HU04, HU05, HU10, HU14, HU17</td>
+            <td>
+                <ul>
+                    <li>Matriz de Vulnerabilidades (Hallazgos verificados, incluyendo CVE y CVSS).</li>
+                    <li>Reporte de Configuraciones Erradas (Encabezados HTTP, Tokens y Manejo de Errores).</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>S3: Explotación</strong></td>
+            <td>Obtener acceso inicial al sistema mediante la explotación controlada de las vulnerabilidades más críticas identificadas.</td>
+            <td>
+                <ul>
+                    <li>Explotación de Inyecciones (SQLi, XSS) en <em>endpoints</em> clave (ej. registro, login).</li>
+                    <li>Pruebas de Broken Access Control (Horizontal y Vertical) y ataques IDOR en APIs.</li>
+                    <li>Evaluación de la autenticación: Rate Limiting y lógica de negocio.</li>
+                    <li>Uso de Frameworks de Explotación (Metasploit) y pruebas de Buffer Overflow para obtener acceso.</li>
+                </ul>
+            </td>
+            <td>HU02, HU03, HU05, HU06, HU09, HU11, HU16, HU18</td>
+            <td>
+                <ul>
+                    <li>Evidencia de Acceso Inicial (Captura de <em>shell</em> o sesión Meterpreter).</li>
+                    <li>PoC (Proof of Concept) de Ataques Web (SQLi, BAC, XSS, etc.) exitosos.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>S4: Post-Explotación &amp; Emergentes</strong></td>
+            <td>Evaluar el impacto real al sistema y a los datos sensibles tras la explotación inicial, e integrar la seguridad en la nube y el análisis de logs.</td>
+            <td>
+                <ul>
+                    <li>Escalada de Privilegios y Mantenimiento de Acceso para persistencia.</li>
+                    <li>Extracción y <em>Dumping</em> de credenciales y <em>hashes</em>.</li>
+                    <li>Pruebas de Unrestricted File Upload y Server-Side Template Injection (SSTI).</li>
+                    <li>Evaluación de la seguridad en Entornos Cloud (AWS, Azure) para <em>misconfigurations</em>.</li>
+                    <li>Verificación de Logging de eventos de seguridad para la detección de anomalías.</li>
+                </ul>
+            </td>
+            <td>HU07, HU12, HU13, HU15</td>
+            <td>
+                <ul>
+                    <li>Reporte de Post-Explotación (Evidencia de credenciales <em>dumped</em>, escalada).</li>
+                    <li>Análisis de Seguridad en la Nube (Identificación de <em>misconfigurations</em>).</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>S5: Informe Final</strong></td>
+            <td>Documentar todos los hallazgos y generar un informe técnico y ejecutivo de alta calidad, proporcionando una hoja de ruta para la mitigación.</td>
+            <td>
+                <ul>
+                    <li>Estructuración y Redacción del informe, incluyendo informe ejecutivo y técnico detallado.</li>
+                    <li>Desarrollo del Plan de Remediación con recomendaciones específicas y prioritarias.</li>
+                    <li>Incorporación de conceptos de Inteligencia Artificial aplicados a la detección de anomalías (como tendencia emergente).</li>
+                    <li>Revisión y Edición Final del documento para asegurar cumplimiento con estándares (ej. NIST/PTES).</li>
+                </ul>
+            </td>
+            <td>HU08</td>
+            <td>
+                <ul>
+                    <li>Informe Final de Pentesting Profesional (Documento técnico y ejecutivo).</li>
+                    <li>Presentación de Resultados (para el cliente/equipo de Tavolo).</li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
 ### 2.4. Definición de Done (DoD)
 
 ### 2.5. Herramientas
