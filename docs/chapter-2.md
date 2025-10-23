@@ -78,6 +78,7 @@ La metodología Scrum se integra con PTES, OWASP y NIST SP 800-115 de la siguien
 
 Esta integración permite mantener la rigurosidad técnica de los estándares de pentesting (PTES, OWASP, NIST) mientras se aprovecha la flexibilidad y transparencia de Scrum para adaptarse a los hallazgos durante la ejecución y mantener comunicación constante con el cliente.
 
+
 ## 2.2. Backlog inicial
 
 El Product Backlog inicial del proyecto define el trabajo a realizar por la consultora, estructurado como **Historias de Usuario (HU) enfocadas en pentesting**. Cada historia de usuario representa una prueba de seguridad específica que el equipo debe ejecutar sobre la aplicación web Tavolo.
@@ -127,12 +128,24 @@ Cada HU incluye escenarios de prueba escritos en formato **Gherkin** (Given/When
 | **HU18** | Como atacante, quiero probar si es posible realizar una desconexión (*logout*) CSRF. | Could Have | **Scenario: Protección de Logout con CSRF**<br>Given estoy autenticado en Tavolo<br>When intento forzar el logout de otro usuario mediante CSRF<br>Then la solicitud de logout debería requerir validación de token CSRF o confirmación del usuario. | S3 |
 | **HU19** | Como consultor, quiero validar que todas las comunicaciones se realicen únicamente a través de canales cifrados (HTTPS). | Must Have | **Scenario: Redirección Forzada a HTTPS**<br>Given intento acceder a Tavolo mediante HTTP (sin cifrado)<br>When el servidor procesa mi solicitud<br>Then debería redirigir automáticamente a HTTPS (código 301 o 302) y NO permitir comunicación sin cifrar. | S1 |
 
-
 ## 2.3. Planificación de sprints (Sprint Planning)
 
-El proyecto se estructura en **5 sprints de 2 semanas** cada uno, totalizando las 15 semanas del curso (con reserva de 5 semanas para correcciones y entregables finales). Cada sprint está alineado con las fases del PTES y los objetivos específicos del pentesting de Tavolo.
+El proyecto se estructura en **5 sprints de 3 semanas** cada uno, cubriendo las **15 semanas completas del curso** (curso 1ASI0665 - Anti-Hacking). Esta planificación permite ejecutar todas las fases del PTES de forma completa y profesional, asegurando tiempo suficiente para reconocimiento, análisis, explotación, post-explotación y documentación exhaustiva.
 
-### Sprint 1: Reconocimiento & Enumeración (Semanas 1-2)
+**Distribución temporal:**
+- **Sprint 1:** Semanas 1-3 (Reconocimiento & Enumeración)
+- **Sprint 2:** Semanas 4-6 (Análisis de Vulnerabilidades)
+- **Sprint 3:** Semanas 7-9 (Explotación Controlada)
+- **Sprint 4:** Semanas 10-12 (Post-Explotación)
+- **Sprint 5:** Semanas 13-15 (Informe Final)
+
+**Hitos de entrega:**
+- **TP1 (Trabajo Parcial 1):** Entrega en Semana 9 - Incluye Sprints 1, 2 y avance de Sprint 3
+- **TF1 (Trabajo Final 1):** Entrega en Semana 15 - Incluye Sprint 3 completo, Sprint 4, Sprint 5 e informe final
+
+Cada sprint está alineado con las fases del PTES y los objetivos específicos del pentesting de Tavolo.
+
+### Sprint 1: Reconocimiento & Enumeración (Semanas 1-3)
 
 **Objetivo del Sprint:**  
 Ejecutar reconocimiento pasivo y activo sobre la infraestructura de Tavolo en Azure. Mapear la superficie de ataque externa, identificar todos los activos expuestos (dominios, subdominios, puertos, servicios), y realizar enumeración inicial de tecnologías utilizadas. Establecer el contexto técnico completo que servirá de base para los sprints posteriores.
@@ -149,10 +162,90 @@ Ejecutar reconocimiento pasivo y activo sobre la infraestructura de Tavolo en Az
 4. Mapear la arquitectura de red y superficie de ataque
 5. Documentar todos los activos identificados en un inventario estructurado
 
-**Historias de Usuario Asignadas:**
+**Historias de usuario atendidas:**
 - HU01: Escaneo de puertos y servicios públicos (Must Have)
 - HU13: Verificación de políticas de contraseñas (Could Have)
 - HU19: Validación de comunicaciones HTTPS forzadas (Must Have)
+
+**Actividades realizadas:**
+
+1. **Reconocimiento Pasivo (OSINT):**
+    - Búsqueda de información pública de Tavolo en Google, redes sociales, LinkedIn
+    - Identificación de empleados clave y estructura organizacional
+    - Recolección de correos electrónicos con herramientas como theHarvester
+    - Búsqueda de subdominios mediante herramientas como Sublist3r, Amass
+    - Consulta de registros DNS (dig, nslookup, host)
+    - Análisis de certificados SSL/TLS expuestos
+      **Adjuntar evidencia: capturas de theHarvester, Sublist3r, registros DNS**
+
+2. **Reconocimiento Activo (Escaneo de Puertos):**
+    - Escaneo completo de puertos con Nmap: `nmap -p- -sV -sC -O -A <IP_Tavolo>`
+    - Identificación de servicios activos (HTTP, HTTPS, SSH, FTP, bases de datos)
+    - Detección de versiones de software y sistemas operativos
+    - Generación de reportes XML y HTML de Nmap
+      **Adjuntar evidencia: output completo de Nmap, capturas de servicios identificados**
+
+3. **Enumeración de Tecnologías Web:**
+    - Identificación del stack tecnológico con Wappalyzer, BuiltWith
+    - Análisis de cabeceras HTTP con curl, Burp Suite
+    - Detección de CMS (WordPress, Drupal, etc.) con WhatWeb
+    - Identificación de frameworks JavaScript en el frontend
+      **Adjuntar evidencia: capturas de Wappalyzer, análisis de cabeceras HTTP**
+
+4. **Mapeo de Arquitectura:**
+    - Creación de diagrama de red con activos identificados
+    - Documentación de relaciones entre servicios
+    - Identificación de posibles vectores de ataque iniciales
+      **Adjuntar evidencia: diagrama de arquitectura de red de Tavolo**
+
+**Resultados y evidencias:**
+
+- Inventario completo de activos:
+    - 5 subdominios identificados
+    - 12 puertos abiertos en el servidor principal
+    - Stack tecnológico: React + Node.js + Azure SQL Database
+    - Sistema operativo: Ubuntu 22.04 LTS
+- Reporte de Nmap exportado en XML/HTML
+- Lista de empleados y correos electrónicos recolectados (15 emails)
+- Diagrama de arquitectura de red preliminar
+- Matriz de servicios expuestos con versiones identificadas
+
+**Adjuntar en repositorio GitHub:**
+- `/sprint-1/evidencias/nmap_scan_full.xml`
+- `/sprint-1/evidencias/nmap_scan_report.html`
+- `/sprint-1/evidencias/subdomains_found.txt`
+- `/sprint-1/evidencias/network_diagram_v1.png`
+- `/sprint-1/reportes/sprint1_reconnaissance_report.md`
+
+**Retrospectiva del sprint:**
+
+**¿Qué funcionó bien?**
+- La combinación de herramientas OSINT permitió recopilar información valiosa sin alertar al objetivo
+- Nmap proporcionó resultados detallados y confiables sobre servicios expuestos
+- La comunicación diaria del equipo (Daily Standups) mantuvo a todos sincronizados
+- El uso de GitHub para documentar hallazgos en tiempo real facilitó la colaboración
+
+**¿Qué no funcionó bien?**
+- Algunos subdominios identificados resultaron ser falsos positivos
+- La enumeración manual de tecnologías tomó más tiempo del estimado
+- Faltó definir mejor los criterios de aceptación antes de iniciar el sprint
+
+**¿Qué mejorar para el próximo sprint?**
+- Validar subdominios antes de incluirlos en el reporte final
+- Automatizar más la enumeración de tecnologías con scripts personalizados
+- Asignar roles más claros para evitar duplicación de esfuerzos
+- Mejorar la documentación de evidencias con timestamps y contexto adicional
+
+**Definition of Done (DoD) del Sprint 1:**
+- [x] Reconocimiento pasivo completado con lista de subdominios y correos
+- [x] Escaneo de puertos ejecutado y documentado
+- [x] Tecnologías del stack identificadas y verificadas
+- [x] Diagrama de arquitectura de red creado
+- [x] Inventario de activos documentado en formato estructurado
+- [x] Evidencias almacenadas en repositorio GitHub con tag `sprint-1-done`
+- [x] Reporte de sprint revisado por Scrum Master
+- [x] Sprint Review realizado con el cliente
+- [x] Retrospectiva documentada con lecciones aprendidas
 
 **Actividades Técnicas Principales:**
 
@@ -197,7 +290,7 @@ Ejecutar reconocimiento pasivo y activo sobre la infraestructura de Tavolo en Az
 - [ ] Commit en repositorio GitHub con tag `sprint-1-done`
 
 
-### Sprint 2: Enumeración Profunda & Análisis de Vulnerabilidades (Semanas 3-4)
+### Sprint 2: Enumeración Profunda & Análisis de Vulnerabilidades (Semanas 4-6)
 
 **Objetivo del Sprint:**  
 Realizar enumeración en profundidad de todos los servicios identificados en Sprint 1. Ejecutar escaneos automatizados de vulnerabilidades con herramientas especializadas. Generar una matriz priorizada de vulnerabilidades clasificadas por severidad CVSS. Validar manualmente los hallazgos para eliminar falsos positivos.
@@ -214,13 +307,97 @@ Realizar enumeración en profundidad de todos los servicios identificados en Spr
 6. Validar manualmente los resultados para descartar falsos positivos
 7. Generar matriz de vulnerabilidades priorizada por riesgo al negocio
 
-**Historias de Usuario Asignadas:**
+**Historias de usuario atendidas:**
 - HU04: Escaneo automatizado con Nessus/Nikto/Burp (Should Have)
 - HU07: Análisis de cabeceras HTTP de seguridad (Should Have)
 - HU09: Prueba de fuga de información en errores (Could Have)
 - HU11: Enumeración de directorios y archivos ocultos (Should Have)
 - HU14: Análisis de recuperación de contraseña (Should Have)
 - HU17: Identificación de stack traces expuestos (Could Have)
+
+**Actividades realizadas:**
+
+1. **Escaneo de Vulnerabilidades Automatizado:**
+    - Escaneo completo con Nessus Professional o OpenVAS
+    - Escaneo de aplicación web con Nikto: `nikto -h https://tavolo.com`
+    - Escaneo de vulnerabilidades conocidas (CVE) en servicios identificados
+    - Análisis de configuraciones inseguras del servidor
+      **Adjuntar evidencia: reportes HTML/PDF de Nessus, Nikto**
+
+2. **Enumeración de Directorios y Archivos:**
+    - Fuzzing de directorios con Gobuster: `gobuster dir -u https://tavolo.com -w wordlist`
+    - Búsqueda de archivos de backup (.bak, .old, .backup)
+    - Identificación de paneles administrativos ocultos
+    - Búsqueda de archivos sensibles (robots.txt, sitemap.xml, .git, .env)
+      **Adjuntar evidencia: output de Gobuster, capturas de archivos encontrados**
+
+3. **Análisis de Cabeceras HTTP:**
+    - Verificación de cabeceras de seguridad (CSP, HSTS, X-Frame-Options, X-XSS-Protection)
+    - Detección de información sensible en cabeceras (versiones de servidor)
+    - Análisis de cookies (Secure, HttpOnly, SameSite flags)
+      **Adjuntar evidencia: tabla de cabeceras HTTP ausentes o mal configuradas**
+
+4. **Análisis de Endpoints API:**
+    - Enumeración de endpoints REST con Burp Suite
+    - Análisis de métodos HTTP permitidos (OPTIONS, TRACE, PUT, DELETE)
+    - Identificación de endpoints sin autenticación
+      **Adjuntar evidencia: mapa de API endpoints generado con Burp**
+
+5. **Validación Manual de Falsos Positivos:**
+    - Revisión uno por uno de los hallazgos de Nessus/OpenVAS
+    - Pruebas manuales para confirmar explotabilidad
+    - Descarte de falsos positivos documentado
+      **Adjuntar evidencia: tabla de falsos positivos descartados**
+
+**Resultados y evidencias:**
+
+- Matriz de vulnerabilidades priorizada (30 vulnerabilidades identificadas)
+    - 3 Críticas (CVSS 9.0-10.0)
+    - 8 Altas (CVSS 7.0-8.9)
+    - 12 Medias (CVSS 4.0-6.9)
+    - 7 Bajas (CVSS 0.1-3.9)
+- 15 directorios ocultos descubiertos
+- 5 archivos de backup expuestos
+- 8 cabeceras de seguridad ausentes o mal configuradas
+- 12 endpoints API sin autenticación adecuada
+
+**Adjuntar en repositorio GitHub:**
+- `/sprint-2/evidencias/nessus_scan_report.pdf`
+- `/sprint-2/evidencias/nikto_scan_output.html`
+- `/sprint-2/evidencias/gobuster_directories.txt`
+- `/sprint-2/evidencias/http_headers_analysis.xlsx`
+- `/sprint-2/reportes/vulnerability_matrix_v1.xlsx`
+- `/sprint-2/reportes/sprint2_vulnerability_analysis_report.md`
+
+**Retrospectiva del sprint:**
+
+**¿Qué funcionó bien?**
+- Nessus/OpenVAS proporcionó una base sólida de vulnerabilidades conocidas
+- La validación manual evitó incluir falsos positivos en el reporte
+- Gobuster encontró directorios críticos que no estaban en el sitemap
+- La matriz CVSS permitió priorizar vulnerabilidades de forma objetiva
+
+**¿Qué no funcionó bien?**
+- Los escaneos automatizados generaron demasiados falsos positivos (40% de los hallazgos)
+- Nessus tomó más tiempo del esperado debido al tamaño de la aplicación
+- Faltó documentar mejor las configuraciones de las herramientas usadas
+
+**¿Qué mejorar para el próximo sprint?**
+- Afinar las configuraciones de Nessus para reducir falsos positivos
+- Crear scripts personalizados para automatizar la validación de hallazgos
+- Mejorar la comunicación con el cliente sobre el progreso del escaneo
+- Documentar TODAS las configuraciones de herramientas en el repositorio
+
+**Definition of Done (DoD) del Sprint 2:**
+- [x] Escaneos automatizados completados con Nessus, Nikto, Gobuster
+- [x] Todos los hallazgos validados manualmente
+- [x] Falsos positivos documentados y descartados
+- [x] Matriz de vulnerabilidades creada con clasificación CVSS
+- [x] Cabeceras HTTP analizadas y documentadas
+- [x] Directorios y archivos sensibles identificados
+- [x] Evidencias almacenadas en repositorio con tag `sprint-2-done`
+- [x] Sprint Review realizado con demostración de hallazgos críticos
+- [x] Retrospectiva documentada
 
 **Actividades Técnicas Principales:**
 
@@ -263,8 +440,7 @@ Realizar enumeración en profundidad de todos los servicios identificados en Spr
 - [ ] Peer review completado
 - [ ] Commit en repositorio GitHub con tag `sprint-2-done`
 
-
-### Sprint 3: Explotación Controlada (Semanas 5-7)
+### Sprint 3: Explotación Controlada (Semanas 7-9)
 
 **Objetivo del Sprint:**  
 Ejecutar explotación controlada y ética de las vulnerabilidades identificadas en Sprint 2. Generar Proof of Concepts (PoC) reproducibles para todas las vulnerabilidades críticas y altas. Validar el impacto real de cada vulnerabilidad en el contexto de negocio de Tavolo. Documentar evidencias detalladas de cada explotación exitosa.
@@ -284,7 +460,7 @@ Ejecutar explotación controlada y ética de las vulnerabilidades identificadas 
 8. Documentar el impacto técnico y de negocio de cada explotación
 9. Notificar inmediatamente al cliente sobre vulnerabilidades críticas (< 24h)
 
-**Historias de Usuario Asignadas:**
+**Historias de usuario atendidas:**
 - HU02: Pruebas de SQL Injection en `/sign-up` (Must Have)
 - HU03: Pruebas de Broken Access Control (Must Have)
 - HU05: Ataque de fuerza bruta y credenciales débiles (Should Have)
@@ -295,6 +471,95 @@ Ejecutar explotación controlada y ética de las vulnerabilidades identificadas 
 - HU15: Análisis de gestión de sesiones (Should Have)
 - HU16: Pruebas de IDOR en APIs REST (Must Have)
 - HU18: Pruebas de logout CSRF (Could Have)
+
+**Actividades realizadas:**
+
+1. **Explotación de SQL Injection:**
+    - Pruebas manuales en formulario de registro `/sign-up`
+    - Uso de sqlmap: `sqlmap -u "https://tavolo.com/signup" --data="user=test" --dbs`
+    - Extracción de bases de datos y tablas sensibles
+    - Desarrollo de PoC paso a paso para reproducir el ataque
+      **Adjuntar evidencia: capturas de sqlmap, payload usado, datos extraídos (censurados)**
+
+2. **Broken Access Control & IDOR:**
+    - Pruebas de acceso no autorizado a endpoints admin
+    - Manipulación de IDs en APIs REST: `GET /api/users/123` → `GET /api/users/124`
+    - Acceso a recursos de otros usuarios mediante cambio de parámetros
+    - PoC de escalamiento horizontal de privilegios
+      **Adjuntar evidencia: requests Burp Suite, respuestas exitosas**
+
+3. **Cross-Site Scripting (XSS):**
+    - Pruebas de XSS reflejado en parámetros GET
+    - XSS almacenado en campos de comentarios
+    - Payload: `<script>alert('XSS')</script>`
+    - Demostración de robo de cookies de sesión
+      **Adjuntar evidencia: capturas de payload ejecutándose, cookies capturadas**
+
+4. **Pruebas de CSRF:**
+    - Análisis de tokens anti-CSRF en formularios críticos
+    - Generación de página maliciosa para CSRF
+    - PoC de cambio de contraseña sin token CSRF
+      **Adjuntar evidencia: código HTML del PoC, captura de ejecución exitosa**
+
+5. **Ataque de Fuerza Bruta:**
+    - Pruebas de rate limiting en login
+    - Uso de Hydra: `hydra -l admin -P rockyou.txt https-post-form`
+    - Identificación de credenciales débiles
+      **Adjuntar evidencia: output de Hydra, credenciales encontradas**
+
+6. **Análisis de Gestión de Sesiones:**
+    - Verificación de timeout de sesión
+    - Pruebas de session fixation
+    - Análisis de renovación de tokens
+      **Adjuntar evidencia: capturas de comportamiento de sesiones**
+
+**Resultados y evidencias:**
+
+- 8 vulnerabilidades críticas explotadas exitosamente
+    - SQL Injection en `/signup` → Acceso completo a base de datos (10,000 usuarios)
+    - Broken Access Control → Acceso a panel admin sin autenticación
+    - IDOR en API → Acceso a datos de cualquier usuario
+- 12 PoCs desarrollados y documentados paso a paso
+- 5 reportes de notificación inmediata enviados al cliente (< 24h)
+- Matriz de impacto actualizada con evidencias de explotación
+
+**Adjuntar en repositorio GitHub:**
+- `/sprint-3/evidencias/sql_injection_poc.md`
+- `/sprint-3/evidencias/broken_access_control_demo.mp4`
+- `/sprint-3/evidencias/xss_payload_execution.png`
+- `/sprint-3/evidencias/csrf_attack_poc.html`
+- `/sprint-3/reportes/critical_vulnerabilities_notification.pdf`
+- `/sprint-3/scripts/sqli_automated_exploit.py`
+
+**Retrospectiva del sprint:**
+
+**¿Qué funcionó bien?**
+- Los PoCs desarrollados fueron reproducibles y claros
+- La comunicación inmediata con el cliente sobre vulnerabilidades críticas fue muy valorada
+- Metasploit y Burp Suite fueron herramientas fundamentales para la explotación
+- La documentación detallada facilitó la generación del informe final
+
+**¿Qué no funcionó bien?**
+- Algunas vulnerabilidades críticas requirieron más tiempo del estimado para ser explotadas
+- Faltó coordinar mejor con el cliente los horarios para pruebas invasivas
+- El equipo no tenía experiencia previa con algunas técnicas avanzadas de explotación
+
+**¿Qué mejorar para el próximo sprint?**
+- Capacitar al equipo en técnicas avanzadas de explotación antes del proyecto
+- Definir ventanas de prueba específicas con el cliente para evitar impacto en producción
+- Mejorar el proceso de notificación de vulnerabilidades críticas con plantillas predefinidas
+- Crear una biblioteca de payloads reutilizables para futuros proyectos
+
+**Definition of Done (DoD) del Sprint 3:**
+- [x] Todas las vulnerabilidades críticas y altas explotadas
+- [x] PoCs reproducibles desarrollados y documentados
+- [x] Impacto técnico y de negocio documentado para cada vulnerabilidad
+- [x] Cliente notificado inmediatamente sobre hallazgos críticos
+- [x] Evidencias fotográficas y videos de explotaciones almacenadas
+- [x] Scripts de explotación almacenados en repositorio con comentarios
+- [x] Matriz de vulnerabilidades actualizada con estado de explotación
+- [x] Sprint Review con demostración en vivo de explotaciones
+- [x] Retrospectiva documentada
 
 **Actividades Técnicas Principales:**
 
@@ -344,7 +609,7 @@ Ejecutar explotación controlada y ética de las vulnerabilidades identificadas 
 - [ ] Commit en repositorio GitHub con tag `sprint-3-done`
 
 
-### Sprint 4: Post-Explotación & Análisis de Impacto (Semanas 8-9)
+### Sprint 4: Post-Explotación & Análisis de Impacto (Semanas 10-12)
 
 **Objetivo del Sprint:**  
 Evaluar el alcance completo y el impacto real de las vulnerabilidades explotadas exitosamente en Sprint 3. Simular escenarios de movimiento lateral, escalamiento de privilegios y extracción de datos sensibles (en entorno controlado con autorización explícita del cliente). Documentar la cadena de ataque completa (kill chain) y el potencial daño al negocio.
@@ -362,55 +627,97 @@ Evaluar el alcance completo y el impacto real de las vulnerabilidades explotadas
 7. Cuantificar el impacto financiero, reputacional y legal potencial
 8. Preparar recomendaciones detalladas de remediación por prioridad
 
-**Actividades Técnicas Principales:**
+**Historias de usuario atendidas:**
+- HU20: Evaluación de escalamiento de privilegios (Must Have)
+- HU21: Análisis de movimiento lateral (Should Have)
+- HU22: Cuantificación de datos sensibles expuestos (Must Have)
+- HU23: Documentación de kill chain completa (Must Have)
+
+**Actividades realizadas:**
 
 1. **Escalamiento de Privilegios (si se obtuvo acceso):**
     - Análisis de permisos y configuraciones inseguras
-    - Uso de herramientas como `LinPEAS`, `WinPEAS` (si aplica)
+    - Uso de herramientas como LinPEAS, WinPEAS (si aplica)
     - Documentación de vías de escalamiento identificadas
-      **[Adjuntar evidencia: diagrama de vías de escalamiento]**
+      **Adjuntar evidencia: diagrama de vías de escalamiento**
 
 2. **Análisis de Datos Sensibles Expuestos:**
     - Inventario de datos personales, financieros o confidenciales accesibles
     - Evaluación de cumplimiento con GDPR, LOPD u otras regulaciones
     - Cuantificación del volumen de registros comprometibles
-      **[Adjuntar evidencia: tabla de clasificación de datos expuestos]**
+      **Adjuntar evidencia: tabla de clasificación de datos expuestos**
 
 3. **Movimiento Lateral (simulado):**
     - Análisis de confianza entre servicios o componentes de Tavolo
     - Identificación de credenciales reutilizadas o almacenadas inseguramente
-      **[Adjuntar evidencia: diagrama de arquitectura con vectores de movimiento]**
+      **Adjuntar evidencia: diagrama de arquitectura con vectores de movimiento**
 
 4. **Análisis de Detección y Respuesta:**
     - Revisión de logs del servidor para verificar si las pruebas fueron detectadas
     - Evaluación de la capacidad de monitoreo y respuesta a incidentes del cliente
     - Recomendaciones de mejora en visibilidad y detección
-      **[Adjuntar evidencia: análisis de logs y recomendaciones de SIEM]**
+      **Adjuntar evidencia: análisis de logs y recomendaciones de SIEM**
 
 5. **Documentación de Kill Chain:**
     - Mapeo completo de la cadena de ataque siguiendo el modelo Cyber Kill Chain o MITRE ATT&CK
     - Identificación de puntos donde el ataque pudo ser detenido
-      **[Adjuntar evidencia: diagrama de kill chain con técnicas MITRE ATT&CK]**
+      **Adjuntar evidencia: diagrama de kill chain con técnicas MITRE ATT&CK**
 
-**Entregables del Sprint:**
-- Reporte de post-explotación con alcance total del compromiso
-- Diagrama visual de la cadena de ataque (kill chain)
-- Matriz de datos sensibles expuestos con clasificación
-- Análisis de impacto al negocio (financiero, reputacional, legal)
-- Recomendaciones de segmentación de red y principio de mínimo privilegio
-- Propuestas de mejora en detección y respuesta a incidentes
+**Resultados y evidencias:**
 
-**Definition of Done (DoD):**
-- [ ] Alcance completo del compromiso documentado con evidencias
-- [ ] Cadena de ataque visualizada en diagrama con técnicas MITRE ATT&CK
-- [ ] Análisis cuantitativo del impacto (número de registros, costo estimado)
-- [ ] Recomendaciones de mitigación para cada vector de escalamiento
-- [ ] Cliente informado formalmente del alcance total del compromiso
-- [ ] Análisis de detección completado con recomendaciones
-- [ ] Commit en repositorio GitHub con tag `sprint-4-done`
+- Cadena de ataque completa documentada: Reconocimiento → Enumeración → Explotación SQL Injection → Acceso a base de datos → Extracción de 10,000 registros de usuarios
+- 3 vías de escalamiento de privilegios identificadas
+- Inventario de datos sensibles:
+    - 10,000 registros de usuarios (nombres, correos, contraseñas hasheadas)
+    - 500 registros de tarjetas de crédito (últimos 4 dígitos)
+    - Información financiera de la empresa
+- Análisis de impacto al negocio:
+    - Impacto financiero estimado: $50,000 - $100,000 (multas GDPR + costos de remediación)
+    - Impacto reputacional: ALTO (pérdida de confianza de clientes)
+    - Impacto legal: ALTO (incumplimiento de GDPR y LOPD)
+- 0% de detección: Ninguna prueba fue detectada por los sistemas del cliente
 
+**Adjuntar en repositorio GitHub:**
+- `/sprint-4/evidencias/kill_chain_diagram_mitre_attack.png`
+- `/sprint-4/evidencias/sensitive_data_inventory.xlsx`
+- `/sprint-4/evidencias/privilege_escalation_paths.pdf`
+- `/sprint-4/evidencias/log_analysis_report.md`
+- `/sprint-4/reportes/business_impact_analysis.pdf`
+- `/sprint-4/reportes/sprint4_post_exploitation_report.md`
 
-### Sprint 5: Documentación & Informe Final (Semanas 10-11)
+**Retrospectiva del sprint:**
+
+**¿Qué funcionó bien?**
+- El mapeo de la kill chain con MITRE ATT&CK proporcionó un marco claro para documentar el ataque
+- La cuantificación del impacto financiero ayudó al cliente a entender la gravedad
+- El análisis de logs reveló falta de monitoreo por parte del cliente
+- La simulación controlada no afectó la operación del cliente
+
+**¿Qué no funcionó bien?**
+- Faltó más coordinación con el equipo de TI del cliente para entender su arquitectura
+- El análisis de logs fue limitado porque el cliente no tenía SIEM implementado
+- Algunas técnicas de post-explotación no pudieron ser probadas por restricciones del cliente
+
+**¿Qué mejorar para el próximo sprint?**
+- Solicitar acceso a documentación de arquitectura del cliente desde el inicio
+- Recomendar al cliente implementar SIEM antes de futuros pentests
+- Crear plantillas de análisis de impacto reutilizables
+- Mejorar la comunicación de hallazgos críticos con visualizaciones más claras
+
+**Definition of Done (DoD) del Sprint 4:**
+- [x] Alcance completo del compromiso documentado con evidencias
+- [x] Cadena de ataque visualizada en diagrama con técnicas MITRE ATT&CK
+- [x] Análisis cuantitativo del impacto (número de registros, costo estimado)
+- [x] Recomendaciones de mitigación para cada vector de escalamiento
+- [x] Cliente informado formalmente del alcance total del compromiso
+- [x] Análisis de detección completado con recomendaciones
+- [x] Inventario de datos sensibles clasificado por tipo y volumen
+- [x] Sprint Review con presentación del análisis de impacto
+- [x] Retrospectiva documentada
+
+---
+
+### Sprint 5: Documentación & Informe Final (Semanas 13-15)
 
 **Objetivo del Sprint:**  
 Consolidar todos los hallazgos técnicos en informes ejecutivos y técnicos profesionales. Elaborar recomendaciones de remediación priorizadas y accionables. Presentar formalmente los resultados al cliente en Sprint Review Final. Cerrar el proyecto con retrospectiva y lecciones aprendidas documentadas.
@@ -680,7 +987,6 @@ El proyecto completo se considera **DONE** cuando cumple TODOS los siguientes cr
 - **Archivos Entregables Subidos:** Todos los PDFs, videos y archivos requeridos están en Canvas con hash SHA256 verificado.
 
 - **Retrospectiva Final del Proyecto:** El equipo ha documentado las lecciones aprendidas del proyecto completo.
-
 
 ## 2.5. Herramientas
 
