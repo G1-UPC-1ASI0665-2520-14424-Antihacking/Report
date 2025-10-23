@@ -62,11 +62,10 @@ Las Historias de Usuario (HU) han sido priorizadas utilizando la escala MoSCoW, 
             <td>Como atacante, quiero probar el proceso de registro (<code>/sign-up</code>) contra ataques de **SQL Injection** para comprometer la base de datos de Tavolo.</td>
             <td>Must Have</td>
             <td>
-                <strong>Scenario: Inyección SQL en el Formulario de Registro</strong><br>
+                <strong>Scenario: Detección de Inyección SQL</strong><br>
                 Given un formulario de registro válido en la URL <code>/sign-up</code><br>
                 When ingreso una payload de inyección (<code>' OR 1=1 --</code>) en el campo 'Nombre de Usuario'<br>
-                Then el sistema debería devolver un error genérico o completar el registro sin un error de base de datos.<br>
-                And se obtiene un PoC verificable de extracción de información del esquema si la prueba es exitosa.
+                Then el sistema debería devolver un error genérico o completar el registro sin un error de base de datos.
             </td>
             <td>S3</td>
         </tr>
@@ -172,7 +171,7 @@ Las Historias de Usuario (HU) han sido priorizadas utilizando la escala MoSCoW, 
             <td>Como atacante, quiero abusar de la funcionalidad de "Olvidé mi Contraseña" para tomar control de una cuenta o causar una denegación de servicio a la cuenta.</td>
             <td>Should Have</td>
             <td>
-                <strong>Scenario: Ataque de Fuerza Bruta en Código de Restablecimiento</strong><br>
+                <strong>Scenario: Prueba de Tasa de Ataque (Rate Limit)</strong><br>
                 Given he solicitado un código de restablecimiento de contraseña para un usuario válido<br>
                 When envío 100 intentos fallidos de código de 6 dígitos en un período de 5 minutos<br>
                 Then el sistema debe invalidar el código, bloquear temporalmente la funcionalidad o requerir un *captcha* después de un número limitado de fallos.
@@ -214,6 +213,66 @@ Las Historias de Usuario (HU) han sido priorizadas utilizando la escala MoSCoW, 
                 Then el Payload no debe contener información sensible (contraseñas, información financiera) sino solo identificadores de usuario y permisos, y el token debe tener una fecha de expiración (<code>exp</code>).
             </td>
             <td>S2</td>
+        </tr>
+        <tr>
+            <td>HU15</td>
+            <td>Como consultor, quiero evaluar si los logs de la aplicación registran eventos de seguridad críticos para permitir la detección de intrusiones y respuesta a incidentes.</td>
+            <td>Must Have</td>
+            <td>
+                <strong>Scenario: Verificación de Registro de Eventos Críticos</strong><br>
+                Given un ataque de SQL Injection fallido ha ocurrido<br>
+                When se revisan los logs del servidor y de la aplicación<br>
+                Then se debe encontrar una entrada detallada que registre el intento de inyección, la IP de origen y la hora, para fines de auditoría.
+            </td>
+            <td>S4</td>
+        </tr>
+        <tr>
+            <td>HU16</td>
+            <td>Como atacante, quiero interceptar y manipular las llamadas a la **API REST** para acceder a recursos de otros usuarios mediante *IDOR* (Insecure Direct Object Reference).</td>
+            <td>Must Have</td>
+            <td>
+                <strong>Scenario: Acceso a Datos de Terceros en API</strong><br>
+                Given estoy autenticado como Usuario A y conozco el formato de ID de recurso (<code>/api/v1/user/101</code>)<br>
+                When modifico la solicitud a <code>/api/v1/user/102</code><br>
+                Then la API debe validar que el token de sesión pertenece solo al Usuario A y devolver un código <strong>403 (Forbidden)</strong> o <strong>401 (Unauthorized)</strong>.
+            </td>
+            <td>S3</td>
+        </tr>
+        <tr>
+            <td>HU17</td>
+            <td>Como consultor, quiero identificar si existen páginas de **Error y *Stack Traces*** detalladas expuestas públicamente.</td>
+            <td>Should Have</td>
+            <td>
+                <strong>Scenario: Exposición de Información Sensible en Errores</strong><br>
+                Given provoco un error de aplicación conocido (ej. parámetro inválido)<br>
+                When reviso la página de respuesta y el código HTTP (ej. 500 Internal Server Error)<br>
+                Then la respuesta no debe mostrar rutas de archivos, variables de entorno o *stack traces* del servidor, sino una página de error genérica.
+            </td>
+            <td>S2</td>
+        </tr>
+        <tr>
+            <td>HU18</td>
+            <td>Como atacante, quiero probar si puedo realizar una desconexión (Logout) en una sesión de otro usuario (**Session Fixation/CSRF**) para causar Denegación de Servicio (DoS).</td>
+            <td>Could Have</td>
+            <td>
+                <strong>Scenario: Desconexión Forzada por CSRF</strong><br>
+                Given un usuario está autenticado y tiene una sesión activa<br>
+                When el atacante induce al usuario a hacer clic en un enlace de Logout sin token CSRF<br>
+                Then el sistema debe requerir un token de validación de sesión (CSRF token) para cualquier acción crítica como el cierre de sesión, y la sesión del usuario no debe ser terminada.
+            </td>
+            <td>S3</td>
+        </tr>
+        <tr>
+            <td>HU19</td>
+            <td>Como consultor, quiero validar que todas las comunicaciones se realicen únicamente a través de canales cifrados para proteger la integridad y confidencialidad de los datos.</td>
+            <td>Must Have</td>
+            <td>
+                <strong>Scenario: Forzar Conexión Insegura</strong><br>
+                Given intento acceder al sitio usando la URL <code>https://tavolo.eastus2.cloudapp.azure.com/</code><br>
+                When el navegador envía la solicitud HTTP<br>
+                Then el servidor debe redirigir inmediatamente la conexión a <code>https://tavolo.eastus2.cloudapp.azure.com/</code> con el código HTTP 301 o 302, sin servir contenido sobre HTTP.
+            </td>
+            <td>S1</td>
         </tr>
     </tbody>
 </table>
