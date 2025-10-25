@@ -76,7 +76,7 @@ El escaneo reveló que, gracias a la configuración de seguridad perimetral de A
 - **Filtrado:** Se observaron 32,041 puertos filtrados, lo que demuestra la efectividad del firewall perimetral de Azure al bloquear el tráfico no deseado.
 
 
-#### 3. Enumeración de Tecnologías Web
+#### 3. Reconocimiento de Tecnologías Web
 
 Esta fase se centró en la obtención de huellas digitales (fingerprinting) de la aplicación web, analizando cabeceras y tecnologías del stack visible.
 
@@ -96,7 +96,7 @@ curl -I tavolo.eastus2.cloudapp.azure.com
 
 ![Evidencia de enumeración de tecnologías con curl](/evidencias/curl_evidencia_1.png)
 
-**3.2. Enumeración Detallada del Servicio HTTPS (Análisis TLS/SSL)**
+**3.2. Reconocimiento Detallada del Servicio HTTPS (Análisis TLS/SSL)**
 
 Para validar el control de seguridad sobre la redirección HTTPS/443 y evaluar la fortaleza criptográfica del servidor, se ejecutó el comando sslscan sobre la IP objetivo en el puerto 443.
 
