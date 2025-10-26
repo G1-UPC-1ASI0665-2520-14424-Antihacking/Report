@@ -56,7 +56,7 @@ Entregables esperados:
   - Métricas de mejora esperada
 - **Plan de Remediación Ejecutable:**
   - Priorización clara
-  - Esfuerzo estimado por correción
+  - Esfuerzo estimado por corrección
   - Guías de implementación para el equipo de desarrollo
   - Quick wins vs. proyectos a largo plazo
 - **Sesión de Transferencia de Conocimiento:**
@@ -91,7 +91,7 @@ Ser reconocidos en el ecosistema de ciberseguridad de América Latina como una c
 <br><br>
 
 **Propuesta de Valor:**
-¿Por qué contratar a neustra consultora?
+¿Por qué contratar a nuestra consultora?
 
 1. **Perspectiva Fresca:** Como equipo en formación, aportamos conocimientos actualizados en las últimas tendencias de ciberseguridad, frameworks modernos y vectores de ataque emergentes.
 2. **Enfoque Metodológico Riguroso:** Aplicamos metodologías ágiles (Scrum) combinadas con estándares de pentesting (PTES, OWASP), garantizando un proceso estructurado, documentado y reproducible.
@@ -108,7 +108,7 @@ Ser reconocidos en el ecosistema de ciberseguridad de América Latina como una c
 | APIs REST              | API Security Testing           | Postman, Burp Suite, Arjun, ffuf |
 | Aplicación Móvil       | Mobile App Security Assessment | MobSF, Frida, APKTool, Jadx      |
 | Infraestructura de Red | Network Pentesting             | Nmap, Masscan, Metasploit        |
-| Social Engineering     | Phishing SImulation            | GoPhish, SET                     |
+| Social Engineering     | Phishing Simulation            | GoPhish, SET                     |
 
 
 ### 1.2.2 Perfiles de los integrantes y roles Scrum
@@ -155,7 +155,7 @@ Ser reconocidos en el ecosistema de ciberseguridad de América Latina como una c
 | **Foto** | <img src="https://raw.githubusercontent.com/FullStack-Fury/final-report/main/assets/Angelo.png" alt="Foto profesional de Angelo" width="200" height="200">
 | **Código de estudiante** | U202022387 |
 | **Carrera** | Ingeniería de Software |
-| **Rol Scrum** | Documetador/Analista |
+| **Rol Scrum** | Documentador/Analista |
 | **Correo electrónico** | U202022387@upc.edu.pe |
 
 
@@ -232,16 +232,19 @@ El ecosistema de TAVOLO combina múltiples superficies de ataque (web + API + m�
 **Partes Principales:**
 
 **Cliente (TAVOLO Tech Solutions S.A.C.):**
-- **CTO/Tech Lead:** [Nombre] - Autorización de pruebas, decisiones técnicas
-- **DevOps Engineer:** [Nombre] - Provisión de accesos, configuración de ambientes de staging
-- **Product Manager:** [Nombre] - Coordinación de alcance, priorización de hallazgos
-- **CEO:** [Nombre] - Aprobación final de presupuesto y decisiones estratégicas
+
+- **CTO:** Baldeon Fabian, Aldo Alberto — U202122633
+- **Tech Lead:** Cama Salvatierra, Jimena Tamara — U202210778
+- **DevOps Engineer:** Castillo Castillo, Jair Alexander — U202211390
+- **Product Manager:** La Torre Valle, Franz Jair — U202012378
+- **CEO:** Quezada Portalatino, Barbara Susana — U202211800
 
 **Consultora (PentGuin Cybersecurity Consulting):**
-- **Scrum Master:** [Nombre] - Coordinación del proyecto, facilitación de ceremonias
-- **Product Owner:** [Nombre] - Priorización de pruebas según riesgo del negocio
-- **Pentesters:** [Nombres] - Ejecución técnica de pruebas de seguridad
-- **Documentador:** [Nombre] - Generación de reportes y evidencias
+- **Scrum Master:** Pescoran Angulo, Juan Fabritzzio – Coordinación del proyecto, facilitación de ceremonias ágiles.
+- **Product Owner:** Soto Quispe, Diego Ulises – Priorización de pruebas según riesgo del negocio y requerimientos del cliente.
+- **Especialista Web:** Gamio Upiachihua, Brenda Lucía – Pruebas técnicas de seguridad en aplicaciones web (OWASP, Burp, etc.).
+- **Especialista APIs:** Baldeon Fabian, Aldo Alberto – Reconocimiento y pentesting sobre servicios expuestos y endpoints API.
+- **Documentador:** Curi Marcelo, Angelo Marcio – Generación de reportes, evidencias técnicas y control de entregables.
 
 **Stakeholders Indirectos:**
 - **Cafeterías clientes de TAVOLO** (15 sedes actualmente) - Afectados si hay breach
@@ -270,7 +273,7 @@ El ecosistema de TAVOLO combina múltiples superficies de ataque (web + API + m�
     - Tokens almacenados
 <br>
 
-### **When (Cuándo):** Contextualiza temporalemente
+### **When (Cuándo):** Contextualiza temporalmente
 
 **Timeline del Proyecto (15 semanas):**
 | Fase | Semanas | Fechas | Hitos Clave |
@@ -393,8 +396,28 @@ PTES (Penetration Testing Execution Standard) + OWASP + Scrum
 | **Tiempo de respuesta a críticas**    | < 4 horas                      |
 
 
-### 1.4. Segmentos objetivo
-El servicio de Ethical Hacking y Penetration Testing de PentGuin Cybersecurity Consulting está diseñado para satisfacer las necesidades específicas de tres segmentos clave dentro de TAVOLO Tech Solutions, cada uno con requerimientos y expectativas distintas:
+### 1.4. Aceptación del Servicio de Pentesting (Rules of Engagement)
+
+**Identificación de las partes:** [COMPLETAR]
+
+**Alcance autorizado:** [COMPLETAR]
+
+**Limitaciones:** [COMPLETAR]
+
+**Ventanas de prueba:** [COMPLETAR]
+
+**Responsabilidades:** [COMPLETAR]
+
+**Confidencialidad:** [COMPLETAR]
+
+**Protocolo de comunicación:** [COMPLETAR]
+
+**Aceptación y Firmas:** [COMPLETAR]
+
+
+### 1.5. Segmentos objetivo
+
+Define quiénes se benefician de la solución: directivos (con un informe ejecutivo), área TI (con un informe técnico), y usuarios finales (mediante mayor seguridad en sistemas). Relaciona cada hallazgo con su impacto real en estas partes interesadas.
 
 ### Segemento 1: Equipo técnico de TAVOLO
 **Perfil:**
@@ -445,7 +468,7 @@ El servicio de Ethical Hacking y Penetration Testing de PentGuin Cybersecurity C
 
 **Necesidades:**
 - Garantía de que sus datos operativos están seguros
-- ACumplimiento de normativas de protección de datos
+- Cumplimiento de normativas de protección de datos
 - Transparencia sobre medidas de seguridad implementadas
 - Respaldo documental para auditorías internas/externas
 
@@ -471,3 +494,4 @@ El servicio de Ethical Hacking y Penetration Testing de PentGuin Cybersecurity C
 - Resumen ejecutivo de hallazgos y remediaciones
 - Comparativa con benchmarks de la industria
 - Plan de seguridad a 12-24 meses
+
