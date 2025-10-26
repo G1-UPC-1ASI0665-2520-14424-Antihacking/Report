@@ -187,6 +187,29 @@ whatweb -v https://40.84.58.167
 
 ![Evidencia con Whatweb](/evidencias/whatweb_evidencia_1.png)
 
+
+### Retrospectiva del Sprint
+
+#### Hallazgos Encontrados
+
+- **Mapeo Completo de la Superficie de Ataque:** El escaneo con Nmap (-p- -sV -sC -O -A) fue exhaustivo. Se identificaron solo 3 puertos abiertos (80, 443, 8020) y se confirmó la efectividad del firewall de Azure al mostrar 32,041 puertos filtrados, lo que define claramente la pequeña superficie de ataque.
+
+ - Excelente Hardening de TLS/SSL (sslscan): El análisis de seguridad criptográfica con sslscan fue un éxito. Se confirmó que el servidor:
+
+ - Deshabilita protocolos obsoletos (SSLv2, SSLv3, TLSv1.0, TLSv1.1).
+
+ - Utiliza criptografía moderna (ECC) con fuerte longitud de clave (256 bits).
+
+ - No es vulnerable a Heartbleed.
+
+ - Fuerza la redirección a HTTPS (confirmado también por curl).
+
+ - Conclusión de Seguridad: La configuración TLS/SSL del servidor es robusta y no representa un punto de entrada fácil.
+
+- **Identificación Precisa de Tecnologías:** Nmap, curl y WhatWeb convergieron en la identificación de la tecnología de front-end (nginx/1.24.0 (Ubuntu)) y la inferencia de que la aplicación es un desarrollo personalizado.
+
+
+
 ### Sprint 2 - Enumeración Profunda & Análisis de Vulnerabilidades
 
 #### 1. Escaneo de Vulnerabilidades Automatizado con Nessus
