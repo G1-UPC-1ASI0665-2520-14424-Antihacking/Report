@@ -189,7 +189,7 @@ whatweb -v https://40.84.58.167
 
 ### Sprint 2 - Enumeración Profunda & Análisis de Vulnerabilidades
 
-#### Escaneo de Vulnerabilidades Automatizado con Nessus
+#### 1. Escaneo de Vulnerabilidades Automatizado con Nessus
 
 Se ejecutó un escaneo con Nessus Professional contra el host objetivo (tavolo.eastus2.cloudapp.azure.com) utilizando la política de Web Application Tests para cubrir las vulnerabilidades a nivel de servidor web y aplicación.
 
@@ -247,3 +247,137 @@ Estos hallazgos demuestran que el servidor web no está implementando cabeceras 
 ![Evidencia de nessus](/evidencias/nessus_evidencia_2.png)
 
 ![Evidencia de nessus](/evidencias/nessus_evidencia_3.png)
+
+#### 2. Enumeración de Directorios y Archivos con Gobuster
+
+Se utilizó la herramienta Gobuster en modo dir para realizar un fuzzing de directorios en el dominio principal con el objetivo de descubrir rutas no indexadas que pudieran contener información sensible o paneles de administración.
+
+- **Comando utilizado:** gobuster dir -u https://tavolo.eastus2.cloudapp.azure.com -w /usr/share/wordlists/dirb/common.txt -o gobuster_40.84.58.167.txt --exclude-length 441
+
+- **Corrección Implementada:** Se utilizó el parámetro --exclude-length 441 para mitigar el problema de respuesta de wildcard (servidor devolviendo código 200 con longitud 441 en URLs inexistentes), permitiendo un registro limpio de los directorios reales.
+
+#### Hallazgos encontrados:
+
+La enumeración profunda reveló la existencia de directorios que exponen la estructura de la API y el contenido estático, así como posibles fallos en la configuración de load balancing o reverse proxy.
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Ruta Descubierta</th>
+      <th>Código de Estado</th>
+      <th>Longitud </th>
+      <th>Observaciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>/favicon.ico</td>
+      <td>200</td>
+      <td>32438</td>
+      <td>OK. Archivo estático que fue resuelto correctamente.</td>
+    </tr>
+    <tr>
+      <td>/assets</td>
+      <td>301</td>
+      <td>178</td>
+      <td>Redirección permanente. Indica un directorio válido, el cual fue redirigido a la URL completa (https://tavolo.eastus2.cloudapp.azure.com/assets/). Este directorio probablemente contiene archivos estáticos (CSS, JS, imágenes).</td>
+    </tr>
+    <tr>
+      <td>/api</td>
+      <td>502</td>
+      <td>166</td>
+      <td>Error de Bad Gateway. Indica que el reverse proxy (o Azure) no pudo contactar el servidor de la API, sugiriendo un fallo en la configuración del backend o una restricción de acceso.</td>
+    </tr>
+    <tr>
+      <td>/apis</td>
+      <td>502</td>
+      <td>166</td>
+      <td>Error de Bad Gateway. Similar a /api, posiblemente una ruta alternativa al servicio de API con el mismo fallo de conexión.</td>
+    </tr>
+  </tbody>
+</table>
+
+#### Evidencia
+
+![Evidencia Gobuster](/evidencias/gobuster_evidencia_1.png)
+
+### 3. Escaneo de Aplicación Web con Nikto
+
+Se ejecutó la herramienta Nikto (v2.5.0) contra el host objetivo (tavolo.eastus2.cloudapp.azure.com:443). El escaneo, enfocado en buscar archivos comunes y configuraciones incorrectas, arrojó dos categorías principales de vulnerabilidades, fallos en cabeceras de seguridad y una fuga masiva de información.
+
+#### Hallazgos de Configuración (Cabeceras HTTP)
+
+Nikto confirmó los problemas de cabeceras de seguridad detectados por Nessus y agregó un riesgo adicional, todos relacionados con la ausencia de cabeceras de endurecimiento (hardening) del servidor.
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Vulnerabilidad</th>
+      <th>Observación</th>
+      <th>Posible Solución</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Strict-Transport-Security (HSTS) header is not defined.</strong></td>
+      <td>Confirma la vulnerabilidad de Nessus. Permite ataques de degradación de protocolo y secuestro de sesión (SSL Stripping).</td>
+      <td>Implementar la cabecera <strong>Strict-Transport-Security</strong> con un <code>max-age</code> alto.</td>
+    </tr>
+    <tr>
+      <td><strong>X-Frame-Options header is not present.</strong></td>
+      <td>Permite ataques de <strong>Clickjacking</strong>, donde un atacante puede incrustar el sitio en un <code>&lt;iframe&gt;</code> malicioso.</td>
+      <td>Implementar la cabecera <strong>X-Frame-Options: DENY</strong> o <strong>SAMEORIGIN</strong>.</td>
+    </tr>
+    <tr>
+      <td><strong>X-Content-Type-Options header is not set.</strong></td>
+      <td>Permite el <strong>MIME Sniffing</strong>. Un navegador podría interpretar erróneamente un archivo (ej: un archivo de texto como JavaScript ejecutable).</td>
+      <td>Implementar la cabecera <strong>X-Content-Type-Options: nosniff</strong>.</td>
+    </tr>
+    <tr>
+      <td><strong>Content-Encoding header is set to "deflate" (BREACH).</strong></td>
+      <td>Indica posible vulnerabilidad al ataque <strong>BREACH</strong>, especialmente si el contenido incluye datos de usuario y compresión.</td>
+      <td><strong>Deshabilitar la compresión HTTP</strong> o aplicar mitigaciones específicas contra BREACH.</td>
+    </tr>
+  </tbody>
+</table>
+
+#### Fuga de Información Crítica
+
+El escaneo detectó una cantidad significativa de archivos potencialmente sensibles, confirmando el objetivo de Identificar directorios y archivos ocultos o sensibles (HU11).
+
+- **Hallazgo:** Potentially interesting backup/cert file found (CWE-530).
+
+- **Impacto:** La exposición de estos archivos representa una fuga de información de alto riesgo, ya que un atacante puede descargar y analizar las claves de cifrado del servidor y el código fuente.
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Tipo de Fuga</th>
+      <th>Ejemplos Encontrados</th>
+      <th>Riesgo Específico</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Certificados/Claves Privadas</strong></td>
+      <td><code>tavolo.pem</code>, <code>azure.pem</code>, <code>tavoloeastus2cloudapp.jks</code></td>
+      <td><strong>Compromiso de TLS/SSL</strong>: Permite descifrar el tráfico interceptado (Ataques MitM) y <strong>suplantar la identidad del servidor</strong>.</td>
+    </tr>
+    <tr>
+      <td><strong>Bases de Datos/Código Fuente</strong></td>
+      <td><code>database.tgz</code>, <code>site.tar.lzma</code>, <code>tavolo.war</code>, <code>tavolo.tgz</code></td>
+      <td><strong>Compromiso de la Aplicación</strong>: Exposición de credenciales internas, esquemas de bases de datos, lógica de negocio y vulnerabilidades en el código fuente.</td>
+    </tr>
+    <tr>
+      <td><strong>Archivos de Backup Genéricos</strong></td>
+      <td><code>archive.tar</code>, <code>cloudapp.tar.bz2</code>, <code>dump.egg</code></td>
+      <td>Revela la <strong>estructura interna de la aplicación y la infraestructura</strong> (nombres de hosts, IPs, etc.).</td>
+    </tr>
+  </tbody>
+</table>
+
+La fuga masiva de archivos de backup y certificados clasifica este servidor con un riesgo CRÍTICO, ya que la mitigación de las otras vulnerabilidades de cabeceras se vuelve secundaria si las claves privadas están comprometidas.
+
+#### Evidencia
+
+![Evidencia Nikto](/evidencias/nikto_evidencia_1.png)
