@@ -12,7 +12,7 @@ Se utilizó el comando nslookup  para resolver el nombre de host de Azure (tavol
 
 nslookup tavolo.eastus2.cloudapp.azure.com
 
-![Evidencia de Nslooup](/evidencias/nslookup_evidencia_1.png)
+![Evidencia de Nslooup](../evidencias/nslookup_evidencia_1.png)
 
 Resultado: La consulta confirmó que el registro A (Address) del dominio resuelve a la IP pública 40.84.58.167, la cual fue utilizada como objetivo principal en el Reconocimiento Activo.
 
@@ -24,7 +24,7 @@ Esta sección documenta la ejecución del comando Nmap, cumpliendo con la user s
 
 nmap -p- -sV -sC -O -A 40.84.58.167
 
-![Evidencia del Escaneo de Puertos Nmap](/evidencias/nmap_evidencia_1.png)
+![Evidencia del Escaneo de Puertos Nmap](../evidencias/nmap_evidencia_1.png)
 
 
 
@@ -94,7 +94,7 @@ curl -I tavolo.eastus2.cloudapp.azure.com
 
 - **Servidor Web:** Se reconfirma la tecnología: Server: nginx/1.24.0 (Ubuntu).
 
-![Evidencia de enumeración de tecnologías con curl](/evidencias/curl_evidencia_1.png)
+![Evidencia de enumeración de tecnologías con curl](../evidencias/curl_evidencia_1.png)
 
 **3.2. Reconocimiento Detallada del Servicio HTTPS (Análisis TLS/SSL)**
 
@@ -165,7 +165,7 @@ sslscan 40.84.58.167:443
 </table>
 
 
-![Evidencia de enumeración de seguridad con sslscan](/evidencias/sslscan_evidencia_1.png)
+![Evidencia de enumeración de seguridad con sslscan](../evidencias/sslscan_evidencia_1.png)
 
 **3.3. Identificación con Whatweb**
 
@@ -185,7 +185,7 @@ whatweb -v https://40.84.58.167
 
 **Detección de CMS:** La ausencia de plugins de CMS confirma que la aplicación es un desarrollo personalizado.
 
-![Evidencia con Whatweb](/evidencias/whatweb_evidencia_1.png)
+![Evidencia con Whatweb](../evidencias/whatweb_evidencia_1.png)
 
 ### Sprint 2 - Enumeración Profunda & Análisis de Vulnerabilidades
 
@@ -242,11 +242,11 @@ Estos hallazgos demuestran que el servidor web no está implementando cabeceras 
 
 #### Evidencias
 
-![Evidencia de nessus](/evidencias/nessus_evidencia_1.png)
+![Evidencia de nessus](../evidencias/nessus_evidencia_1.png)
 
-![Evidencia de nessus](/evidencias/nessus_evidencia_2.png)
+![Evidencia de nessus](../evidencias/nessus_evidencia_2.png)
 
-![Evidencia de nessus](/evidencias/nessus_evidencia_3.png)
+![Evidencia de nessus](../evidencias/nessus_evidencia_3.png)
 
 #### 2. Enumeración de Directorios y Archivos con Gobuster
 
@@ -299,7 +299,7 @@ La enumeración profunda reveló la existencia de directorios que exponen la est
 
 #### Evidencia
 
-![Evidencia Gobuster](/evidencias/gobuster_evidencia_1.png)
+![Evidencia Gobuster](../evidencias/gobuster_evidencia_1.png)
 
 ### 3. Escaneo de Aplicación Web con Nikto
 
@@ -380,7 +380,7 @@ La fuga masiva de archivos de backup y certificados clasifica este servidor con 
 
 #### Evidencia
 
-![Evidencia Nikto](/evidencias/nikto_evidencia_1.png)
+![Evidencia Nikto](../evidencias/nikto_evidencia_1.png)
 
 
 ### Retrospectiva del Sprint 2:
