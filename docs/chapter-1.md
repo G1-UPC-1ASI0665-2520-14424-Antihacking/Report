@@ -151,12 +151,12 @@ Ser reconocidos en el ecosistema de ciberseguridad de América Latina como una c
 
 | Campo | Información |
 |-------|-------------|
-|**Nombre de alumno**|  |
-| **Foto** | [Insertar foto profesional 200x200px] |
-| **Código de estudiante** | UXXXXXXXXX |
+|**Nombre de alumno**| Angelo Curi  |
+| **Foto** | <img src="https://raw.githubusercontent.com/FullStack-Fury/final-report/main/assets/Angelo.png" alt="Foto profesional de Angelo" width="200" height="200">
+| **Código de estudiante** | U202022387 |
 | **Carrera** | Ingeniería de Software |
 | **Rol Scrum** | Documetador/Analista |
-| **Correo electrónico** | UXXXXXXX@upc.edu.pe |
+| **Correo electrónico** | U202022387@upc.edu.pe |
 
 
 ### 1.3. Solution Profile
