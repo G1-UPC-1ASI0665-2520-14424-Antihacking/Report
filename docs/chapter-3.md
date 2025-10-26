@@ -381,3 +381,30 @@ La fuga masiva de archivos de backup y certificados clasifica este servidor con 
 #### Evidencia
 
 ![Evidencia Nikto](/evidencias/nikto_evidencia_1.png)
+
+
+### Retrospectiva del Sprint 2:
+
+#### Hallazdos encontrados:
+
+- **Hallazgo Crítico de Fuga de Información (Nikto):** El escaneo con Nikto fue el punto más exitoso. Se identificó una fuga masiva y crítica de archivos de backup (.tgz, .tar) y certificados/claves privadas (.pem, .jks). Este hallazgo de alto impacto (CWE-530) proporciona una ruta directa para intentar el compromiso total del sistema.
+
+- **Confirmación de Vulnerabilidades (Nessus y Nikto):** Ambas herramientas se complementaron perfectamente, confirmando la ausencia de cabeceras de seguridad fundamentales (HSTS, X-Frame-Options, X-Content-Type-Options). Esto asegura la precisión de los hallazgos de severidad media y baja.
+
+- **Superación del Wildcard de Gobuster:** Se corrigió exitosamente el problema de wildcard del servidor web (usando --exclude-length 441), permitiendo que la enumeración de directorios (Gobuster) fuera limpia y efectiva.
+
+#### Problemas encontrados:
+
+- **Fallo de Conexión de API (Gobuster):** La enumeración de directorios detectó las rutas /api y /apis, pero el servidor devolvió un error persistente de Bad Gateway (502). Esto indica un problema de configuración o conectividad entre el reverse proxy y el backend de la API, impidiendo la enumeración de endpoints de la API.
+
+- **Exceso de Hallazgos en Nikto:** El volumen de archivos de backup detectados por Nikto es abrumador. El informe lista tipos de riesgo, pero el equipo aún no ha verificado cuáles de esos archivos realmente existen y son descargables.
+
+#### Acciones a priorizar en el siguiente Sprint:
+
+- **Prioridad Máxima:** Explotación de Fuga de Información: El próximo sprint debe comenzar con la explotación inmediata de la fuga de información de Nikto. Se debe intentar descargar y analizar los archivos críticos (.pem, .jks, .tgz) para obtener credenciales, código fuente o claves de cifrado.
+
+- **Investigación del Fallo 502 de la API:** Se debe dedicar un esfuerzo a investigar la causa del error 502 en las rutas /api y /apis. Esto podría requerir el uso de herramientas de proxy (como Burp Suite) para modificar cabeceras e intentar sortear la restricción del load balancer o reverse proxy.
+
+- **Seguimiento de Directorios Accesibles:** Realizar una inspección manual del directorio /assets (código 301 de Gobuster) para buscar archivos de configuración, manifiestos o cualquier contenido estático que pueda contener metadatos o secretos.
+
+-**Matriz de Vulnerabilidades:** Los hallazgos de Fuga de Claves/Certificados y Archivos de Backup se clasifican como CRÍTICO y deben ser la prioridad N°1 en el informe final.
