@@ -13,7 +13,7 @@ Ciclo Académico: 202520 <br>
 
 <h2 align="center">INFORME DE TRABAJO FINAL – ANTI-HACKING Y NUEVAS TENDENCIAS DE SEGURIDAD</h2>
 
-<h3 align="center">Consultora de Ciberseguridad: <em>CyberChain</em></h3>
+<h3 align="center">Consultora de Ciberseguridad: <em>PentGuin</em></h3>
 <h3 align="center">Cliente (PyME): <em>TAVOLO Tech Solutions S.A.C.</em></h3>
 <p align="center"><em>"Securing the chain you rely on"</em></p>
 
