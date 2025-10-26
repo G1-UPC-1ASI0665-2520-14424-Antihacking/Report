@@ -73,7 +73,6 @@ TAVOLO Tech Solutions S.A.C. espera recibir los siguientes entregables como resu
 - Recomendaciones de herramientas de seguridad (SAST, DAST, SCA)
 - Best practices de desarrollo seguro (Secure SDLC)
 
----
 
 ## 1.2. Consultora de Ciberseguridad (Equipo)
 
@@ -192,7 +191,6 @@ Ser reconocidos en el ecosistema de ciberseguridad de América Latina como una c
 | **Competencias Técnicas** | Consolidación de evidencias técnicas de pentesting (logs, capturas, outputs de herramientas), elaboración de reportes ejecutivos y técnicos con estándares profesionales, redacción de conclusiones y recomendaciones de seguridad, experiencia en análisis de vulnerabilidades y clasificación CVSS v3.1, redacción técnica académica y empresarial, cumplimiento de normas ISO/IEC 27001, creación de matrices de vulnerabilidades y planes de remediación, gestión de manifiestos de evidencias con hashes SHA256. |
 | **Valor que aporta** | Garantiza la trazabilidad, claridad y consistencia de toda la documentación técnica entregada a TAVOLO, asegura que los informes cumplan estándares académicos y profesionales, facilita la comprensión de hallazgos tanto para equipo técnico como para ejecutivos, y mantiene control de versiones y cadena de custodia de evidencias de pentesting. |
 
----
 
 ## 1.3. Solution Profile
 
@@ -495,7 +493,6 @@ El ecosistema de TAVOLO combina múltiples superficies de ataque (landing + port
 | **Satisfacción del cliente TAVOLO** | ≥ 4.5/5 en encuesta post-proyecto |
 | **Tiempo de respuesta a críticas** | < 4 horas (CVSS ≥ 9.0) |
 
----
 
 ### 1.3.2. Objetivos del Pentesting
 
@@ -533,7 +530,6 @@ Ejecutar reconocimiento y análisis de la infraestructura de red de TAVOLO Tech 
 
 Desarrollar un roadmap estratégico de seguridad para TAVOLO Tech Solutions S.A.C. que incluya clasificación detallada de todas las vulnerabilidades identificadas por severidad CVSS v3.1 con definición de SLA de remediación (Críticas 0-7 días, Altas 8-30 días, Medias 1-3 meses, Bajas 3-6 meses), análisis costo-beneficio de cada remediación con esfuerzo estimado de corrección en horas/días de desarrollo, identificación clara de Quick Wins (correcciones rápidas de alto impacto) versus proyectos de seguridad a largo plazo que requieren refactorización arquitectónica, recomendaciones técnicas accionables con ejemplos concretos de código vulnerable versus código seguro, configuraciones seguras recomendadas para servidores web (Apache/Nginx hardening, cabeceras HTTP), bases de datos (principio de mínimo privilegio, cifrado en reposo), y guías de implementación paso a paso para el equipo de desarrollo de TAVOLO con referencias a documentación oficial y mejores prácticas de la industria.
 
----
 
 ## 1.4. Aceptación del Servicio de Pentesting (Rules of Engagement)
 
@@ -551,7 +547,6 @@ Desarrollar un roadmap estratégico de seguridad para TAVOLO Tech Solutions S.A.
 
 **Versión del documento:** 1.0
 
----
 
 ### 1. IDENTIFICACIÓN DE LAS PARTES
 
@@ -598,7 +593,6 @@ Desarrollar un roadmap estratégico de seguridad para TAVOLO Tech Solutions S.A.
 | Gamio Upiachihua, Brenda Lucía | U202102344 | Pentester APIs | u202102344@upc.edu.pe | +51 923 456 789 |
 | Curi Marcelo, Angelo Marcio | U202022387 | Documentador/Analista | u202022387@upc.edu.pe | +51 912 345 678 |
 
----
 
 ### 2. OBJETIVO DEL SERVICIO
 
@@ -631,7 +625,6 @@ Realizar pruebas de penetración controladas, éticas y no destructivas sobre la
 - **NIST SP 800-115** (Technical Guide to Information Security Testing and Assessment) - Estándares NIST
 - **Scrum** - Framework ágil para gestión del proyecto en sprints de 3 semanas
 
----
 
 ### 3. ALCANCE AUTORIZADO (IN-SCOPE)
 
@@ -717,7 +710,6 @@ La consultora PentGuin está expresamente autorizada a realizar pruebas de segur
 
 **NOTA CRÍTICA:** El acceso VPN es EXCLUSIVO para ambiente staging. Cualquier intento de acceso a redes de producción resultará en terminación inmediata del contrato.
 
----
 
 ### 4. ACTIVOS FUERA DE ALCANCE (OUT-OF-SCOPE)
 
@@ -785,7 +777,6 @@ La consultora PentGuin NO está autorizada bajo NINGUNA circunstancia a realizar
 - Datos de sensores IoT instalados en cafeterías reales en producción
 - Información financiera real de cafeterías
 
----
 
 ### 5. LIMITACIONES Y RESTRICCIONES TÉCNICAS
 
@@ -849,7 +840,6 @@ La consultora PentGuin NO está autorizada bajo NINGUNA circunstancia a realizar
 - Herramientas de spam masivo
 - Keyloggers o spyware
 
----
 
 ### 6. PERIODO DE EJECUCIÓN Y VENTANAS DE PRUEBA
 
@@ -898,7 +888,6 @@ La consultora PentGuin NO está autorizada bajo NINGUNA circunstancia a realizar
 - **Slack:** Canal #pentesting-pentguin
 - **WhatsApp:** +51 965 432 178 (Solo emergencias críticas)
 
----
 
 ### 7. RESPONSABILIDADES DE LAS PARTES
 
@@ -981,7 +970,6 @@ PentGuin se compromete a:
     - Conservar evidencias máximo 90 días post-entrega para respaldo
     - Proporcionar certificado de destrucción de datos si TAVOLO lo solicita
 
----
 
 ### 8. CONFIDENCIALIDAD Y PROTECCIÓN DE DATOS
 
@@ -1062,7 +1050,6 @@ nmap_scan_api.xml,Brenda Gamio,2025-09-05T14:30:00Z,Nmap,api-staging.tavolo.pe,a
 burp_idor_poc.png,Aldo Baldeon,2025-10-10T11:15:00Z,Burp Suite,admin-staging.tavolo.pe,def456...,PoC de IDOR en /cafeterias,VULN-045
 ```
 
----
 
 ### 9. PROTOCOLO DE COMUNICACIÓN Y ESCALAMIENTO
 
@@ -1149,7 +1136,6 @@ Si ocurre un **incidente no previsto** (caída de servicio, corrupción de datos
 - Documentar lecciones aprendidas
 - Actualizar Rules of Engagement si es necesario
 
----
 
 ### 10. ENTREGABLES DEL PROYECTO
 
@@ -1267,7 +1253,6 @@ Al finalizar el proyecto (07 de Diciembre de 2025), PentGuin entregará:
 
 **Nota:** La sesión será grabada y compartida con TAVOLO para referencia futura del equipo técnico.
 
----
 
 ### 11. TÉRMINOS LEGALES Y ACUERDOS
 
@@ -1336,7 +1321,6 @@ Al finalizar el proyecto (07 de Diciembre de 2025), PentGuin entregará:
 3. **Tercera instancia:** Escalamiento a Coordinación de carrera de Ingeniería de Software de UPC
 4. **Última instancia:** Arbitraje o tribunales de Lima (si no se resuelve por vías anteriores)
 
----
 
 ### 12. VIGENCIA Y MODIFICACIONES
 
@@ -1360,7 +1344,6 @@ Al finalizar el proyecto (07 de Diciembre de 2025), PentGuin entregará:
 
 **Cambios menores** (ej. cambio de horario de reunión semanal) pueden hacerse por email con confirmación mutua.
 
----
 
 ### 13. ACEPTACIÓN Y FIRMAS
 
@@ -1376,7 +1359,6 @@ Al firmar este documento, ambas partes confirman que:
 
 ✅ **Autorizan** el inicio de actividades de pentesting conforme a lo acordado
 
----
 
 **POR TAVOLO TECH SOLUTIONS S.A.C.**
 (Cliente - Empresa Evaluada)
@@ -1385,13 +1367,10 @@ Nombre: **Quezada Portalatino, Barbara Susana**
 
 Cargo: **CEO (Chief Executive Officer)**
 
-Firma: _______________________________________
 
 Fecha: **25 de Agosto de 2025**
 
-Sello de la Empresa:
 
----
 
 **POR PENTGUIN CYBERSECURITY CONSULTING**
 (Consultora - Proveedor del Servicio)
@@ -1400,7 +1379,6 @@ Nombre: **Pescoran Angulo, Juan Fabritzzio**
 
 Cargo: **Scrum Master / Líder del Proyecto**
 
-Firma: _______________________________________
 
 Fecha: **25 de Agosto de 2025**
 
@@ -1408,7 +1386,6 @@ Institución: **Universidad Peruana de Ciencias Aplicadas (UPC)**
 
 Curso: **1ASI0665 - Anti-Hacking y Nuevas Tendencias de Seguridad**
 
----
 
 ### 14. ANEXO A: CONTACTOS DE EMERGENCIA
 
@@ -1421,7 +1398,6 @@ Curso: **1ASI0665 - Anti-Hacking y Nuevas Tendencias de Seguridad**
 | **PentGuin** | Product Owner | Diego Ulises Soto Quispe | u202214477@upc.edu.pe | +51 965 234 567 | Lun-Vie 9AM-9PM |
 | **UPC** | Profesor Supervisor | Vera Olivera, David Carlos | david.vera@upc.edu.pe | N/A | Horario de clases |
 
----
 
 ### 15. ANEXO B: CONTROL DE VERSIONES DEL DOCUMENTO
 
@@ -1429,11 +1405,9 @@ Curso: **1ASI0665 - Anti-Hacking y Nuevas Tendencias de Seguridad**
 |---------|-------|-------------------|-------|--------------|
 | 1.0 | 25-Ago-2025 | Versión inicial - Firma de RoE | Juan Pescoran (PentGuin) | Barbara Quezada (TAVOLO) |
 
----
 
 **FIN DEL DOCUMENTO DE RULES OF ENGAGEMENT**
 
----
 
 ## 1.5. Segmentos Objetivo
 
@@ -1487,7 +1461,6 @@ Los resultados del pentesting realizado por PentGuin benefician a múltiples sta
 | JWT con algoritmo HS256 y secreto débil | Tokens pueden ser forjados por atacante | Cambiar a RS256 con clave RSA 2048-bit |
 | XSS almacenado en panel admin | Admin puede ejecutar JavaScript malicioso | Sanitizar con DOMPurify, aplicar CSP headers |
 
----
 
 ### Segmento 2: Dirección y Gerencia de TAVOLO
 
@@ -1542,7 +1515,6 @@ Los resultados del pentesting realizado por PentGuin benefician a múltiples sta
 | Manipulación de datos de sensores | Disponibilidad falsa de mesas, churn de cafeterías clientes | S/ 50K - S/ 200K (pérdida de ingresos MRR) |
 | Account takeover de admin | Eliminación maliciosa de datos, sabotaje de operación | S/ 100K - S/ 500K (recuperación + downtime + reputación) |
 
----
 
 ### Segmento 3: Clientes B2B de TAVOLO (Cafeterías)
 
@@ -1586,7 +1558,6 @@ Los resultados del pentesting realizado por PentGuin benefician a múltiples sta
 | XSS en panel admin permite robo de sesión | Atacante puede modificar configuración de mesas | Sanitización de inputs, CSP headers |
 | Falta de cifrado en datos de sensores | Datos de aforo pueden ser interceptados | Implementar HTTPS obligatorio, cifrado TLS 1.3 |
 
----
 
 ### Segmento 4: Inversionistas y Stakeholders Financieros
 
