@@ -79,7 +79,7 @@ TAVOLO Tech Solutions S.A.C. espera recibir los siguientes entregables como resu
 
 ### 1.2.1. Descripción de la Consultora
 
-**Razón Social:** CyberChain Cybersecurity Consulting
+**Razón Social:** PentGuin Cybersecurity Consulting
 
 **Tipo de empresa:** Consultora de seguridad ofensiva (Ethical Hacking & Penetration Testing)
 
@@ -101,7 +101,7 @@ Ser reconocidos en el ecosistema de ciberseguridad de América Latina como una c
 
 #### Propuesta de Valor
 
-¿Por qué contratar a CyberChain?
+¿Por qué contratar a PentGuin?
 
 1. **Perspectiva Fresca:** Como equipo en formación, aportamos conocimientos actualizados en las últimas tendencias de ciberseguridad, frameworks modernos y vectores de ataque emergentes.
 
@@ -125,7 +125,7 @@ Ser reconocidos en el ecosistema de ciberseguridad de América Latina como una c
 | APIs REST              | API Security Testing           | Postman, Burp Suite, Arjun, ffuf |
 | Infraestructura de Red | Network Pentesting             | Nmap, Masscan, Metasploit        |
 
-### 1.2.2. Perfiles de los Integrantes – Consultora CyberChain
+### 1.2.2. Perfiles de los Integrantes – Consultora PentGuin
 
 #### Integrante 1: Scrum Master
 
@@ -138,7 +138,7 @@ Ser reconocidos en el ecosistema de ciberseguridad de América Latina como una c
 | **Rol Scrum** | Scrum Master |
 | **Correo electrónico** | u20221c936@upc.edu.pe |
 | **Competencias Técnicas** | Coordinación de ceremonias Scrum (Daily Standups, Sprint Planning, Sprint Review, Sprint Retrospective), facilitación de comunicación entre equipo y cliente TAVOLO, gestión de impedimentos y bloqueos técnicos, control de calidad del proceso de pentesting, experiencia en herramientas ágiles (Jira, GitHub Projects, Trello), aplicación de GitFlow y Conventional Commits, seguimiento de Definition of Done y métricas de sprint. |
-| **Valor que aporta** | Garantiza que el equipo CyberChain mantenga comunicación efectiva, priorización correcta de tareas de seguridad, cumplimiento de entregables en cada sprint, y adherencia a las Rules of Engagement establecidas con TAVOLO. Asegura la trazabilidad completa de actividades de pentesting. |
+| **Valor que aporta** | Garantiza que el equipo PentGuin mantenga comunicación efectiva, priorización correcta de tareas de seguridad, cumplimiento de entregables en cada sprint, y adherencia a las Rules of Engagement establecidas con TAVOLO. Asegura la trazabilidad completa de actividades de pentesting. |
 
 #### Integrante 2: Product Owner
 
@@ -151,7 +151,7 @@ Ser reconocidos en el ecosistema de ciberseguridad de América Latina como una c
 | **Rol Scrum** | Product Owner |
 | **Correo electrónico** | u202214477@upc.edu.pe |
 | **Competencias Técnicas** | Definición y priorización del Product Backlog de seguridad, gestión de stakeholders (CEO y CTO de TAVOLO), traducción de necesidades de negocio a User Stories técnicas, diseño de arquitecturas seguras, documentación técnica profesional, gestión de requisitos de seguridad, experiencia en análisis de riesgos y threat modeling, conocimiento de compliance (Ley N° 29733, ISO 27001). |
-| **Valor que aporta** | Representa los intereses estratégicos de TAVOLO Tech Solutions S.A.C., asegura que cada entregable de CyberChain cumpla objetivos de seguridad del negocio, prioriza pruebas según impacto real en operaciones de cafeterías, y garantiza alineación entre hallazgos técnicos y necesidades ejecutivas. |
+| **Valor que aporta** | Representa los intereses estratégicos de TAVOLO Tech Solutions S.A.C., asegura que cada entregable de PentGuin cumpla objetivos de seguridad del negocio, prioriza pruebas según impacto real en operaciones de cafeterías, y garantiza alineación entre hallazgos técnicos y necesidades ejecutivas. |
 
 #### Integrante 3: Pentester Web / Especialista en Aplicaciones Web
 
@@ -218,24 +218,24 @@ TAVOLO Tech Solutions S.A.C. requiere una evaluación exhaustiva de seguridad de
 **Vectores de Ataque Potenciales a evaluar:**
 
 1. **OWASP Top 10 Web Applications 2021:**
-   - **A01:2021 - Broken Access Control:** IDOR en panel administrativo para acceder a datos de otras cafeterías
-   - **A02:2021 - Cryptographic Failures:** Datos en tránsito sin HTTPS en landing page, contraseñas débiles
-   - **A03:2021 - Injection:** SQLi en formularios de login/registro, NoSQL Injection en MongoDB de sensores
-   - **A05:2021 - Security Misconfiguration:** Cabeceras HTTP ausentes (CSP, HSTS), CORS permisivo en APIs
-   - **A07:2021 - XSS (Cross-Site Scripting):** XSS reflejado/almacenado en dashboards administrativos
+    - **A01:2021 - Broken Access Control:** IDOR en panel administrativo para acceder a datos de otras cafeterías
+    - **A02:2021 - Cryptographic Failures:** Datos en tránsito sin HTTPS en landing page, contraseñas débiles
+    - **A03:2021 - Injection:** SQLi en formularios de login/registro, NoSQL Injection en MongoDB de sensores
+    - **A05:2021 - Security Misconfiguration:** Cabeceras HTTP ausentes (CSP, HSTS), CORS permisivo en APIs
+    - **A07:2021 - XSS (Cross-Site Scripting):** XSS reflejado/almacenado en dashboards administrativos
 
 2. **OWASP API Security Top 10:**
-   - **API1 - Broken Object Level Authorization (BOLA):** Acceso a reservas y datos de sensores de otras cafeterías
-   - **API2 - Broken Authentication:** JWT con algoritmo débil (HS256 con secreto predecible), tokens sin expiración
-   - **API3 - Broken Object Property Level Authorization:** Exposición excesiva de datos en respuestas JSON
-   - **API4 - Unrestricted Resource Consumption:** Ausencia de rate limiting en endpoints críticos
-   - **API8 - Security Misconfiguration:** Métodos HTTP innecesarios habilitados (TRACE, OPTIONS sin restricción)
+    - **API1 - Broken Object Level Authorization (BOLA):** Acceso a reservas y datos de sensores de otras cafeterías
+    - **API2 - Broken Authentication:** JWT con algoritmo débil (HS256 con secreto predecible), tokens sin expiración
+    - **API3 - Broken Object Property Level Authorization:** Exposición excesiva de datos en respuestas JSON
+    - **API4 - Unrestricted Resource Consumption:** Ausencia de rate limiting en endpoints críticos
+    - **API8 - Security Misconfiguration:** Métodos HTTP innecesarios habilitados (TRACE, OPTIONS sin restricción)
 
 3. **Vulnerabilidades de Infraestructura:**
-   - Puertos y servicios innecesarios expuestos a Internet
-   - Versiones desactualizadas de frameworks y librerías (identificadas por banners)
-   - Configuraciones de servidores web inseguras (Apache/Nginx)
-   - Exposición de información sensible en archivos .git, .env, backups
+    - Puertos y servicios innecesarios expuestos a Internet
+    - Versiones desactualizadas de frameworks y librerías (identificadas por banners)
+    - Configuraciones de servidores web inseguras (Apache/Nginx)
+    - Exposición de información sensible en archivos .git, .env, backups
 
 #### **Why (¿Por qué es crítico realizar este pentesting AHORA?)**
 
@@ -268,58 +268,58 @@ El ecosistema de TAVOLO combina múltiples superficies de ataque (landing + port
 **Cliente (TAVOLO Tech Solutions S.A.C.):**
 
 - **CEO:** Quezada Portalatino, Barbara Susana — U202211800
-  - Representa legalmente a TAVOLO ante CyberChain
-  - Firma de Rules of Engagement y autorización del alcance
-  - Aprobación final de informes ejecutivos
+    - Representa legalmente a TAVOLO ante PentGuin
+    - Firma de Rules of Engagement y autorización del alcance
+    - Aprobación final de informes ejecutivos
 
 - **CTO:** Baldeon Fabian, Aldo Alberto — U202122633
-  - Contacto técnico principal con CyberChain
-  - Provisión de credenciales de prueba y accesos VPN
-  - Validación técnica de vulnerabilidades reportadas
-  - Coordinación de remediación de hallazgos
+    - Contacto técnico principal con PentGuin
+    - Provisión de credenciales de prueba y accesos VPN
+    - Validación técnica de vulnerabilidades reportadas
+    - Coordinación de remediación de hallazgos
 
 - **Tech Lead:** Cama Salvatierra, Jimena Tamara — U202210778
-  - Coordinación con equipo de desarrollo para remediación
-  - Implementación de fixes de seguridad
-  - Revisión de recomendaciones técnicas
+    - Coordinación con equipo de desarrollo para remediación
+    - Implementación de fixes de seguridad
+    - Revisión de recomendaciones técnicas
 
 - **DevOps Engineer:** Castillo Castillo, Jair Alexander — U202211390
-  - Gestión de infraestructura y ambientes staging
-  - Configuración de VPN para pentesting
-  - Monitoreo de pruebas y disponibilidad de sistemas
+    - Gestión de infraestructura y ambientes staging
+    - Configuración de VPN para pentesting
+    - Monitoreo de pruebas y disponibilidad de sistemas
 
 - **Product Manager:** La Torre Valle, Franz Jair — U202012378
-  - Priorización de features de seguridad en roadmap
-  - Gestión de impacto de hallazgos en clientes B2B
+    - Priorización de features de seguridad en roadmap
+    - Gestión de impacto de hallazgos en clientes B2B
 
-**Consultora (CyberChain Cybersecurity Consulting):**
+**Consultora (PentGuin Cybersecurity Consulting):**
 
 - **Scrum Master:** Pescoran Angulo, Juan Fabritzzio (U20221C936)
-  - Coordinación del proyecto de pentesting
-  - Facilitación de ceremonias ágiles (Sprint Planning, Daily, Review, Retro)
-  - Gestión de impedimentos y bloqueos técnicos
-  - Comunicación con stakeholders de TAVOLO
+    - Coordinación del proyecto de pentesting
+    - Facilitación de ceremonias ágiles (Sprint Planning, Daily, Review, Retro)
+    - Gestión de impedimentos y bloqueos técnicos
+    - Comunicación con stakeholders de TAVOLO
 
 - **Product Owner:** Soto Quispe, Diego Ulises (U202214477)
-  - Priorización de pruebas de seguridad según riesgo del negocio
-  - Gestión del Product Backlog de seguridad
-  - Representación de intereses de TAVOLO
-  - Validación de entregables contra expectativas del cliente
+    - Priorización de pruebas de seguridad según riesgo del negocio
+    - Gestión del Product Backlog de seguridad
+    - Representación de intereses de TAVOLO
+    - Validación de entregables contra expectativas del cliente
 
 - **Pentester Web:** Baldeon Fabian, Aldo Alberto (U202215285)
-  - Pruebas de seguridad en landing page, portal web, panel admin
-  - Implementación de OWASP Top 10 Web Applications
-  - Desarrollo de PoCs de vulnerabilidades web
+    - Pruebas de seguridad en landing page, portal web, panel admin
+    - Implementación de OWASP Top 10 Web Applications
+    - Desarrollo de PoCs de vulnerabilidades web
 
 - **Pentester APIs:** Gamio Upiachihua, Brenda Lucía (U202102344)
-  - Pentesting de endpoints REST backend
-  - Implementación de OWASP API Security Top 10
-  - Análisis de autenticación JWT y autorización
+    - Pentesting de endpoints REST backend
+    - Implementación de OWASP API Security Top 10
+    - Análisis de autenticación JWT y autorización
 
 - **Documentador:** Curi Marcelo, Angelo Marcio (U202022387)
-  - Generación de informes técnicos y ejecutivos
-  - Consolidación de evidencias con hashes SHA256
-  - Control de entregables y trazabilidad
+    - Generación de informes técnicos y ejecutivos
+    - Consolidación de evidencias con hashes SHA256
+    - Control de entregables y trazabilidad
 
 **Stakeholders Indirectos:**
 
@@ -372,19 +372,19 @@ El ecosistema de TAVOLO combina múltiples superficies de ataque (landing + port
 **Razones de Urgencia (Why Now):**
 
 1. **Expansión Comercial Inminente:**
-   - TAVOLO está en negociaciones avanzadas con 2 cadenas de cafeterías (50+ sedes potenciales)
-   - Clientes corporativos B2B exigen certificación ISO 27001 o auditoría reciente de seguridad
-   - Próxima ronda de inversión Serie A ($500,000) requiere due diligence de ciberseguridad
+    - TAVOLO está en negociaciones avanzadas con 2 cadenas de cafeterías (50+ sedes potenciales)
+    - Clientes corporativos B2B exigen certificación ISO 27001 o auditoría reciente de seguridad
+    - Próxima ronda de inversión Serie A ($500,000) requiere due diligence de ciberseguridad
 
 2. **Riesgos Regulatorios:**
-   - Ley de Protección de Datos Personales del Perú (Ley N° 29733) - Multas hasta 100 UIT (~S/ 500,000)
-   - Obligación de notificar brechas de datos a la Autoridad Nacional de Protección de Datos Personales en 72 horas
-   - Preparación para GDPR si TAVOLO expande operaciones a Europa
+    - Ley de Protección de Datos Personales del Perú (Ley N° 29733) - Multas hasta 100 UIT (~S/ 500,000)
+    - Obligación de notificar brechas de datos a la Autoridad Nacional de Protección de Datos Personales en 72 horas
+    - Preparación para GDPR si TAVOLO expande operaciones a Europa
 
 3. **Contexto de Ciberseguridad:**
-   - Aumento del 38% en ataques a startups tecnológicas en Latinoamérica (2024-2025)
-   - Ransomware como amenaza creciente en sector FoodTech
-   - Casos recientes de brechas en competidores de TAVOLO
+    - Aumento del 38% en ataques a startups tecnológicas en Latinoamérica (2024-2025)
+    - Ransomware como amenaza creciente en sector FoodTech
+    - Casos recientes de brechas en competidores de TAVOLO
 
 #### **How (¿Cómo se ejecutará el pentesting?)**
 
@@ -393,7 +393,7 @@ El ecosistema de TAVOLO combina múltiples superficies de ataque (landing + port
 **PTES (Penetration Testing Execution Standard) + OWASP + NIST SP 800-115 + Scrum**
 
 **Phase 1: Pre-engagement Interactions (Semana 1)**
-- Firma de Rules of Engagement (RoE) entre CyberChain y TAVOLO
+- Firma de Rules of Engagement (RoE) entre PentGuin y TAVOLO
 - Firma de Non-Disclosure Agreement (NDA) para protección de información sensible
 - Definición precisa de alcance IN-SCOPE vs. OUT-OF-SCOPE
 - Provisión de credenciales de prueba por TAVOLO
@@ -401,31 +401,31 @@ El ecosistema de TAVOLO combina múltiples superficies de ataque (landing + port
 
 **Phase 2-3: Intelligence Gathering + Threat Modeling (Sprint 1 - Semanas 2-3)**
 - **Reconocimiento Pasivo:**
-  - OSINT sobre dominio tavolo.pe
-  - Google Dorking para archivos sensibles expuestos
-  - Shodan/Censys para identificar servicios expuestos
-  - Subfinder/Amass para descubrimiento de subdominios
-  - Recolección de información en redes sociales y GitHub
+    - OSINT sobre dominio tavolo.pe
+    - Google Dorking para archivos sensibles expuestos
+    - Shodan/Censys para identificar servicios expuestos
+    - Subfinder/Amass para descubrimiento de subdominios
+    - Recolección de información en redes sociales y GitHub
 
 - **Reconocimiento Activo:**
-  - Nmap full scan de puertos TCP/UDP
-  - Service fingerprinting y detección de versiones
-  - Tecnologías web (Wappalyzer, WhatWeb)
-  
+    - Nmap full scan de puertos TCP/UDP
+    - Service fingerprinting y detección de versiones
+    - Tecnologías web (Wappalyzer, WhatWeb)
+
 - **Deliverable:** Mapa completo de superficie de ataque + Matriz de amenazas (STRIDE/PASTA)
 
 **Phase 4: Vulnerability Analysis (Sprint 2 - Semanas 4-6)**
 - **Análisis Automatizado:**
-  - Nessus Professional para escaneo de vulnerabilidades conocidas
-  - Nikto para vulnerabilidades en servidores web
-  - OWASP ZAP automated scan de aplicaciones web
-  - Análisis de dependencias con OWASP Dependency-Check
+    - Nessus Professional para escaneo de vulnerabilidades conocidas
+    - Nikto para vulnerabilidades en servidores web
+    - OWASP ZAP automated scan de aplicaciones web
+    - Análisis de dependencias con OWASP Dependency-Check
 
 - **Análisis Manual:**
-  - Revisión de lógica de negocio de aplicaciones web
-  - Análisis de configuraciones HTTP (headers, CORS, CSP)
-  - Evaluación de flujos de autenticación y autorización
-  
+    - Revisión de lógica de negocio de aplicaciones web
+    - Análisis de configuraciones HTTP (headers, CORS, CSP)
+    - Evaluación de flujos de autenticación y autorización
+
 - **Deliverable:** Matriz preliminar de vulnerabilidades clasificadas por CVSS v3.1
 
 **Phase 5: Exploitation (Sprint 3 - Semanas 7-9)**
@@ -451,7 +451,7 @@ El ecosistema de TAVOLO combina múltiples superficies de ataque (landing + port
 
 #### **How much (¿Cuánto impacto/esfuerzo implica?)**
 
-**Esfuerzo del Equipo CyberChain:**
+**Esfuerzo del Equipo PentGuin:**
 
 | Fase | Horas por Integrante | Total Equipo (5 personas) | Semanas |
 |------|----------------------|---------------------------|---------|
@@ -576,7 +576,7 @@ Desarrollar un roadmap estratégico de seguridad para TAVOLO Tech Solutions S.A.
 
 | Campo | Información |
 |-------|-------------|
-| **Nombre de la Consultora** | CyberChain Cybersecurity Consulting |
+| **Nombre de la Consultora** | PentGuin Cybersecurity Consulting |
 | **Slogan** | "Securing the chain you rely on" |
 | **Tipo de Entidad** | Equipo académico - Universidad Peruana de Ciencias Aplicadas (UPC) |
 | **Curso** | 1ASI0665 - Anti-Hacking y Nuevas Tendencias de Seguridad |
@@ -635,7 +635,7 @@ Realizar pruebas de penetración controladas, éticas y no destructivas sobre la
 
 ### 3. ALCANCE AUTORIZADO (IN-SCOPE)
 
-La consultora CyberChain está expresamente autorizada a realizar pruebas de seguridad ÚNICAMENTE sobre los siguientes activos digitales de TAVOLO:
+La consultora PentGuin está expresamente autorizada a realizar pruebas de seguridad ÚNICAMENTE sobre los siguientes activos digitales de TAVOLO:
 
 #### 3.1 Aplicaciones Web
 
@@ -648,16 +648,16 @@ La consultora CyberChain está expresamente autorizada a realizar pruebas de seg
 **Credenciales de Prueba Proporcionadas por TAVOLO:**
 
 - **Usuario Regular (Comensal):**
-  - Email: test.user@tavolo.pe
-  - Contraseña: TestUser2024!
+    - Email: test.user@tavolo.pe
+    - Contraseña: TestUser2024!
 
 - **Usuario Administrador (Cafetería):**
-  - Email: admin.test@tavolo.pe
-  - Contraseña: AdminTavolo2024!
+    - Email: admin.test@tavolo.pe
+    - Contraseña: AdminTavolo2024!
 
 - **Usuario Manager (Gestión):**
-  - Email: manager.test@tavolo.pe
-  - Contraseña: ManagerTavolo2024!
+    - Email: manager.test@tavolo.pe
+    - Contraseña: ManagerTavolo2024!
 
 **IMPORTANTE:** Estas credenciales son EXCLUSIVAS para ambiente staging y NO deben usarse en producción.
 
@@ -699,21 +699,21 @@ La consultora CyberChain está expresamente autorizada a realizar pruebas de seg
 **Credenciales Base de Datos (READ-ONLY):**
 
 - **PostgreSQL:**
-  - Host: 192.168.100.20:5432
-  - Usuario: pentester_readonly
-  - Contraseña: TestPostgres2024!
-  - Base de Datos: tavolo_staging
+    - Host: 192.168.100.20:5432
+    - Usuario: pentester_readonly
+    - Contraseña: TestPostgres2024!
+    - Base de Datos: tavolo_staging
 
 - **MongoDB:**
-  - Host: 192.168.100.21:27017
-  - Usuario: pentester_readonly
-  - Contraseña: TestMongo2024!
-  - Base de Datos: tavolo_staging
+    - Host: 192.168.100.21:27017
+    - Usuario: pentester_readonly
+    - Contraseña: TestMongo2024!
+    - Base de Datos: tavolo_staging
 
 **Configuración VPN:**
 - Servidor: vpn-staging.tavolo.pe:1194
 - Protocolo: OpenVPN
-- Archivo de configuración: tavolo-staging-cyberchain.ovpn (proporcionado por DevOps)
+- Archivo de configuración: tavolo-staging-pentguin.ovpn (proporcionado por DevOps)
 
 **NOTA CRÍTICA:** El acceso VPN es EXCLUSIVO para ambiente staging. Cualquier intento de acceso a redes de producción resultará en terminación inmediata del contrato.
 
@@ -721,7 +721,7 @@ La consultora CyberChain está expresamente autorizada a realizar pruebas de seg
 
 ### 4. ACTIVOS FUERA DE ALCANCE (OUT-OF-SCOPE)
 
-La consultora CyberChain NO está autorizada bajo NINGUNA circunstancia a realizar pruebas sobre:
+La consultora PentGuin NO está autorizada bajo NINGUNA circunstancia a realizar pruebas sobre:
 
 #### 4.1 Ambientes de Producción (PROHIBIDO ABSOLUTAMENTE)
 
@@ -798,10 +798,10 @@ La consultora CyberChain NO está autorizada bajo NINGUNA circunstancia a realiz
 - **Exfiltración limitada:** Máximo 10 registros de base de datos para PoC (requiere notificación previa)
 - **No reverse shell persistente:** Shells solo durante sesión activa de pentesting (máximo 4 horas)
 - **No modificación de configuraciones críticas:**
-  - No cambiar contraseñas de usuarios administradores
-  - No eliminar usuarios existentes
-  - No modificar configuraciones de cafeterías reales (solo datos de prueba)
-  - No alterar configuraciones de sensores IoT
+    - No cambiar contraseñas de usuarios administradores
+    - No eliminar usuarios existentes
+    - No modificar configuraciones de cafeterías reales (solo datos de prueba)
+    - No alterar configuraciones de sensores IoT
 
 **Restricciones de Horario:**
 - Pruebas intrusivas (explotación) SOLO en horario: Lunes a Viernes 09:00-20:00 (Hora Perú UTC-5)
@@ -886,7 +886,7 @@ La consultora CyberChain NO está autorizada bajo NINGUNA circunstancia a realiz
 
 #### 6.3 Notificaciones Requeridas
 
-**CyberChain DEBE notificar con 24 horas de anticipación cuando planea ejecutar:**
+**PentGuin DEBE notificar con 24 horas de anticipación cuando planea ejecutar:**
 - Explotación de vulnerabilidades críticas (CVSS ≥ 9.0) o altas (CVSS 7.0-8.9)
 - Pruebas que puedan causar indisponibilidad temporal (PoC de DoS controlado)
 - Fuzzing agresivo de APIs
@@ -895,7 +895,7 @@ La consultora CyberChain NO está autorizada bajo NINGUNA circunstancia a realiz
 
 **Canales de Notificación:**
 - **Email:** aldo.baldeon@tavolo.pe (CTO - Contacto Principal)
-- **Slack:** Canal #pentesting-cyberchain
+- **Slack:** Canal #pentesting-pentguin
 - **WhatsApp:** +51 965 432 178 (Solo emergencias críticas)
 
 ---
@@ -907,79 +907,79 @@ La consultora CyberChain NO está autorizada bajo NINGUNA circunstancia a realiz
 TAVOLO se compromete a:
 
 1. **Provisión de Accesos:**
-   - Proporcionar credenciales de prueba válidas para usuarios regular, admin y manager
-   - Configurar y proporcionar acceso VPN para red interna staging
-   - Entregar documentación técnica de API (Swagger/OpenAPI)
-   - Proporcionar credenciales READ-ONLY de bases de datos PostgreSQL y MongoDB
+    - Proporcionar credenciales de prueba válidas para usuarios regular, admin y manager
+    - Configurar y proporcionar acceso VPN para red interna staging
+    - Entregar documentación técnica de API (Swagger/OpenAPI)
+    - Proporcionar credenciales READ-ONLY de bases de datos PostgreSQL y MongoDB
 
 2. **Designación de Contactos:**
-   - Designar a Aldo Alberto Baldeon Fabian (CTO) como contacto técnico principal
-   - Disponibilidad del CTO en horario laboral (9 AM - 6 PM) para consultas técnicas
-   - Contacto de emergencia 24/7 del CTO para vulnerabilidades críticas (CVSS ≥ 9.0)
+    - Designar a Aldo Alberto Baldeon Fabian (CTO) como contacto técnico principal
+    - Disponibilidad del CTO en horario laboral (9 AM - 6 PM) para consultas técnicas
+    - Contacto de emergencia 24/7 del CTO para vulnerabilidades críticas (CVSS ≥ 9.0)
 
 3. **Disponibilidad de Ambientes:**
-   - Mantener ambientes staging/dev disponibles durante las 15 semanas del proyecto
-   - Notificar con 48 horas de anticipación cualquier mantenimiento planificado de staging
-   - Restaurar staging en menos de 8 horas si ocurre caída no planificada
+    - Mantener ambientes staging/dev disponibles durante las 15 semanas del proyecto
+    - Notificar con 48 horas de anticipación cualquier mantenimiento planificado de staging
+    - Restaurar staging en menos de 8 horas si ocurre caída no planificada
 
 4. **Participación en Seguimiento:**
-   - Participar en reuniones de seguimiento semanales (Viernes 16:00-17:00)
-   - Revisar y validar vulnerabilidades críticas reportadas en menos de 48 horas
-   - Aprobar contenido del informe final antes de entrega formal en semana 15
+    - Participar en reuniones de seguimiento semanales (Viernes 16:00-17:00)
+    - Revisar y validar vulnerabilidades críticas reportadas en menos de 48 horas
+    - Aprobar contenido del informe final antes de entrega formal en semana 15
 
-5. **Exención de Responsabilidad a CyberChain:**
-   - No responsabilizar a CyberChain por caídas temporales (<30 min) de staging/dev durante pruebas autorizadas
-   - Aceptar que pentesting no garantiza identificación del 100% de vulnerabilidades
+5. **Exención de Responsabilidad a PentGuin:**
+    - No responsabilizar a PentGuin por caídas temporales (<30 min) de staging/dev durante pruebas autorizadas
+    - Aceptar que pentesting no garantiza identificación del 100% de vulnerabilidades
 
 6. **Uso Académico:**
-   - Permitir uso académico de resultados anonimizados en presentaciones de UPC
-   - No divulgar públicamente hallazgos críticos sin consentimiento de CyberChain
+    - Permitir uso académico de resultados anonimizados en presentaciones de UPC
+    - No divulgar públicamente hallazgos críticos sin consentimiento de PentGuin
 
-#### 7.2 Responsabilidades de la CONSULTORA (CyberChain Cybersecurity Consulting)
+#### 7.2 Responsabilidades de la CONSULTORA (PentGuin Cybersecurity Consulting)
 
-CyberChain se compromete a:
+PentGuin se compromete a:
 
 1. **Respeto del Alcance:**
-   - Realizar pruebas ÚNICAMENTE en activos IN-SCOPE autorizados explícitamente
-   - NO acceder a ambientes de producción bajo NINGUNA circunstancia
-   - Cesar INMEDIATAMENTE actividades ante sospecha de error de alcance
-   - Notificar INMEDIATAMENTE al CTO si se accede accidentalmente a producción
+    - Realizar pruebas ÚNICAMENTE en activos IN-SCOPE autorizados explícitamente
+    - NO acceder a ambientes de producción bajo NINGUNA circunstancia
+    - Cesar INMEDIATAMENTE actividades ante sospecha de error de alcance
+    - Notificar INMEDIATAMENTE al CTO si se accede accidentalmente a producción
 
 2. **Reporte Oportuno de Vulnerabilidades:**
-   - Reportar vulnerabilidades **críticas** (CVSS ≥ 9.0) en **menos de 4 horas** desde detección
-   - Reportar vulnerabilidades **altas** (CVSS 7.0-8.9) en **menos de 24 horas** desde detección
-   - Incluir vulnerabilidades medias y bajas en reportes semanales
-   - Notificar INMEDIATAMENTE cualquier incidente no previsto (caída de servicio, corrupción de datos)
+    - Reportar vulnerabilidades **críticas** (CVSS ≥ 9.0) en **menos de 4 horas** desde detección
+    - Reportar vulnerabilidades **altas** (CVSS 7.0-8.9) en **menos de 24 horas** desde detección
+    - Incluir vulnerabilidades medias y bajas en reportes semanales
+    - Notificar INMEDIATAMENTE cualquier incidente no previsto (caída de servicio, corrupción de datos)
 
 3. **Trazabilidad y Evidencias:**
-   - Registrar TODAS las actividades de pentesting con timestamps precisos
-   - Capturar evidencias técnicas (pantallazos, logs, outputs de herramientas, comandos ejecutados)
-   - Mantener cadena de custodia con hashes SHA256 de todas las evidencias
-   - Documentar y reportar falsos positivos identificados durante validación manual
+    - Registrar TODAS las actividades de pentesting con timestamps precisos
+    - Capturar evidencias técnicas (pantallazos, logs, outputs de herramientas, comandos ejecutados)
+    - Mantener cadena de custodia con hashes SHA256 de todas las evidencias
+    - Documentar y reportar falsos positivos identificados durante validación manual
 
 4. **Ética y Confidencialidad:**
-   - Cumplir estrictamente con código de ética ACM/IEEE/CIP
-   - NO usar información obtenida para beneficio personal o de terceros
-   - NO instalar backdoors o accesos persistentes no autorizados en sistemas de TAVOLO
-   - NO divulgar vulnerabilidades a terceros (investigadores, foros, redes sociales)
+    - Cumplir estrictamente con código de ética ACM/IEEE/CIP
+    - NO usar información obtenida para beneficio personal o de terceros
+    - NO instalar backdoors o accesos persistentes no autorizados en sistemas de TAVOLO
+    - NO divulgar vulnerabilidades a terceros (investigadores, foros, redes sociales)
 
 5. **Pruebas Controladas:**
-   - Realizar pruebas de forma controlada y no destructiva
-   - Detener INMEDIATAMENTE pruebas si causan indisponibilidad no planificada
-   - Colaborar activamente en restauración de servicios si se causa daño accidental
-   - Respetar límites de rate limiting y exfiltración de datos
+    - Realizar pruebas de forma controlada y no destructiva
+    - Detener INMEDIATAMENTE pruebas si causan indisponibilidad no planificada
+    - Colaborar activamente en restauración de servicios si se causa daño accidental
+    - Respetar límites de rate limiting y exfiltración de datos
 
 6. **Entregables:**
-   - Entregar informe técnico detallado (80-120 páginas)
-   - Entregar informe ejecutivo (10-15 páginas)
-   - Entregar matriz de vulnerabilidades en Excel con clasificación CVSS v3.1
-   - Entregar evidencias técnicas con hashes SHA256
-   - Realizar sesión de transferencia de conocimiento de 2 horas
+    - Entregar informe técnico detallado (80-120 páginas)
+    - Entregar informe ejecutivo (10-15 páginas)
+    - Entregar matriz de vulnerabilidades en Excel con clasificación CVSS v3.1
+    - Entregar evidencias técnicas con hashes SHA256
+    - Realizar sesión de transferencia de conocimiento de 2 horas
 
 7. **Destrucción de Datos:**
-   - Eliminar TODAS las credenciales, tokens y datos sensibles obtenidos tras entrega del informe final
-   - Conservar evidencias máximo 90 días post-entrega para respaldo
-   - Proporcionar certificado de destrucción de datos si TAVOLO lo solicita
+    - Eliminar TODAS las credenciales, tokens y datos sensibles obtenidos tras entrega del informe final
+    - Conservar evidencias máximo 90 días post-entrega para respaldo
+    - Proporcionar certificado de destrucción de datos si TAVOLO lo solicita
 
 ---
 
@@ -987,7 +987,7 @@ CyberChain se compromete a:
 
 #### 8.1 Compromiso de Confidencialidad
 
-Toda información obtenida durante el pentesting es **estrictamente confidencial**. CyberChain se compromete a:
+Toda información obtenida durante el pentesting es **estrictamente confidencial**. PentGuin se compromete a:
 
 - **NO divulgar** información técnica, arquitectónica o de negocio de TAVOLO a terceros
 - **NO publicar** vulnerabilidades en blogs personales, redes sociales, foros de seguridad
@@ -1028,7 +1028,7 @@ Toda información obtenida durante el pentesting es **estrictamente confidencial
 #### 8.5 Retención de Datos
 
 **Durante el Proyecto (25 Agosto - 07 Diciembre 2025):**
-- Almacenamiento en repositorio privado GitHub de CyberChain (cifrado)
+- Almacenamiento en repositorio privado GitHub de PentGuin (cifrado)
 - Acceso restringido solo a los 5 integrantes del equipo
 
 **Post-Entrega (90 días máximo):**
@@ -1043,7 +1043,7 @@ Toda información obtenida durante el pentesting es **estrictamente confidencial
 
 **Metadatos Obligatorios en TODAS las evidencias:**
 - Nombre de archivo descriptivo
-- Autor (integrante de CyberChain que capturó la evidencia)
+- Autor (integrante de PentGuin que capturó la evidencia)
 - Fecha y hora de captura (timestamp ISO 8601)
 - Herramienta utilizada (Nmap, Burp, sqlmap, etc.)
 - Activo evaluado (URL, IP, endpoint API)
@@ -1068,37 +1068,37 @@ burp_idor_poc.png,Aldo Baldeon,2025-10-10T11:15:00Z,Burp Suite,admin-staging.tav
 
 #### 9.1 Canales Oficiales de Comunicación
 
-| Propósito | Canal | SLA de Respuesta | Horario |
-|-----------|-------|------------------|---------|
-| **Coordinación General** | Email + Slack | < 24 horas | Horario laboral |
-| **Reuniones de Seguimiento** | Zoom/Google Meet | Viernes 16:00-17:00 | Semanal |
-| **Notificación de Críticos** | Email + WhatsApp | < 4 horas | 24/7 |
-| **Dudas Técnicas** | Slack #pentesting-cyberchain | < 8 horas | Lun-Vie 9AM-6PM |
-| **Emergencias** | WhatsApp + Llamada | Inmediato | 24/7 |
+| Propósito | Canal                     | SLA de Respuesta | Horario |
+|-----------|---------------------------|------------------|---------|
+| **Coordinación General** | Email + Slack             | < 24 horas | Horario laboral |
+| **Reuniones de Seguimiento** | Zoom/Google Meet          | Viernes 16:00-17:00 | Semanal |
+| **Notificación de Críticos** | Email + WhatsApp          | < 4 horas | 24/7 |
+| **Dudas Técnicas** | Slack #pentesting-pentguin | < 8 horas | Lun-Vie 9AM-6PM |
+| **Emergencias** | WhatsApp + Llamada        | Inmediato | 24/7 |
 
 #### 9.2 Contactos Principales
 
 **TAVOLO Tech Solutions S.A.C.:**
 - **CTO (Contacto Principal):** Aldo Alberto Baldeon Fabian
-  - Email: aldo.baldeon@tavolo.pe
-  - WhatsApp: +51 965 432 178
-  - Disponibilidad: Lun-Vie 9AM-6PM (Emergencias 24/7)
+    - Email: aldo.baldeon@tavolo.pe
+    - WhatsApp: +51 965 432 178
+    - Disponibilidad: Lun-Vie 9AM-6PM (Emergencias 24/7)
 
 - **Tech Lead (Contacto Secundario):** Jimena Tamara Cama Salvatierra
-  - Email: jimena.cama@tavolo.pe
-  - Teléfono: +51 987 654 322
-  - Disponibilidad: Lun-Vie 9AM-6PM
+    - Email: jimena.cama@tavolo.pe
+    - Teléfono: +51 987 654 322
+    - Disponibilidad: Lun-Vie 9AM-6PM
 
-**CyberChain Cybersecurity Consulting:**
+**PentGuin Cybersecurity Consulting:**
 - **Scrum Master:** Juan Fabritzzio Pescoran Angulo
-  - Email: u20221c936@upc.edu.pe
-  - WhatsApp: +51 987 123 456
-  - Disponibilidad: Lun-Sab 8AM-10PM
+    - Email: u20221c936@upc.edu.pe
+    - WhatsApp: +51 987 123 456
+    - Disponibilidad: Lun-Sab 8AM-10PM
 
 - **Product Owner:** Diego Ulises Soto Quispe
-  - Email: u202214477@upc.edu.pe
-  - WhatsApp: +51 965 234 567
-  - Disponibilidad: Lun-Vie 9AM-9PM
+    - Email: u202214477@upc.edu.pe
+    - WhatsApp: +51 965 234 567
+    - Disponibilidad: Lun-Vie 9AM-9PM
 
 #### 9.3 Procedimiento de Reporte de Vulnerabilidades
 
@@ -1137,7 +1137,7 @@ Si ocurre un **incidente no previsto** (caída de servicio, corrupción de datos
 **Paso 3 - Análisis de Causa Raíz:**
 - Registrar secuencia completa de eventos
 - Identificar causa raíz del incidente
-- Determinar si fue error de CyberChain o falla preexistente del sistema
+- Determinar si fue error de PentGuin o falla preexistente del sistema
 
 **Paso 4 - Colaboración en Restauración:**
 - Asistir al equipo de TAVOLO en restauración del servicio
@@ -1153,43 +1153,43 @@ Si ocurre un **incidente no previsto** (caída de servicio, corrupción de datos
 
 ### 10. ENTREGABLES DEL PROYECTO
 
-Al finalizar el proyecto (07 de Diciembre de 2025), CyberChain entregará:
+Al finalizar el proyecto (07 de Diciembre de 2025), PentGuin entregará:
 
 #### 10.1 Documentación Técnica
 
 **1. Informe Técnico Detallado (DOCX + PDF)**
 - Extensión: 80-120 páginas
 - Contenido:
-  - Metodología aplicada (PTES, OWASP, NIST)
-  - Hallazgos técnicos con clasificación CVSS v3.1
-  - PoCs reproducibles paso a paso
-  - Evidencias técnicas (capturas, logs, comandos)
-  - Recomendaciones técnicas con código seguro
-  - Anexos con outputs de herramientas (Nmap, Burp, Nessus)
+    - Metodología aplicada (PTES, OWASP, NIST)
+    - Hallazgos técnicos con clasificación CVSS v3.1
+    - PoCs reproducibles paso a paso
+    - Evidencias técnicas (capturas, logs, comandos)
+    - Recomendaciones técnicas con código seguro
+    - Anexos con outputs de herramientas (Nmap, Burp, Nessus)
 
 **2. Informe Ejecutivo (DOCX + PDF)**
 - Extensión: 10-15 páginas
 - Contenido:
-  - Resumen ejecutivo no técnico
-  - Impacto en negocio (traducido a términos comerciales)
-  - Matriz de riesgos con estimación financiera
-  - Roadmap de remediación priorizado
-  - Comparativa con benchmarks de industria FoodTech
+    - Resumen ejecutivo no técnico
+    - Impacto en negocio (traducido a términos comerciales)
+    - Matriz de riesgos con estimación financiera
+    - Roadmap de remediación priorizado
+    - Comparativa con benchmarks de industria FoodTech
 
 **3. Matriz de Vulnerabilidades (Excel XLSX)**
 - Columnas:
-  - ID único de vulnerabilidad
-  - Título descriptivo
-  - Descripción técnica detallada
-  - CVSS v3.1 score (Base, Temporal, Environmental)
-  - Severidad (Crítica/Alta/Media/Baja)
-  - CWE ID
-  - OWASP Top 10 mapping
-  - Activo afectado (URL, IP, endpoint)
-  - Recomendación de remediación
-  - Esfuerzo estimado de corrección (horas)
-  - Prioridad (P0, P1, P2, P3)
-  - Estado (Abierto/En remediación/Cerrado)
+    - ID único de vulnerabilidad
+    - Título descriptivo
+    - Descripción técnica detallada
+    - CVSS v3.1 score (Base, Temporal, Environmental)
+    - Severidad (Crítica/Alta/Media/Baja)
+    - CWE ID
+    - OWASP Top 10 mapping
+    - Activo afectado (URL, IP, endpoint)
+    - Recomendación de remediación
+    - Esfuerzo estimado de corrección (horas)
+    - Prioridad (P0, P1, P2, P3)
+    - Estado (Abierto/En remediación/Cerrado)
 
 #### 10.2 Evidencias Técnicas
 
@@ -1212,19 +1212,19 @@ Al finalizar el proyecto (07 de Diciembre de 2025), CyberChain entregará:
 - Duración: 30-45 minutos
 - Audiencia: Equipo técnico de TAVOLO (CTO, Tech Lead, DevOps, Developers)
 - Contenido:
-  - Metodología aplicada
-  - Top 10 vulnerabilidades críticas/altas
-  - Demos en vivo de PoCs seleccionados
-  - Recomendaciones técnicas de remediación
+    - Metodología aplicada
+    - Top 10 vulnerabilidades críticas/altas
+    - Demos en vivo de PoCs seleccionados
+    - Recomendaciones técnicas de remediación
 
 **2. Presentación Ejecutiva (PPTX + PDF)**
 - Duración: 15-20 minutos
 - Audiencia: CEO, CTO, inversionistas de TAVOLO
 - Contenido:
-  - Resumen ejecutivo de hallazgos
-  - Impacto en negocio y reputación
-  - Riesgos críticos priorizados
-  - Roadmap de seguridad con inversión necesaria
+    - Resumen ejecutivo de hallazgos
+    - Impacto en negocio y reputación
+    - Riesgos críticos priorizados
+    - Roadmap de seguridad con inversión necesaria
 
 **3. Video de Exposición TP1 (MP4)**
 - Duración: máximo 15 minutos
@@ -1247,23 +1247,23 @@ Al finalizar el proyecto (07 de Diciembre de 2025), CyberChain entregará:
 **Agenda Detallada:**
 
 1. **Resumen de Metodología (15 min)**
-   - PTES, OWASP, NIST aplicados al proyecto TAVOLO
-   - Cobertura de superficie de ataque evaluada
+    - PTES, OWASP, NIST aplicados al proyecto TAVOLO
+    - Cobertura de superficie de ataque evaluada
 
 2. **Demo en Vivo de Vulnerabilidades Críticas (45 min)**
-   - Top 3-5 vulnerabilidades más peligrosas identificadas
-   - Ejecución de PoCs en vivo en ambiente staging
-   - Explicación técnica del impacto en el negocio
+    - Top 3-5 vulnerabilidades más peligrosas identificadas
+    - Ejecución de PoCs en vivo en ambiente staging
+    - Explicación técnica del impacto en el negocio
 
 3. **Recomendaciones de Remediación (30 min)**
-   - Walkthrough de código vulnerable vs. código seguro
-   - Best practices de desarrollo seguro (SSDLC)
-   - Herramientas recomendadas (SAST: SonarQube, DAST: OWASP ZAP, SCA: Snyk)
+    - Walkthrough de código vulnerable vs. código seguro
+    - Best practices de desarrollo seguro (SSDLC)
+    - Herramientas recomendadas (SAST: SonarQube, DAST: OWASP ZAP, SCA: Snyk)
 
 4. **Q&A Técnico (30 min)**
-   - Preguntas del equipo de TAVOLO
-   - Dudas sobre implementación de fixes
-   - Consultas sobre herramientas de seguridad
+    - Preguntas del equipo de TAVOLO
+    - Dudas sobre implementación de fixes
+    - Consultas sobre herramientas de seguridad
 
 **Nota:** La sesión será grabada y compartida con TAVOLO para referencia futura del equipo técnico.
 
@@ -1273,7 +1273,7 @@ Al finalizar el proyecto (07 de Diciembre de 2025), CyberChain entregará:
 
 #### 11.1 Exención de Responsabilidad
 
-**CyberChain NO será responsable por:**
+**PentGuin NO será responsable por:**
 - Daños causados en ambientes de **producción** (fuera de alcance autorizado)
 - Pérdida de datos en **staging/dev** si es resultado directo de pruebas autorizadas y notificadas
 - Indisponibilidad temporal (<30 minutos) de servicios staging durante explotaciones aprobadas
@@ -1281,20 +1281,20 @@ Al finalizar el proyecto (07 de Diciembre de 2025), CyberChain entregará:
 - Vulnerabilidades **no detectadas** (pentesting no garantiza 100% de cobertura; es una evaluación puntual)
 
 **TAVOLO NO será responsable por:**
-- Cambios en infraestructura de staging no notificados a CyberChain que invaliden pruebas
+- Cambios en infraestructura de staging no notificados a PentGuin que invaliden pruebas
 - Falta de disponibilidad de contacto técnico fuera de horario laboral (Lun-Vie 9AM-6PM)
 - Vulnerabilidades introducidas **después** de finalizado el proyecto (07 Diciembre 2025)
 
 #### 11.2 Limitación de Responsabilidad
 
-**CyberChain puede causar:**
+**PentGuin puede causar:**
 - Indisponibilidad temporal (<30 minutos) en staging si es resultado directo de una prueba autorizada
 - **Condiciones:**
-  - Notificación inmediata al CTO de TAVOLO
-  - Colaboración activa en restauración del servicio
-  - Documentación completa del incidente en el informe final
+    - Notificación inmediata al CTO de TAVOLO
+    - Colaboración activa en restauración del servicio
+    - Documentación completa del incidente en el informe final
 
-**Está PROHIBIDO para CyberChain:**
+**Está PROHIBIDO para PentGuin:**
 - Cualquier impacto en **producción** (resulta en terminación inmediata del contrato y posibles acciones legales)
 - Exfiltración masiva de datos (>10 registros sin aprobación previa del CTO)
 - Eliminación permanente de datos (incluso en staging)
@@ -1307,19 +1307,19 @@ Al finalizar el proyecto (07 de Diciembre de 2025), CyberChain entregará:
 - Datos de usuarios, cafeterías y sensores
 - Arquitectura y diseño de sistemas
 
-**Propiedad de CyberChain:**
+**Propiedad de PentGuin:**
 - Metodología de pentesting desarrollada
 - Scripts propios creados durante el proyecto
 - Know-how técnico del equipo
 - Plantillas de informes y documentación
 
 **Uso Académico:**
-- CyberChain puede usar resultados **anonimizados** para fines educativos con permiso escrito de TAVOLO
+- PentGuin puede usar resultados **anonimizados** para fines educativos con permiso escrito de TAVOLO
 - Presentaciones en clase de UPC (audiencia: profesor y compañeros)
 - No se mencionará el nombre "TAVOLO" en contextos públicos sin autorización
 
 **Código Fuente:**
-- CyberChain **no adquiere derechos** sobre código fuente de TAVOLO
+- PentGuin **no adquiere derechos** sobre código fuente de TAVOLO
 - Cualquier código fuente obtenido durante pentesting será **eliminado** tras entrega del informe final
 - Certificado de destrucción disponible si TAVOLO lo solicita
 
@@ -1331,7 +1331,7 @@ Al finalizar el proyecto (07 de Diciembre de 2025), CyberChain entregará:
 
 **Resolución de Conflictos:**
 
-1. **Primera instancia:** Negociación directa entre CTO de TAVOLO y Scrum Master de CyberChain
+1. **Primera instancia:** Negociación directa entre CTO de TAVOLO y Scrum Master de PentGuin
 2. **Segunda instancia:** Mediación académica por Profesor del curso (Vera Olivera, David Carlos)
 3. **Tercera instancia:** Escalamiento a Coordinación de carrera de Ingeniería de Software de UPC
 4. **Última instancia:** Arbitraje o tribunales de Lima (si no se resuelve por vías anteriores)
@@ -1378,7 +1378,7 @@ Al firmar este documento, ambas partes confirman que:
 
 ---
 
-**POR TAVOLO TECH SOLUTIONS S.A.C.**  
+**POR TAVOLO TECH SOLUTIONS S.A.C.**
 (Cliente - Empresa Evaluada)
 
 Nombre: **Quezada Portalatino, Barbara Susana**
@@ -1387,13 +1387,13 @@ Cargo: **CEO (Chief Executive Officer)**
 
 Firma: _______________________________________
 
-Fecha: ______ de _____________ de 2025
+Fecha: **25 de Agosto de 2025**
 
 Sello de la Empresa:
 
 ---
 
-**POR CYBERCHAIN CYBERSECURITY CONSULTING**  
+**POR PENTGUIN CYBERSECURITY CONSULTING**
 (Consultora - Proveedor del Servicio)
 
 Nombre: **Pescoran Angulo, Juan Fabritzzio**
@@ -1402,7 +1402,7 @@ Cargo: **Scrum Master / Líder del Proyecto**
 
 Firma: _______________________________________
 
-Fecha: ______ de _____________ de 2025
+Fecha: **25 de Agosto de 2025**
 
 Institución: **Universidad Peruana de Ciencias Aplicadas (UPC)**
 
@@ -1417,8 +1417,8 @@ Curso: **1ASI0665 - Anti-Hacking y Nuevas Tendencias de Seguridad**
 | **TAVOLO** | CTO (Contacto Principal) | Aldo Alberto Baldeon Fabian | aldo.baldeon@tavolo.pe | +51 965 432 178 | Lun-Vie 9AM-6PM |
 | **TAVOLO** | Tech Lead (Contacto Secundario) | Jimena Tamara Cama Salvatierra | jimena.cama@tavolo.pe | +51 987 654 322 | Lun-Vie 9AM-6PM |
 | **TAVOLO** | DevOps (Emergencias Infraestructura) | Jair Alexander Castillo Castillo | jair.castillo@tavolo.pe | +51 923 456 789 | 24/7 (solo críticos) |
-| **CyberChain** | Scrum Master | Juan Fabritzzio Pescoran Angulo | u20221c936@upc.edu.pe | +51 987 123 456 | Lun-Sab 8AM-10PM |
-| **CyberChain** | Product Owner | Diego Ulises Soto Quispe | u202214477@upc.edu.pe | +51 965 234 567 | Lun-Vie 9AM-9PM |
+| **PentGuin** | Scrum Master | Juan Fabritzzio Pescoran Angulo | u20221c936@upc.edu.pe | +51 987 123 456 | Lun-Sab 8AM-10PM |
+| **PentGuin** | Product Owner | Diego Ulises Soto Quispe | u202214477@upc.edu.pe | +51 965 234 567 | Lun-Vie 9AM-9PM |
 | **UPC** | Profesor Supervisor | Vera Olivera, David Carlos | david.vera@upc.edu.pe | N/A | Horario de clases |
 
 ---
@@ -1427,7 +1427,7 @@ Curso: **1ASI0665 - Anti-Hacking y Nuevas Tendencias de Seguridad**
 
 | Versión | Fecha | Cambios Realizados | Autor | Aprobado por |
 |---------|-------|-------------------|-------|--------------|
-| 1.0 | 25-Ago-2025 | Versión inicial - Firma de RoE | Juan Pescoran (CyberChain) | Barbara Quezada (TAVOLO) |
+| 1.0 | 25-Ago-2025 | Versión inicial - Firma de RoE | Juan Pescoran (PentGuin) | Barbara Quezada (TAVOLO) |
 
 ---
 
@@ -1437,7 +1437,7 @@ Curso: **1ASI0665 - Anti-Hacking y Nuevas Tendencias de Seguridad**
 
 ## 1.5. Segmentos Objetivo
 
-Los resultados del pentesting realizado por CyberChain benefician a múltiples stakeholders de TAVOLO Tech Solutions S.A.C., cada uno con necesidades y expectativas específicas de seguridad. A continuación, se definen los segmentos objetivo y cómo los entregables del proyecto atienden sus necesidades particulares.
+Los resultados del pentesting realizado por PentGuin benefician a múltiples stakeholders de TAVOLO Tech Solutions S.A.C., cada uno con necesidades y expectativas específicas de seguridad. A continuación, se definen los segmentos objetivo y cómo los entregables del proyecto atienden sus necesidades particulares.
 
 ### Segmento 1: Equipo Técnico de TAVOLO
 
@@ -1458,7 +1458,7 @@ Los resultados del pentesting realizado por CyberChain benefician a múltiples s
 - Entender cómo las vulnerabilidades pueden ser explotadas por atacantes reales
 - Capacitarse en herramientas de seguridad (SAST, DAST, SCA) para integrar en CI/CD
 
-#### Entregables Relevantes de CyberChain
+#### Entregables Relevantes de PentGuin
 
 **1. Informe Técnico Detallado (80-120 páginas):**
 - Vulnerabilidades con líneas de código exactas y funciones afectadas
@@ -1507,7 +1507,7 @@ Los resultados del pentesting realizado por CyberChain benefician a múltiples s
 - Estimar costos de remediación vs. costo de un potencial data breach
 - Cumplir con requisitos regulatorios (Ley N° 29733) para evitar multas
 
-#### Entregables Relevantes de CyberChain
+#### Entregables Relevantes de PentGuin
 
 **1. Informe Ejecutivo (10-15 páginas):**
 - Resumen ejecutivo no técnico con lenguaje de negocio
@@ -1561,17 +1561,17 @@ Los resultados del pentesting realizado por CyberChain benefician a múltiples s
 - Respaldo documental para auditorías internas/externas de sus propias cafeterías
 - Confianza en que TAVOLO no sufrirá brechas que afecten reputación de sus negocios
 
-#### Entregables Relevantes de CyberChain (Indirectos)
+#### Entregables Relevantes de PentGuin (Indirectos)
 
 **1. Certificado de Pentesting Completado:**
-- Documento oficial firmado por CyberChain y validado por UPC
+- Documento oficial firmado por PentGuin y validado por UPC
 - Fecha de evaluación y alcance cubierto
 - Confirmación de que TAVOLO fue evaluado por equipo académico independiente
 
 **2. Resumen de Mitigaciones Implementadas Post-Pentesting:**
 - Lista de vulnerabilidades críticas remediadas por TAVOLO
 - Timeline de implementación de fixes
-- Validación de remediaciones por CyberChain (re-testing)
+- Validación de remediaciones por PentGuin (re-testing)
 
 **3. SLA de Seguridad con Compromisos Medibles:**
 - Tiempo máximo de respuesta ante incidentes (4 horas para críticos)
@@ -1605,7 +1605,7 @@ Los resultados del pentesting realizado por CyberChain benefician a múltiples s
 - Métricas de madurez de seguridad comparadas con benchmarks de la industria
 - Confirmación de cumplimiento con Ley N° 29733 y preparación para GDPR
 
-#### Entregables Relevantes de CyberChain
+#### Entregables Relevantes de PentGuin
 
 **1. Resumen Ejecutivo de Hallazgos y Remediaciones:**
 - Dashboard de riesgos críticos identificados y mitigados
@@ -1631,11 +1631,11 @@ Los resultados del pentesting realizado por CyberChain benefician a múltiples s
 
 #### Relación Hallazgo → Impacto en Inversión
 
-| Aspecto Evaluado | Sin Pentesting | Con Pentesting de CyberChain |
+| Aspecto Evaluado | Sin Pentesting | Con Pentesting de PentGuin |
 |------------------|----------------|------------------------------|
 | **Riesgo percibido** | Alto (sin validación independiente) | Medio-Bajo (validado por UPC) |
 | **Probabilidad de inversión** | 40% | 75% |
 | **Valoración de TAVOLO** | -20% (descuento por riesgos) | Sin descuento o +10% (prima por seguridad) |
-| **Due diligence** | 2-3 meses (auditoría propia) | 1 mes (informe CyberChain acelera) |
+| **Due diligence** | 2-3 meses (auditoría propia) | 1 mes (informe PentGuin acelera) |
 
 
