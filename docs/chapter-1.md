@@ -1349,15 +1349,15 @@ Al finalizar el proyecto (07 de Diciembre de 2025), PentGuin entregará:
 
 Al firmar este documento, ambas partes confirman que:
 
-✅ Han **leído y entendido** completamente estas Reglas de Compromiso
+ Han **leído y entendido** completamente estas Reglas de Compromiso
 
-✅ **Aceptan** los términos, alcances y limitaciones establecidos
+ **Aceptan** los términos, alcances y limitaciones establecidos
 
-✅ Se **comprometen** a cumplir sus responsabilidades respectivas
+ Se **comprometen** a cumplir sus responsabilidades respectivas
 
-✅ **Reconocen** que este documento tiene validez legal y servirá como referencia en caso de conflictos
+ **Reconocen** que este documento tiene validez legal y servirá como referencia en caso de conflictos
 
-✅ **Autorizan** el inicio de actividades de pentesting conforme a lo acordado
+ **Autorizan** el inicio de actividades de pentesting conforme a lo acordado
 
 
 **POR TAVOLO TECH SOLUTIONS S.A.C.**
