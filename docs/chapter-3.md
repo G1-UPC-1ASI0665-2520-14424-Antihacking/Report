@@ -186,3 +186,64 @@ whatweb -v https://40.84.58.167
 **Detección de CMS:** La ausencia de plugins de CMS confirma que la aplicación es un desarrollo personalizado.
 
 ![Evidencia con Whatweb](/evidencias/whatweb_evidencia_1.png)
+
+### Sprint 2 - Enumeración Profunda & Análisis de Vulnerabilidades
+
+#### Escaneo de Vulnerabilidades Automatizado con Nessus
+
+Se ejecutó un escaneo con Nessus Professional contra el host objetivo (tavolo.eastus2.cloudapp.azure.com) utilizando la política de Web Application Tests para cubrir las vulnerabilidades a nivel de servidor web y aplicación.
+
+- **Host Analizado:** El escaneo fue dirigido al DNS tavolo.eastus2.cloudapp.azure.com (IP: 40.84.58.167).
+
+- **Duración y Política:** El escaneo tuvo una duración de 28 minutos y se completó exitosamente. La política utilizada fue Web Application Tests.
+
+### Hallazgos de Vulnerabilidades por Nessus:
+
+Se logró identificar vulnerabilidades críticas relacionadas con la configuración de seguridad del servidor HTTP:
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Vulnerabilidad</th>
+      <th>Severidad (CVSS v3.0)</th>
+      <th>Familia</th>
+      <th>Posible Solución</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HSTS Missing From HTTPS Server (RFC 6797)</td>
+      <td>MEDIUM (6.5)</td>
+      <td>Web Servers</td>
+      <td>Implementar la cabecera <strong>Strict-Transport-Security (HSTS)</strong> con un valor <strong>max-age</strong> adecuado para forzar el uso de HTTPS y mitigar ataques de downgrade de protocolo.</td>
+    </tr>
+    <tr>
+      <td>Missing or Permissive X-Frame-Options HTTP Response Header</td>
+      <td>INFO</td>
+      <td>CGI abuses</td>
+      <td>Implementar la cabecera <strong>X-Frame-Options: DENY</strong> o <strong>SAMEORIGIN</strong> para mitigar el riesgo de Clickjacking al controlar dónde se puede incrustar el contenido en un &lt;iframe&gt;.</td>
+    </tr>
+    <tr>
+      <td>Missing or Permissive Content-Security-Policy frame-ancestors HTTP Response Header</td>
+      <td>INFO</td>
+      <td>CGI abuses</td>
+      <td>Ajustar la directiva <strong>frame-ancestors</strong> en la cabecera Content-Security-Policy (CSP) para controlar con más detalle la incrustación de contenido.</td>
+    </tr>
+    <tr>
+      <td>HTTP Server Type and Version</td>
+      <td>INFO</td>
+      <td>Web Servers</td>
+      <td>Configurar el servidor web para <strong>ocultar o suprimir la cabecera Server</strong> en las respuestas HTTP para reducir la exposición de información sensible sobre la infraestructura.</td>
+    </tr>
+  </tbody>
+</table>
+
+Estos hallazgos demuestran que el servidor web no está implementando cabeceras de seguridad cruciales, lo que lo hace vulnerable a ataques de Clickjacking (por la ausencia de X-Frame-Options) y a ataques de degradación de SSL (por la ausencia de HSTS).
+
+#### Evidencias
+
+![Evidencia de nessus](/evidencias/nessus_evidencia_1.png)
+
+![Evidencia de nessus](/evidencias/nessus_evidencia_2.png)
+
+![Evidencia de nessus](/evidencias/nessus_evidencia_3.png)
