@@ -111,52 +111,62 @@ Ser reconocidos en el ecosistema de ciberseguridad de América Latina como una c
 | Social Engineering     | Phishing Simulation            | GoPhish, SET                     |
 
 
-### 1.2.2 Perfiles de los integrantes y roles Scrum
+### 1.2.2 Perfiles de los integrantes – Consultora CyberChain
 
 | Campo | Información |
 |-------|-------------|
-|**Nombre de alumno**|  |
+| **Nombre de alumno** | Juan Fabritzzio Pescoran Angulo |
 | **Foto** | [Insertar foto profesional 200x200px] |
-| **Código de estudiante** | UXXXXXXXXX |
+| **Código de estudiante** | U20221C936 |
 | **Carrera** | Ingeniería de Software |
 | **Rol Scrum** | Scrum Master |
-| **Correo electrónico** | UXXXXXXX@upc.edu.pe |
+| **Correo electrónico** | u20221c936@upc.edu.pe |
+| **Competencias Técnicas** | Encargado de coordinar las ceremonias Scrum y asegurar la correcta aplicación del marco ágil dentro del proyecto de pentesting. Posee habilidades en liderazgo, planificación y control de calidad del proceso. Experiencia en uso de herramientas como Jira, GitHub Projects y GitFlow. |
+| **Valor que aporta** | Garantiza que el equipo mantenga comunicación efectiva, priorización de tareas y cumplimiento de entregables en cada sprint. |
 
 | Campo | Información |
 |-------|-------------|
-|**Nombre de alumno**|  |
+| **Nombre de alumno** | Diego Ulises Soto Quispe |
 | **Foto** | [Insertar foto profesional 200x200px] |
-| **Código de estudiante** | UXXXXXXXXX |
+| **Código de estudiante** | U202214477 |
 | **Carrera** | Ingeniería de Software |
 | **Rol Scrum** | Product Owner |
-| **Correo electrónico** | UXXXXXXX@upc.edu.pe |
+| **Correo electrónico** | u202214477@upc.edu.pe |
+| **Competencias Técnicas** | Responsable de definir el alcance y priorizar las pruebas de seguridad según el impacto en el negocio. Experiencia en diseño de arquitecturas seguras, documentación técnica y gestión de requisitos. |
+| **Valor que aporta** | Representa los intereses del cliente TAVOLO y asegura que cada entregable cumpla objetivos estratégicos de seguridad. |
 
 | Campo | Información |
 |-------|-------------|
-|**Nombre de alumno**|  |
+| **Nombre de alumno** | Aldo Alberto Baldeón Fabián |
 | **Foto** | [Insertar foto profesional 200x200px] |
-| **Código de estudiante** | UXXXXXXXXX |
+| **Código de estudiante** | U202215285 |
 | **Carrera** | Ingeniería de Software |
-| **Rol Scrum** | Pentester Web |
-| **Correo electrónico** | UXXXXXXX@upc.edu.pe |
+| **Rol Scrum** | Especialista Web / Pentester Web |
+| **Correo electrónico** | u202215285@upc.edu.pe |
+| **Competencias Técnicas** | Encargado del análisis de vulnerabilidades en portales web, implementación de pruebas OWASP Top 10 y desarrollo de PoCs controladas. Manejo avanzado de Burp Suite, OWASP ZAP, Nikto y sqlmap. |
+| **Valor que aporta** | Detecta y documenta fallos de seguridad en las capas de presentación y lógica de negocio, asegurando la trazabilidad de cada hallazgo. |
 
 | Campo | Información |
 |-------|-------------|
-|**Nombre de alumno**| Brenda Gamio |
+| **Nombre de alumno** | Brenda Lucía Gamio Upiachihua |
 | **Foto** | [Insertar foto profesional 200x200px] |
-| **Código de estudiante** | U202120344 |
+| **Código de estudiante** | U202102344 |
 | **Carrera** | Ingeniería de Software |
-| **Rol Scrum** | Pentester de APIs/Móvil |
-| **Correo electrónico** | u202120344@upc.edu.pe |
+| **Rol Scrum** | Especialista en APIs/Móvil |
+| **Correo electrónico** | u202102344@upc.edu.pe |
+| **Competencias Técnicas** | Ejecuta pruebas sobre endpoints REST y aplicaciones móviles Android. Experiencia con herramientas MobSF, Postman, Frida y Burp Suite Mobile Assistant. |
+| **Valor que aporta** | Identifica vulnerabilidades en autenticación, autorización y cifrado dentro de componentes móviles y APIs. |
 
 | Campo | Información |
 |-------|-------------|
-|**Nombre de alumno**| Angelo Curi  |
-| **Foto** | <img src="https://raw.githubusercontent.com/FullStack-Fury/final-report/main/assets/Angelo.png" alt="Foto profesional de Angelo" width="200" height="200">
+| **Nombre de alumno** | Angelo Marcio Curi Marcelo |
+| **Foto** | <img src="https://raw.githubusercontent.com/FullStack-Fury/final-report/main/assets/Angelo.png" alt="Foto profesional de Angelo" width="200" height="200"> |
 | **Código de estudiante** | U202022387 |
 | **Carrera** | Ingeniería de Software |
-| **Rol Scrum** | Documentador/Analista |
-| **Correo electrónico** | U202022387@upc.edu.pe |
+| **Rol Scrum** | Documentador / Analista de Seguridad |
+| **Correo electrónico** | u202022387@upc.edu.pe |
+| **Competencias Técnicas** | Encargado de consolidar evidencias técnicas, elaborar reportes ejecutivos y redactar las conclusiones del proyecto. Experiencia en análisis de vulnerabilidades, redacción técnica y cumplimiento de normas ISO/IEC 27001. |
+| **Valor que aporta** | Garantiza la trazabilidad, claridad y consistencia de toda la documentación técnica entregada al cliente. |
 
 
 ### 1.3. Solution Profile
@@ -351,7 +361,7 @@ PTES (Penetration Testing Execution Standard) + OWASP + Scrum
 | Sprint 2: Vulnerability Analysis | 25h                  | 125h                      | 3     |
 | Sprint 3: Exploitation           | 30h                  | 150h                      | 3       |
 | Sprint 4: Post-exploitation      | 25h                  | 125h                      | 3       |
-| Sprint 5: Reporting              | 20h                  | 100h                      | 3     |
+| Sprint 5: Reporting              | 20h                  | 100h                      | 3       |
 | **TOTAL**                        | **125h**             | **625h**                  | **15**  |
 
 
@@ -494,4 +504,5 @@ Define quiénes se benefician de la solución: directivos (con un informe ejecut
 - Resumen ejecutivo de hallazgos y remediaciones
 - Comparativa con benchmarks de la industria
 - Plan de seguridad a 12-24 meses
+
 
