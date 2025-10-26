@@ -13,7 +13,7 @@ Ciclo Académico: 202520 <br>
 
 <h2 align="center">INFORME DE TRABAJO FINAL – ANTI-HACKING Y NUEVAS TENDENCIAS DE SEGURIDAD</h2>
 
-<h3 align="center">Consultora de Ciberseguridad: <em>PentGuin</em></h3>
+<h3 align="center">Consultora de Ciberseguridad: <em>CyberChain</em></h3>
 <h3 align="center">Cliente (PyME): <em>TAVOLO Tech Solutions S.A.C.</em></h3>
 <p align="center"><em>"Securing the chain you rely on"</em></p>
 
@@ -74,6 +74,8 @@ La coordinación del proyecto se realizó mediante un repositorio en GitHub (doc
   - Salidas y logs estructurados (texto/JSON) y scripts reproducibles que permiten la replicación de pruebas de reconocimiento y enumeración.
   - Documento firmado de Rules of Engagement (anexo) y valores hash (SHA256) asociados a artefactos críticos para garantizar integridad.
   - Nota sobre ética y trazabilidad: todas las pruebas se ejecutaron conforme a las Rules of Engagement acordadas; las evidencias cuentan con metadatos (autor, fecha, descripción) y valores de integridad, y se aplicaron controles de acceso para preservar confidencialidad y cumplimiento legal.
+
+- Repositorio: [G1-UPC-1ASI0665-2520-14424-Antihacking](https://github.com/G1-UPC-1ASI0665-2520-14424-Antihacking) (repositorio principal de documentación y evidencias del proyecto)
 
 Las evidencias están descritas y referenciadas tanto en el cuerpo del informe como en los anexos; se recomienda mantener un manifiesto de evidencias (`evidence_manifest.csv`) con mapeo nombre–archivo, autor, fecha y hash para facilitar auditoría y trazabilidad.
 
