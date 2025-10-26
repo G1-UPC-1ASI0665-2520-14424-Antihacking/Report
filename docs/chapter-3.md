@@ -430,4 +430,4 @@ La fuga masiva de archivos de backup y certificados clasifica este servidor con 
 
 - **Seguimiento de Directorios Accesibles:** Realizar una inspección manual del directorio /assets (código 301 de Gobuster) para buscar archivos de configuración, manifiestos o cualquier contenido estático que pueda contener metadatos o secretos.
 
--**Matriz de Vulnerabilidades:** Los hallazgos de Fuga de Claves/Certificados y Archivos de Backup se clasifican como CRÍTICO y deben ser la prioridad N°1 en el informe final.
+- **Matriz de Vulnerabilidades:** Los hallazgos de Fuga de Claves/Certificados y Archivos de Backup se clasifican como CRÍTICO y deben ser la prioridad N°1 en el informe final.
