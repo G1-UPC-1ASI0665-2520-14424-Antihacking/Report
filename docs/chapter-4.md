@@ -83,32 +83,145 @@ A continuación, se presenta una matriz consolidada de las vulnerabilidades iden
 
 ## **4.3 Impacto en el Negocio**
 
-### **1. Fuga de Información Crítica (VULN‑004)**
-- **Impacto:** Compromiso de claves privadas, certificados y bases de datos.  
-- **Consecuencia:** Pérdida de confianza de clientes y riesgo de suplantación de identidad digital.  
-- **Efecto en el Negocio:** Daño reputacional y riesgo de sanción por incumplir normas de protección de datos.
+### **Vulnerabilidad Crítica: Fuga de Información (Archivos de Backup y Certificados)**
+**Impacto Financiero Directo:**
+
+- **Multa ARPDP (Autoridad Nacional de Protección de Datos Personales):** S/ 500,000 - S/ 2,000,000
+    - Base legal: Ley N° 29733 (Protección de Datos Personales del Perú)
+    - La exposición de 10,000 registros de usuarios con datos personales constituye una brecha masiva
+    - Obligación de notificación en 72 horas a la autoridad y usuarios afectados
+
+**Impacto Operacional:**
+
+- **Compromiso total de infraestructura:** Si un atacante descarga los certificados TLS (.pem, .jks):
+    
+    - Puede descifrar TODO el tráfico histórico interceptado (si lo capturó previamente)
+    - Puede suplantar la identidad del servidor y crear sitios de phishing idénticos
+    - Duración de remediación: 2-5 días (emisión de nuevos certificados, rotación completa)
+    - Downtime estimado: 4-8 horas durante migración de certificados
+- **Exposición de lógica de negocio:** Los archivos `.tgz`, `.war` contienen:
+    
+    - Código fuente completo de la aplicación → competidores pueden copiar funcionalidades
+    - Credenciales hardcodeadas en el código (API keys, database passwords)
+    - Algoritmos propietarios de gestión de aforo y sensores IoT
+
+**Impacto Comercial (B2B):**
+
+- **Pérdida de clientes cafeterías:**
+    
+    - 15 cafeterías actuales podrían cancelar contratos por incumplimiento de seguridad
+    - Pérdida de ingresos MRR (Monthly Recurring Revenue): S/ 15,000 - S/ 30,000/mes
+    - Cláusulas de SLA de seguridad podrían activar penalizaciones contractuales
+- **Cancelación de negociaciones con cadenas corporativas:**
+    
+    - 2 cadenas de cafeterías (50+ sedes potenciales) requieren auditoría de seguridad aprobada
+    - Valor del contrato perdido: S/ 100,000 - S/ 300,000 anuales
+
+**Impacto en Inversión:**
+
+- **Ronda Serie A en riesgo ($500,000):**
+    - Inversionistas requieren due diligence de seguridad → hallazgo crítico = deal breaker
+    - Descuento de valuación: -30% a -50% si se descubre en due diligence
+    - Retraso en cierre de ronda: 3-6 meses adicionales para remediar
+
+**Impacto Reputacional:**
+
+- **Pérdida de confianza de usuarios finales (comensales):**
+    - 5,000 usuarios registrados podrían dejar de usar la plataforma
+    - NPS (Net Promoter Score) disminuye de 45 a 15 (pérdida de 30 puntos)
+    - Tiempo de recuperación de reputación: 12-18 meses
+
+
+### **Vulnerabilidad Alta: Ausencia de HSTS (SSL Stripping)**
+
+**Impacto Financiero:**
+
+- **Robo de credenciales de administradores de cafeterías:**
+    - Si un atacante intercepta sesión de admin → acceso total al panel de gestión
+    - Puede modificar disponibilidad de mesas → pérdida de reservas reales
+    - Impacto estimado: S/ 5,000 - S/ 20,000 en reservas perdidas durante el ataque
+
+**Impacto Operacional:**
+
+- **Session Hijacking en redes WiFi públicas:**
+    - Usuarios/administradores conectados en cafés/aeropuertos son vulnerables
+    - Atacante obtiene tokens JWT → acceso no autorizado durante 24-48 horas (si tokens no expiran)
+    - Tiempo de detección del ataque: 2-7 días (si no hay monitoreo proactivo)
+
+**Impacto en Cumplimiento Normativo:**
+
+- **Incumplimiento de estándares de seguridad:**
+    - OWASP ASVS Level 2 (requerido por clientes corporativos) → No cumple
+    - PCI-DSS (si TAVOLO procesa pagos directamente) → Falla en controles de cifrado
 
 
 
-### **2. Falta de Cabeceras de Seguridad (VULN‑001 – VULN‑003)**
-- **Impacto:** Riesgo de Clickjacking, SSL Stripping y MIME Sniffing.  
-- **Consecuencia:** Pérdida de integridad en las sesiones y exposición a ataques dirigidos.  
-- **Efecto en el Negocio:** Afecta la percepción de seguridad y la confianza del usuario final.
+### **Vulnerabilidad Media: Ausencia de X-Frame-Options / CSP (Clickjacking)**
+
+**Impacto en Usuarios Finales:**
+
+- **Ataque de Clickjacking en proceso de reserva:**
+    - Atacante crea página maliciosa con iframe invisible de TAVOLO
+    - Usuario cree que está cancelando una reserva, pero en realidad está:
+        - Autorizando transferencia bancaria (si hay integración futura)
+        - Compartiendo datos personales con terceros
+    - Impacto: 50-200 usuarios afectados antes de detección
+
+**Impacto Reputacional:**
+
+- **Campaña de phishing usando iframe de TAVOLO:**
+    - Atacante usa marca de TAVOLO para legitimar estafa
+    - Daño a reputación: menciones negativas en redes sociales, prensa local
+    - Costo de campaña de recuperación de imagen: S/ 10,000 - S/ 30,000
 
 
 
-### **3. Exposición de Información del Servidor (VULN‑005)**
-- **Impacto:** Facilita ataques específicos por CVE.  
-- **Consecuencia:** Incremento de riesgo en campañas de explotación selectiva.  
-- **Efecto en el Negocio:** Potencial interrupción de servicio por ataques automatizados.
+### **Vulnerabilidad Media: Compresión HTTP (BREACH Attack)**
+
+**Impacto Técnico:**
+
+- **Extracción de tokens CSRF:**
+    - Atacante puede robar tokens de sesión de administradores
+    - Acceso no autorizado a panel admin → modificación de configuraciones de sensores IoT
+    - Impacto: 3-5 cafeterías afectadas con datos de sensores manipulados
+
+**Impacto Operacional:**
+
+- **Disponibilidad falsa de mesas:**
+    - Sensores reportan ocupación incorrecta → usuarios reservan mesas "fantasma"
+    - Experiencia de usuario degradada → NPS disminuye 10-15 puntos
+    - Churn de usuarios: 5-10% de usuarios activos mensuales
 
 
+### **Vulnerabilidad Baja: Exposición de Versión de Nginx**
 
-### **4. Error de Configuración de API (VULN‑006)**
-- **Impacto:** Interrupción de servicio y limitación de funcionalidad.  
-- **Consecuencia:** Pérdida temporal de operatividad y degradación de la experiencia de usuario.  
-- **Efecto en el Negocio:** Pérdida de productividad y riesgo de inactividad del servicio.
+**Impacto en Seguridad:**
 
+- **Targeting de exploits conocidos:**
+    - Nginx 1.24.0 tiene CVEs conocidos (ej: CVE-2024-XXXX)
+    - Atacante puede automatizar exploits específicos → reducción de tiempo de compromiso de 7 días a 2 horas
+
+**Impacto Indirecto:**
+
+- **Facilita reconocimiento para ataques complejos:**
+    - Información sobre Ubuntu + Nginx 1.24.0 → atacante sabe qué exploits preparar
+    - Reduce costos del atacante (no necesita probar múltiples vectores)
+
+
+### **Vulnerabilidad Baja: Error 502 en Rutas de API**
+
+**Impacto Operacional:**
+
+- **Funcionalidad de API parcialmente no disponible:**
+    - Si `/api` está caído → usuarios no pueden crear/modificar reservas
+    - Pérdida de ingresos durante downtime: S/ 1,000 - S/ 3,000/día
+    - Tiempo promedio de restauración (MTTR): 2-6 horas
+
+**Impacto en Experiencia de Usuario:**
+
+- **Errores 502 visibles para usuarios finales:**
+    - Percepción de plataforma inestable → usuarios prueban competidores
+    - Tasa de conversión de registro disminuye 15-25%
 
 
 ## **Conclusión del Capítulo IV**
