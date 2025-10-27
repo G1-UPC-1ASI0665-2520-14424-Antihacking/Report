@@ -127,6 +127,10 @@ Cada HU incluye escenarios de prueba escritos en formato **Gherkin** (Given/When
 | **HU17** | Como consultor, quiero identificar páginas de error y *stack traces* expuestas que revelen información del servidor. | Could Have | **Scenario: Manejo Seguro de Errores**<br>Given provoco un error en la aplicación<br>When el servidor responde<br>Then la página de error debe ser genérica sin revelar información técnica del backend. | S2 |
 | **HU18** | Como atacante, quiero probar si es posible realizar una desconexión (*logout*) CSRF. | Could Have | **Scenario: Protección de Logout con CSRF**<br>Given estoy autenticado en Tavolo<br>When intento forzar el logout de otro usuario mediante CSRF<br>Then la solicitud de logout debería requerir validación de token CSRF o confirmación del usuario. | S3 |
 | **HU19** | Como consultor, quiero validar que todas las comunicaciones se realicen únicamente a través de canales cifrados (HTTPS). | Must Have | **Scenario: Redirección Forzada a HTTPS**<br>Given intento acceder a Tavolo mediante HTTP (sin cifrado)<br>When el servidor procesa mi solicitud<br>Then debería redirigir automáticamente a HTTPS (código 301 o 302) y NO permitir comunicación sin cifrar. | S1 |
+| **HU20** | Como consultor, quiero evaluar posibilidades de escalamiento de privilegios desde accesos obtenidos para determinar el alcance completo del compromiso. | Must Have | **Scenario: Escalamiento de Privilegios Vertical**<br>Given tengo acceso inicial al sistema como usuario de bajos privilegios<br>When ejecuto herramientas de enumeración (LinPEAS, WinPEAS)<br>Then debería identificar vías potenciales de escalamiento y documentarlas con evidencias. | S4 |
+| **HU21** | Como atacante, quiero simular movimiento lateral entre servicios para evaluar la segmentación de red y las confianzas entre componentes. | Should Have | **Scenario: Movimiento Lateral Simulado**<br>Given he comprometido un servidor con credenciales válidas<br>When intento acceder a otros servicios usando las mismas credenciales<br>Then el sistema debería tener segmentación de red y credenciales únicas por servicio. | S4 |
+| **HU22** | Como consultor, quiero cuantificar el volumen y tipo de datos sensibles que serían accesibles en caso de compromiso para evaluar el impacto real. | Must Have | **Scenario: Inventario de Datos Sensibles**<br>Given he obtenido acceso no autorizado a la base de datos<br>When enumero las tablas y registros accesibles<br>Then documento el volumen de datos personales, financieros o confidenciales expuestos. | S4 |
+| **HU23** | Como consultor, quiero documentar la cadena de ataque completa (kill chain) para que el cliente entienda cómo un atacante real llegaría al compromiso. | Must Have | **Scenario: Documentación de Kill Chain**<br>Given he completado todas las fases del ataque<br>When mapeo cada paso desde reconocimiento hasta post-explotación<br>Then el documento muestra una secuencia lógica y reproducible siguiendo MITRE ATT&CK. | S4 |
 
 ## 2.3. Planificación de sprints (Sprint Planning)
 
@@ -176,27 +180,23 @@ Ejecutar reconocimiento pasivo y activo sobre la infraestructura de Tavolo en Az
     - Búsqueda de subdominios mediante herramientas como Sublist3r, Amass
     - Consulta de registros DNS (dig, nslookup, host)
     - Análisis de certificados SSL/TLS expuestos
-      **Adjuntar evidencia: capturas de theHarvester, Sublist3r, registros DNS**
 
 2. **Reconocimiento Activo (Escaneo de Puertos):**
     - Escaneo completo de puertos con Nmap: `nmap -p- -sV -sC -O -A <IP_Tavolo>`
     - Identificación de servicios activos (HTTP, HTTPS, SSH, FTP, bases de datos)
     - Detección de versiones de software y sistemas operativos
     - Generación de reportes XML y HTML de Nmap
-      **Adjuntar evidencia: output completo de Nmap, capturas de servicios identificados**
 
 3. **Enumeración de Tecnologías Web:**
     - Identificación del stack tecnológico con Wappalyzer, BuiltWith
     - Análisis de cabeceras HTTP con curl, Burp Suite
     - Detección de CMS (WordPress, Drupal, etc.) con WhatWeb
     - Identificación de frameworks JavaScript en el frontend
-      **Adjuntar evidencia: capturas de Wappalyzer, análisis de cabeceras HTTP**
 
 4. **Mapeo de Arquitectura:**
     - Creación de diagrama de red con activos identificados
     - Documentación de relaciones entre servicios
     - Identificación de posibles vectores de ataque iniciales
-      **Adjuntar evidencia: diagrama de arquitectura de red de Tavolo**
 
 **Resultados y evidencias:**
 
@@ -255,26 +255,21 @@ Ejecutar reconocimiento pasivo y activo sobre la infraestructura de Tavolo en Az
     - Búsqueda de credenciales filtradas en bases de datos públicas
 
    ```bash
-   # Ejemplo de comando para escaneo de subdominios
-   sublist3r -d tavolo.eastus2.cloudapp.azure.com -o subdominios.txt
+   sublist3r -d staging.tavolo.pe -o subdominios.txt
    ```
-   **[Adjuntar evidencia: captura de pantalla de subdominios encontrados]**
 
 2. **Escaneo de Puertos con Nmap:**
    ```bash
-   nmap -sS -sV -O -p- tavolo.eastus2.cloudapp.azure.com -oA nmap_scan_completo
+   nmap -sS -sV -O -p- staging.tavolo.pe -oA nmap_scan_completo
    ```
-   **[Adjuntar evidencia: archivo XML de Nmap y captura de puertos abiertos]**
 
 3. **Análisis de Certificados SSL:**
    ```bash
-   sslscan tavolo.eastus2.cloudapp.azure.com
+   sslscan staging.tavolo.pe
    ```
-   **[Adjuntar evidencia: reporte de sslscan con cifrados habilitados]**
-
+   
 4. **Captura de Tráfico con Wireshark:**
     - Capturar tráfico HTTPS para verificar versión de TLS
-      **[Adjuntar evidencia: captura PCAP filtrada]**
 
 **Entregables del Sprint:**
 - Reporte de reconocimiento en Markdown
@@ -319,35 +314,30 @@ Realizar enumeración en profundidad de todos los servicios identificados en Spr
 
 1. **Escaneo de Vulnerabilidades Automatizado:**
     - Escaneo completo con Nessus Professional o OpenVAS
-    - Escaneo de aplicación web con Nikto: `nikto -h https://tavolo.com`
+    - Escaneo de aplicación web con Nikto: `nikto -h https://staging.tavolo.pe`
     - Escaneo de vulnerabilidades conocidas (CVE) en servicios identificados
     - Análisis de configuraciones inseguras del servidor
-      **Adjuntar evidencia: reportes HTML/PDF de Nessus, Nikto**
 
 2. **Enumeración de Directorios y Archivos:**
-    - Fuzzing de directorios con Gobuster: `gobuster dir -u https://tavolo.com -w wordlist`
+    - Fuzzing de directorios con Gobuster: `gobuster dir -u https://staging.tavolo.pe -w wordlist`
     - Búsqueda de archivos de backup (.bak, .old, .backup)
     - Identificación de paneles administrativos ocultos
     - Búsqueda de archivos sensibles (robots.txt, sitemap.xml, .git, .env)
-      **Adjuntar evidencia: output de Gobuster, capturas de archivos encontrados**
 
 3. **Análisis de Cabeceras HTTP:**
     - Verificación de cabeceras de seguridad (CSP, HSTS, X-Frame-Options, X-XSS-Protection)
     - Detección de información sensible en cabeceras (versiones de servidor)
     - Análisis de cookies (Secure, HttpOnly, SameSite flags)
-      **Adjuntar evidencia: tabla de cabeceras HTTP ausentes o mal configuradas**
 
 4. **Análisis de Endpoints API:**
     - Enumeración de endpoints REST con Burp Suite
     - Análisis de métodos HTTP permitidos (OPTIONS, TRACE, PUT, DELETE)
     - Identificación de endpoints sin autenticación
-      **Adjuntar evidencia: mapa de API endpoints generado con Burp**
 
 5. **Validación Manual de Falsos Positivos:**
     - Revisión uno por uno de los hallazgos de Nessus/OpenVAS
     - Pruebas manuales para confirmar explotabilidad
     - Descarte de falsos positivos documentado
-      **Adjuntar evidencia: tabla de falsos positivos descartados**
 
 **Resultados y evidencias:**
 
@@ -404,27 +394,23 @@ Realizar enumeración en profundidad de todos los servicios identificados en Spr
 1. **Escaneo con Nessus/OpenVAS:**
    ```bash
    # Si usas OpenVAS desde CLI
-   omp -u admin -w admin --xml='<create_target><name>Tavolo</name><hosts>tavolo.eastus2.cloudapp.azure.com</hosts></create_target>'
+   omp -u admin -w admin --xml='<create_target><name>Tavolo</name><hosts>staging.tavolo.pe</hosts></create_target>'
    ```
-   **[Adjuntar evidencia: reporte PDF de Nessus con vulnerabilidades encontradas]**
 
 2. **Fuzzing de Directorios con Gobuster:**
    ```bash
-   gobuster dir -u https://tavolo.eastus2.cloudapp.azure.com -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -o directorios_encontrados.txt
+   gobuster dir -u https://staging.tavolo.pe -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -o directorios_encontrados.txt
    ```
-   **[Adjuntar evidencia: lista de directorios encontrados y capturas de directorios sensibles]**
 
 3. **Análisis de Cabeceras con curl:**
    ```bash
-   curl -I https://tavolo.eastus2.cloudapp.azure.com
+   curl -I https://staging.tavolo.pe
    ```
-   **[Adjuntar evidencia: captura de cabeceras HTTP y análisis de ausencias]**
 
 4. **Escaneo con Nikto:**
    ```bash
-   nikto -h https://tavolo.eastus2.cloudapp.azure.com -o nikto_report.html
+   nikto -h https://staging.tavolo.pe -o nikto_report.html
    ```
-   **[Adjuntar evidencia: reporte HTML de Nikto]**
 
 **Entregables del Sprint:**
 - Matriz de vulnerabilidades con severidad CVSS
@@ -476,42 +462,36 @@ Ejecutar explotación controlada y ética de las vulnerabilidades identificadas 
 
 1. **Explotación de SQL Injection:**
     - Pruebas manuales en formulario de registro `/sign-up`
-    - Uso de sqlmap: `sqlmap -u "https://tavolo.com/signup" --data="user=test" --dbs`
+    - Uso de sqlmap: `sqlmap -u "https://staging.tavolo.pe/signup" --data="user=test" --dbs`
     - Extracción de bases de datos y tablas sensibles
     - Desarrollo de PoC paso a paso para reproducir el ataque
-      **Adjuntar evidencia: capturas de sqlmap, payload usado, datos extraídos (censurados)**
 
 2. **Broken Access Control & IDOR:**
     - Pruebas de acceso no autorizado a endpoints admin
     - Manipulación de IDs en APIs REST: `GET /api/users/123` → `GET /api/users/124`
     - Acceso a recursos de otros usuarios mediante cambio de parámetros
     - PoC de escalamiento horizontal de privilegios
-      **Adjuntar evidencia: requests Burp Suite, respuestas exitosas**
 
 3. **Cross-Site Scripting (XSS):**
     - Pruebas de XSS reflejado en parámetros GET
     - XSS almacenado en campos de comentarios
     - Payload: `<script>alert('XSS')</script>`
     - Demostración de robo de cookies de sesión
-      **Adjuntar evidencia: capturas de payload ejecutándose, cookies capturadas**
 
 4. **Pruebas de CSRF:**
     - Análisis de tokens anti-CSRF en formularios críticos
     - Generación de página maliciosa para CSRF
     - PoC de cambio de contraseña sin token CSRF
-      **Adjuntar evidencia: código HTML del PoC, captura de ejecución exitosa**
 
 5. **Ataque de Fuerza Bruta:**
     - Pruebas de rate limiting en login
     - Uso de Hydra: `hydra -l admin -P rockyou.txt https-post-form`
     - Identificación de credenciales débiles
-      **Adjuntar evidencia: output de Hydra, credenciales encontradas**
 
 6. **Análisis de Gestión de Sesiones:**
     - Verificación de timeout de sesión
     - Pruebas de session fixation
     - Análisis de renovación de tokens
-      **Adjuntar evidencia: capturas de comportamiento de sesiones**
 
 **Resultados y evidencias:**
 
@@ -565,15 +545,13 @@ Ejecutar explotación controlada y ética de las vulnerabilidades identificadas 
 
 1. **Pruebas de SQL Injection con sqlmap:**
    ```bash
-   sqlmap -u "https://tavolo.eastus2.cloudapp.azure.com/sign-up" --data="username=test&email=test@test.com" --batch --level=5 --risk=3
+   sqlmap -u "https://staging.tavolo.pe/sign-up" --data="username=test&email=test@test.com" --batch --level=5 --risk=3
    ```
-   **[Adjuntar evidencia: captura de sqlmap mostrando inyección exitosa o protección]**
 
 2. **Pruebas de Broken Access Control con Burp Suite:**
     - Interceptar solicitud autenticada de UsuarioA
     - Modificar ID de usuario a UsuarioB
     - Analizar respuesta del servidor (esperado: 403 Forbidden)
-      **[Adjuntar evidencia: captura de Burp Suite con request/response]**
 
 3. **Pruebas de XSS:**
    ```javascript
@@ -581,18 +559,15 @@ Ejecutar explotación controlada y ética de las vulnerabilidades identificadas 
    <script>alert('XSS Vulnerability')</script>
    <img src=x onerror=alert('XSS')>
    ```
-   **[Adjuntar evidencia: captura mostrando ejecución o sanitización de XSS]**
 
 4. **Pruebas de CSRF:**
     - Crear HTML con formulario malicioso que ejecuta acción sensible
     - Verificar si el servidor valida token CSRF
-      **[Adjuntar evidencia: código HTML del PoC y respuesta del servidor]**
 
 5. **Pruebas de Fuerza Bruta con Hydra:**
    ```bash
-   hydra -l admin -P /usr/share/wordlists/rockyou.txt tavolo.eastus2.cloudapp.azure.com https-post-form "/login:username=^USER^&password=^PASS^:F=incorrect"
+   hydra -l admin -P /usr/share/wordlists/rockyou.txt staging.tavolo.pe https-post-form "/login:username=^USER^&password=^PASS^:F=incorrect"
    ```
-   **[Adjuntar evidencia: resultado de Hydra y verificación de rate limiting]**
 
 **Entregables del Sprint:**
 - PoCs reproducibles para vulnerabilidades críticas
@@ -639,29 +614,24 @@ Evaluar el alcance completo y el impacto real de las vulnerabilidades explotadas
     - Análisis de permisos y configuraciones inseguras
     - Uso de herramientas como LinPEAS, WinPEAS (si aplica)
     - Documentación de vías de escalamiento identificadas
-      **Adjuntar evidencia: diagrama de vías de escalamiento**
 
 2. **Análisis de Datos Sensibles Expuestos:**
     - Inventario de datos personales, financieros o confidenciales accesibles
     - Evaluación de cumplimiento con GDPR, LOPD u otras regulaciones
     - Cuantificación del volumen de registros comprometibles
-      **Adjuntar evidencia: tabla de clasificación de datos expuestos**
 
 3. **Movimiento Lateral (simulado):**
     - Análisis de confianza entre servicios o componentes de Tavolo
     - Identificación de credenciales reutilizadas o almacenadas inseguramente
-      **Adjuntar evidencia: diagrama de arquitectura con vectores de movimiento**
 
 4. **Análisis de Detección y Respuesta:**
     - Revisión de logs del servidor para verificar si las pruebas fueron detectadas
     - Evaluación de la capacidad de monitoreo y respuesta a incidentes del cliente
     - Recomendaciones de mejora en visibilidad y detección
-      **Adjuntar evidencia: análisis de logs y recomendaciones de SIEM**
 
 5. **Documentación de Kill Chain:**
     - Mapeo completo de la cadena de ataque siguiendo el modelo Cyber Kill Chain o MITRE ATT&CK
     - Identificación de puntos donde el ataque pudo ser detenido
-      **Adjuntar evidencia: diagrama de kill chain con técnicas MITRE ATT&CK**
 
 **Resultados y evidencias:**
 
@@ -1037,3 +1007,4 @@ La ejecución exitosa de los Sprints de Pentesting requiere el uso de herramient
 | **Sprint 3** | Burp Suite, sqlmap, Metasploit, Hydra | OWASP ZAP, BeEF, XSSer, Commix |
 | **Sprint 4** | Metasploit, Mimikatz, LinPEAS, WinPEAS | BloodHound, PowerSploit, Empire |
 | **Sprint 5** | Markdown, LaTeX, Dradis, Jira | OBS Studio (para videos), Canva (para infografías) |
+
