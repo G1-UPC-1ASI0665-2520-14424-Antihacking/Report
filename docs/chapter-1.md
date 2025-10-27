@@ -183,7 +183,7 @@ Ser reconocidos en el ecosistema de ciberseguridad de América Latina como una c
 | Campo | Información |
 |-------|-------------|
 | **Nombre de alumno** | Angelo Marcio Curi Marcelo |
-| **Foto** | <img src="https://raw.githubusercontent.com/FullStack-Fury/final-report/main/assets/Angelo.png" alt="Foto profesional de Angelo" width="200" height="200"> |
+| **Foto** | <img src="https://raw.githubusercontent.com/FullStack-Fury/final-report/main/assets/Angelo.png"  width="160" height="200"> |
 | **Código de estudiante** | U202022387 |
 | **Carrera** | Ingeniería de Software |
 | **Rol Scrum** | Documentador / Analista de Seguridad |
