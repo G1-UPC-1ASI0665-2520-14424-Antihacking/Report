@@ -144,7 +144,7 @@ Ser reconocidos en el ecosistema de ciberseguridad de América Latina como una c
 | Campo | Información |
 |-------|-------------|
 | **Nombre de alumno** | Diego Ulises Soto Quispe |
-| **Foto** | ![Foto de Diego](ruta/foto-diego.jpg) |
+| **Foto** | <img src="../assets/diego3.png" alt="Foto de Diego" width="160" height="200"> |
 | **Código de estudiante** | U202214477 |
 | **Carrera** | Ingeniería de Software |
 | **Rol Scrum** | Product Owner |
