@@ -79,7 +79,7 @@ La coordinación del proyecto se realizó mediante un repositorio en GitHub (doc
 
 Las evidencias están descritas y referenciadas tanto en el cuerpo del informe como en los anexos; se recomienda mantener un manifiesto de evidencias (`evidence_manifest.csv`) con mapeo nombre–archivo, autor, fecha y hash para facilitar auditoría y trazabilidad.
 
-assets/img1.jpeg
+![img1.jpeg](assets/img1.jpeg)
 
 ## **TP (Resumen de avance)**
 
