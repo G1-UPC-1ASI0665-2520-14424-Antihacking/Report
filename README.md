@@ -79,11 +79,7 @@ La coordinación del proyecto se realizó mediante un repositorio en GitHub (doc
 
 Las evidencias están descritas y referenciadas tanto en el cuerpo del informe como en los anexos; se recomienda mantener un manifiesto de evidencias (`evidence_manifest.csv`) con mapeo nombre–archivo, autor, fecha y hash para facilitar auditoría y trazabilidad.
 
-<img src="../assets/img1.jpeg" alt="img1" width="160" height="200">
-
-<img src="../assets/img2.jpeg" alt="img2" width="160" height="200">
-
-<img src="../assets/img3.jpeg" alt="img3" width="160" height="200">
+https://github.com/G1-UPC-1ASI0665-2520-14424-Antihacking/Report/blob/chapter-1/assets/img1.jpeg?raw=true
 
 ## **TP (Resumen de avance)**
 
