@@ -81,6 +81,10 @@ Las evidencias están descritas y referenciadas tanto en el cuerpo del informe c
 
 ![img1.jpeg](assets/img1.jpeg)
 
+![img2.jpeg](assets/img2.jpeg)
+
+![img3.jpeg](assets/img3.jpeg)
+
 ## **TP (Resumen de avance)**
 
 - Mejora de alcance con el cliente (dominios, subdominios, APIs, sistemas en ambiente de pruebas).
