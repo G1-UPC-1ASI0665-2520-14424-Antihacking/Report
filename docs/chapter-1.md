@@ -1409,6 +1409,8 @@ Curso: **1ASI0665 - Anti-Hacking y Nuevas Tendencias de Seguridad**
 **FIN DEL DOCUMENTO DE RULES OF ENGAGEMENT**
 
 
+Para acceder al documento/contrato en el siguiente enlace: https://docs.google.com/document/d/1RuyBJEHkmCswHTg1FNIY5X7QQMIeGFZI3V9kIYmolRw/edit?usp=sharing
+
 ## 1.5. Segmentos Objetivo
 
 Los resultados del pentesting realizado por PentGuin benefician a múltiples stakeholders de TAVOLO Tech Solutions S.A.C., cada uno con necesidades y expectativas específicas de seguridad. A continuación, se definen los segmentos objetivo y cómo los entregables del proyecto atienden sus necesidades particulares.
