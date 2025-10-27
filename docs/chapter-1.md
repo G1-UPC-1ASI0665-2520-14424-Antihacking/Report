@@ -170,7 +170,7 @@ Ser reconocidos en el ecosistema de ciberseguridad de América Latina como una c
 | Campo | Información |
 |-------|-------------|
 | **Nombre de alumno** | Brenda Lucía Gamio Upiachihua |
-| **Foto** | ![Foto de Brenda](ruta/foto-brenda.jpg) |
+| **Foto** | <img src="../assets/foto-brenda.jpg" alt="Foto de Brenda" width="160" height="200"> |
 | **Código de estudiante** | U202102344 |
 | **Carrera** | Ingeniería de Software |
 | **Rol Scrum** | Pentester de APIs / Especialista en Backend |
@@ -328,10 +328,10 @@ El ecosistema de TAVOLO combina múltiples superficies de ataque (landing + port
 #### **Where (¿Dónde están las vulnerabilidades esperadas?)**
 
 **Perímetro Externo (Accesible desde Internet):**
-- Landing Page de TAVOLO (https://tavolo.pe)
-- Portal Web del Comensal (https://app.tavolo.pe)
-- API Gateway público (https://api.tavolo.pe)
-- Panel Administrativo Web (https://admin.tavolo.pe)
+- Landing Page de TAVOLO
+- Portal Web del Comensal
+- API Gateway público
+- Panel Administrativo Web
 
 **Zona DMZ (Cloud - Azure):**
 - API REST Backend
