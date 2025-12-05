@@ -742,3 +742,55 @@ Durante el análisis exhaustivo del endpoint, se identificaron múltiples contro
 - **Fuga de Información (Prioridad Máxima):** Basándose en hallazgos de Sprint 2 (Nikto), se debe proceder a intentar descargar archivos críticos (.pem, .jks, .tgz) que podrían proporcionar acceso directo a la infraestructura y base de datos.
 
 - **Testing de Otros Vectores:** Con acceso a credenciales o archivos de configuración, probar vulnerabilidades como IDOR, escalación de privilegios, y ejecución remota de código.
+
+### Sprint 4 - Post-explotación y Persistencia
+
+#### Objetivos del Sprint
+
+El Sprint 4 tiene como objetivo demostrar el **alcance real del compromiso** identificado en los sprints anteriores. Aunque el endpoint `/sign-up` resultó NO vulnerable a SQL Injection (confirmado en Sprint 3), el Sprint 2 reveló una **fuga crítica de información** mediante la exposición de certificados TLS y archivos de backup. Este sprint ejecuta las historias de usuario HU20, HU21, HU22 y HU23, centrándose en:
+
+1. **Demostrar el impacto del compromiso de certificados TLS** (.pem, .jks)
+2. **Analizar archivos de backup expuestos** en busca de credenciales y secrets
+3. **Evaluar escalamiento de privilegios** en infraestructura Azure
+4. **Simular movimiento lateral** entre recursos cloud
+5. **Cuantificar datos sensibles accesibles** tras el compromiso
+6. **Documentar la cadena de ataque completa** (kill chain)
+
+**Historias de Usuario Atendidas:**
+- HU20: Evaluación de escalamiento de privilegios (Must Have)
+- HU21: Análisis de movimiento lateral (Should Have)
+- HU22: Cuantificación de datos sensibles expuestos (Must Have)
+- HU23: Documentación de kill chain completa (Must Have)
+
+---
+
+#### 1. Descifrado de Tráfico TLS con Certificados Comprometidos
+
+**1.1. Contexto de la Vulnerabilidad**
+
+En el Sprint 2, Nikto identificó la exposición pública de certificados TLS y claves privadas:
+- `/tavolo.pem`
+- `/tavolo.eastus2.cloudapp.jks`
+- `/azure.pem`
+
+Esta exposición representa un **riesgo crítico** (CVSS 9.3) ya que permite a un atacante:
+- Descifrar tráfico HTTPS interceptado previamente
+- Realizar ataques Man-in-the-Middle sin advertencias de certificado
+- Suplantar completamente la identidad del servidor
+
+**1.2. Procedimiento de Descarga y Análisis**
+
+**Comando Ejecutado:**
+```bash
+# Descarga de certificados desde rutas públicas
+wget https://tavolo.eastus2.cloudapp.azure.com/tavolo.pem
+wget https://tavolo.eastus2.cloudapp.azure.com/tavolo.eastus2.cloudapp.jks
+
+# Verificación del contenido del certificado .pem
+openssl x509 -in tavolo.pem -text -noout
+openssl rsa -in tavolo.pem -check -noout
+```
+
+**Resultado de la Verificación:**
+![Descarga de Certificado Comprometido](../evidencias/sprint4-1.png)
+![Descarga de Certificado Comprometido](../evidencias/sprint4-2.png)
